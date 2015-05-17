@@ -49,6 +49,14 @@ public final class Signal<T> {
         return signal
     }
     
+    public func ensure<U>(f: (Result<T>, (Result<U>->Void))->Void) -> Signal<U> {
+        let signal = Signal<U>()
+        subscribe { value in
+            f(value) { signal.update($0) }
+        }
+        return signal
+    }
+    
     public func subscribe(f: Result<T> -> Void) {
         if let value = value {
             f(value)

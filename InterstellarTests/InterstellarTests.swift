@@ -46,14 +46,4 @@ class InterstellarTests: XCTestCase {
         signal.update(Result.Success(Box("Hello")))
         waitForExpectationsWithTimeout(0.2, handler: nil)
     }
-    
-    func testComposition() {
-        let identity: String -> Result<String> = { a in
-            .Success(Box(a))
-        }
-        
-        let composed = greeter >>> identity
-        let result = composed("World").value!
-        XCTAssertEqual(result, "Hello World")
-    }
 }
