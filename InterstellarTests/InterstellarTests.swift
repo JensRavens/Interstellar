@@ -58,6 +58,6 @@ class InterstellarTests: XCTestCase {
     func testComposition() {
         let myIdent = identity |> asyncIdentity
         let anotherIndent = asyncIdentity |> identity
-        let asyncSyncThing = backgroundThread |> identity |> mainThread
+        let asyncSyncThing = Thread.background |> identity |> Thread.main
     }
 }
