@@ -15,10 +15,7 @@ public final class Signal<T> {
     public func map<U>(f: T -> U) -> Signal<U> {
         let signal = Signal<U>()
         subscribe { result in
-            switch(result) {
-            case let .Success(box): signal.update(result.map(f))
-            case let .Error(error): signal.update(.Error(error))
-            }
+            signal.update(result.map(f))
         }
         return signal
     }
@@ -26,10 +23,7 @@ public final class Signal<T> {
     public func bind<U>(f: T -> Result<U>) -> Signal<U> {
         let signal = Signal<U>()
         subscribe { result in
-            switch(result) {
-            case let .Success(box): signal.update(f(box.value))
-            case let .Error(error): signal.update(.Error(error))
-            }
+            signal.update(result.bind(f))
         }
         return signal
     }
@@ -37,14 +31,7 @@ public final class Signal<T> {
     public func bind<U>(f: (T, (Result<U>->Void))->Void) -> Signal<U> {
         let signal = Signal<U>()
         subscribe { value in
-            switch(value) {
-            case let .Success(box):
-                let value = box.value
-                f(value){ result in
-                    signal.update(result)
-                }
-            case let .Error(error): signal.update(.Error(error))
-            }
+            value.bind(f)(signal.update)
         }
         return signal
     }

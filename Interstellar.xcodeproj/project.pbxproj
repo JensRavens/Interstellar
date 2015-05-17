@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8F1848B91B088A1A0028D0A0 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1848B81B088A1A0028D0A0 /* Operators.swift */; };
+		8F1848BB1B08E3E60028D0A0 /* Threading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1848BA1B08E3E60028D0A0 /* Threading.swift */; };
 		8F2B8D6A1B07A92C0063EB9C /* Interstellar.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F2B8D691B07A92C0063EB9C /* Interstellar.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8F2B8D701B07A92C0063EB9C /* Interstellar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F2B8D641B07A92C0063EB9C /* Interstellar.framework */; };
 		8F2B8D841B07A9410063EB9C /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2B8D801B07A9410063EB9C /* Box.swift */; };
@@ -27,6 +29,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8F1848B81B088A1A0028D0A0 /* Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
+		8F1848BA1B08E3E60028D0A0 /* Threading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Threading.swift; sourceTree = "<group>"; };
 		8F2B8D641B07A92C0063EB9C /* Interstellar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Interstellar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F2B8D681B07A92C0063EB9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8F2B8D691B07A92C0063EB9C /* Interstellar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Interstellar.h; sourceTree = "<group>"; };
@@ -81,6 +85,8 @@
 			children = (
 				8F2B8D801B07A9410063EB9C /* Box.swift */,
 				8F2B8D811B07A9410063EB9C /* Composition.swift */,
+				8F1848BA1B08E3E60028D0A0 /* Threading.swift */,
+				8F1848B81B088A1A0028D0A0 /* Operators.swift */,
 				8F2B8D821B07A9410063EB9C /* Result.swift */,
 				8F2B8D831B07A9410063EB9C /* Signal.swift */,
 				8F2B8D691B07A92C0063EB9C /* Interstellar.h */,
@@ -222,8 +228,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				8F2B8D861B07A9410063EB9C /* Result.swift in Sources */,
+				8F1848B91B088A1A0028D0A0 /* Operators.swift in Sources */,
 				8F2B8D871B07A9410063EB9C /* Signal.swift in Sources */,
 				8F2B8D851B07A9410063EB9C /* Composition.swift in Sources */,
+				8F1848BB1B08E3E60028D0A0 /* Threading.swift in Sources */,
 				8F2B8D841B07A9410063EB9C /* Box.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -423,6 +431,7 @@
 				8F2B8D7C1B07A92C0063EB9C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8F2B8D7D1B07A92C0063EB9C /* Build configuration list for PBXNativeTarget "InterstellarTests" */ = {
 			isa = XCConfigurationList;
@@ -431,6 +440,7 @@
 				8F2B8D7F1B07A92C0063EB9C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

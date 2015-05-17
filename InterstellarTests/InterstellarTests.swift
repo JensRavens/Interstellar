@@ -20,6 +20,14 @@ class InterstellarTests: XCTestCase {
         }
     }
     
+    func identity(a: String) -> Result<String> {
+        return .Success(Box(a))
+    }
+    
+    func asyncIdentity(a: String, completion: Result<String>->Void) {
+        completion(identity(a))
+    }
+    
     func testMappingASignal() {
         let greeting = Signal("World").map { subject in
             "Hello \(subject)"
@@ -45,5 +53,11 @@ class InterstellarTests: XCTestCase {
         }
         signal.update(Result.Success(Box("Hello")))
         waitForExpectationsWithTimeout(0.2, handler: nil)
+    }
+    
+    func testComposition() {
+        let myIdent = identity |> asyncIdentity
+        let anotherIndent = asyncIdentity |> identity
+        let asyncSyncThing = backgroundThread |> identity |> mainThread
     }
 }
