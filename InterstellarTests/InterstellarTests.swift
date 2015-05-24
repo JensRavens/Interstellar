@@ -54,10 +54,4 @@ class InterstellarTests: XCTestCase {
         signal.update(Result.Success(Box("Hello")))
         waitForExpectationsWithTimeout(0.2, handler: nil)
     }
-    
-    func testComposition() {
-        let myIdent = identity |> asyncIdentity
-        let anotherIndent = asyncIdentity |> identity
-        let asyncSyncThing = Thread.background |> identity |> Thread.main
-    }
 }

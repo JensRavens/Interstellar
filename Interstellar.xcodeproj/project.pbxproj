@@ -7,12 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8F1848B91B088A1A0028D0A0 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1848B81B088A1A0028D0A0 /* Operators.swift */; };
 		8F1848BB1B08E3E60028D0A0 /* Threading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1848BA1B08E3E60028D0A0 /* Threading.swift */; };
 		8F2B8D6A1B07A92C0063EB9C /* Interstellar.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F2B8D691B07A92C0063EB9C /* Interstellar.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8F2B8D701B07A92C0063EB9C /* Interstellar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F2B8D641B07A92C0063EB9C /* Interstellar.framework */; };
 		8F2B8D841B07A9410063EB9C /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2B8D801B07A9410063EB9C /* Box.swift */; };
-		8F2B8D851B07A9410063EB9C /* Composition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2B8D811B07A9410063EB9C /* Composition.swift */; };
 		8F2B8D861B07A9410063EB9C /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2B8D821B07A9410063EB9C /* Result.swift */; };
 		8F2B8D871B07A9410063EB9C /* Signal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2B8D831B07A9410063EB9C /* Signal.swift */; };
 		8F2B8D891B07A9550063EB9C /* InterstellarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2B8D881B07A9550063EB9C /* InterstellarTests.swift */; };
@@ -29,7 +27,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		8F1848B81B088A1A0028D0A0 /* Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
 		8F1848BA1B08E3E60028D0A0 /* Threading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Threading.swift; sourceTree = "<group>"; };
 		8F2B8D641B07A92C0063EB9C /* Interstellar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Interstellar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F2B8D681B07A92C0063EB9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -37,7 +34,6 @@
 		8F2B8D6F1B07A92C0063EB9C /* InterstellarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InterstellarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F2B8D751B07A92C0063EB9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8F2B8D801B07A9410063EB9C /* Box.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
-		8F2B8D811B07A9410063EB9C /* Composition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Composition.swift; sourceTree = "<group>"; };
 		8F2B8D821B07A9410063EB9C /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		8F2B8D831B07A9410063EB9C /* Signal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Signal.swift; sourceTree = "<group>"; };
 		8F2B8D881B07A9550063EB9C /* InterstellarTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterstellarTests.swift; sourceTree = "<group>"; };
@@ -84,9 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				8F2B8D801B07A9410063EB9C /* Box.swift */,
-				8F2B8D811B07A9410063EB9C /* Composition.swift */,
 				8F1848BA1B08E3E60028D0A0 /* Threading.swift */,
-				8F1848B81B088A1A0028D0A0 /* Operators.swift */,
 				8F2B8D821B07A9410063EB9C /* Result.swift */,
 				8F2B8D831B07A9410063EB9C /* Signal.swift */,
 				8F2B8D671B07A92C0063EB9C /* Supporting Files */,
@@ -228,9 +222,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8F2B8D861B07A9410063EB9C /* Result.swift in Sources */,
-				8F1848B91B088A1A0028D0A0 /* Operators.swift in Sources */,
 				8F2B8D871B07A9410063EB9C /* Signal.swift in Sources */,
-				8F2B8D851B07A9410063EB9C /* Composition.swift in Sources */,
 				8F1848BB1B08E3E60028D0A0 /* Threading.swift in Sources */,
 				8F2B8D841B07A9410063EB9C /* Box.swift in Sources */,
 			);
