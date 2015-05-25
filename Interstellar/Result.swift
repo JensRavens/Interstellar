@@ -31,6 +31,17 @@ public enum Result<T> {
         }
     }
     
+    public func map<U>(f:(T, (U->Void))->Void) -> (Result<U>->Void)->Void {
+        return { g in
+            switch self {
+            case let .Success(v): f(v.value){ transformed in
+                    g(.Success(Box(transformed)))
+                }
+            case let .Error(error): g(.Error(error))
+            }
+        }
+    }
+    
     public func bind<U>(f: T -> Result<U>) -> Result<U> {
         switch self {
         case let .Success(v): return f(v.value)
