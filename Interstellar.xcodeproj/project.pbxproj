@@ -10,7 +10,6 @@
 		8F1848BB1B08E3E60028D0A0 /* Threading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1848BA1B08E3E60028D0A0 /* Threading.swift */; };
 		8F2B8D6A1B07A92C0063EB9C /* Interstellar.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F2B8D691B07A92C0063EB9C /* Interstellar.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8F2B8D701B07A92C0063EB9C /* Interstellar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F2B8D641B07A92C0063EB9C /* Interstellar.framework */; };
-		8F2B8D841B07A9410063EB9C /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2B8D801B07A9410063EB9C /* Box.swift */; };
 		8F2B8D861B07A9410063EB9C /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2B8D821B07A9410063EB9C /* Result.swift */; };
 		8F2B8D871B07A9410063EB9C /* Signal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2B8D831B07A9410063EB9C /* Signal.swift */; };
 		8F2B8D891B07A9550063EB9C /* InterstellarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2B8D881B07A9550063EB9C /* InterstellarTests.swift */; };
@@ -33,7 +32,6 @@
 		8F2B8D691B07A92C0063EB9C /* Interstellar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Interstellar.h; sourceTree = "<group>"; };
 		8F2B8D6F1B07A92C0063EB9C /* InterstellarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InterstellarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F2B8D751B07A92C0063EB9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8F2B8D801B07A9410063EB9C /* Box.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
 		8F2B8D821B07A9410063EB9C /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		8F2B8D831B07A9410063EB9C /* Signal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Signal.swift; sourceTree = "<group>"; };
 		8F2B8D881B07A9550063EB9C /* InterstellarTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterstellarTests.swift; sourceTree = "<group>"; };
@@ -79,7 +77,6 @@
 		8F2B8D661B07A92C0063EB9C /* Interstellar */ = {
 			isa = PBXGroup;
 			children = (
-				8F2B8D801B07A9410063EB9C /* Box.swift */,
 				8F1848BA1B08E3E60028D0A0 /* Threading.swift */,
 				8F2B8D821B07A9410063EB9C /* Result.swift */,
 				8F2B8D831B07A9410063EB9C /* Signal.swift */,
@@ -170,7 +167,8 @@
 		8F2B8D5B1B07A92C0063EB9C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "nerdgeschoss GmbH";
 				TargetAttributes = {
 					8F2B8D631B07A92C0063EB9C = {
@@ -224,7 +222,6 @@
 				8F2B8D861B07A9410063EB9C /* Result.swift in Sources */,
 				8F2B8D871B07A9410063EB9C /* Signal.swift in Sources */,
 				8F1848BB1B08E3E60028D0A0 /* Threading.swift in Sources */,
-				8F2B8D841B07A9410063EB9C /* Box.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,6 +266,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -339,7 +337,6 @@
 		8F2B8D7B1B07A92C0063EB9C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -348,6 +345,7 @@
 				INFOPLIST_FILE = Interstellar/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "de.nerdgeschoss.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -357,7 +355,6 @@
 		8F2B8D7C1B07A92C0063EB9C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -366,6 +363,7 @@
 				INFOPLIST_FILE = Interstellar/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "de.nerdgeschoss.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -385,6 +383,7 @@
 				);
 				INFOPLIST_FILE = InterstellarTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "de.nerdgeschoss.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -400,6 +399,7 @@
 				);
 				INFOPLIST_FILE = InterstellarTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "de.nerdgeschoss.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

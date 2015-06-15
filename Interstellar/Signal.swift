@@ -27,7 +27,7 @@ public final class Signal<T> {
     
     public convenience init(_ value: T){
         self.init()
-        self.value = .Success(Box(value))
+        self.value = .Success(value)
     }
     
     public init() {
@@ -78,7 +78,7 @@ public final class Signal<T> {
         subscribe { value in
             switch(value) {
             case let .Success(box):
-                if f(box.value) {
+                if f(box) {
                     signal.update(value)
                 }
             case let .Error(error): signal.update(.Error(error))
@@ -90,7 +90,7 @@ public final class Signal<T> {
     public func next(g: T -> Void) {
         subscribe { result in
             switch(result) {
-            case let .Success(box): g(box.value)
+            case let .Success(value): g(value)
             case .Error(_): return
             }
         }
@@ -99,7 +99,7 @@ public final class Signal<T> {
     public func error(g: NSError -> Void) {
         subscribe { result in
             switch(result) {
-            case let .Success(_): return
+            case .Success(_): return
             case let .Error(error): g(error)
             }
         }
@@ -109,12 +109,12 @@ public final class Signal<T> {
         let signal = Signal<(T,U)>()
         self.next { a in
             if let b = merge.peek() {
-                signal.update(.Success(Box((a,b))))
+                signal.update(.Success((a,b)))
             }
         }
         merge.next { b in
             if let a = self.peek() {
-                signal.update(.Success(Box((a,b))))
+                signal.update(.Success((a,b)))
             }
         }
         let errorHandler = { (error: NSError) in

@@ -21,12 +21,12 @@
 // THE SOFTWARE.
 
 public enum Result<T> {
-    case Success(Box<T>)
+    case Success(T)
     case Error(NSError)
     
     public func map<U>(f: T -> U) -> Result<U> {
         switch self {
-        case let .Success(v): return .Success(Box(f(v.value)))
+        case let .Success(v): return .Success(f(v))
         case let .Error(error): return .Error(error)
         }
     }
@@ -34,8 +34,8 @@ public enum Result<T> {
     public func map<U>(f:(T, (U->Void))->Void) -> (Result<U>->Void)->Void {
         return { g in
             switch self {
-            case let .Success(v): f(v.value){ transformed in
-                    g(.Success(Box(transformed)))
+            case let .Success(v): f(v){ transformed in
+                    g(.Success(transformed))
                 }
             case let .Error(error): g(.Error(error))
             }
@@ -44,7 +44,7 @@ public enum Result<T> {
     
     public func bind<U>(f: T -> Result<U>) -> Result<U> {
         switch self {
-        case let .Success(v): return f(v.value)
+        case let .Success(v): return f(v)
         case let .Error(error): return .Error(error)
         }
     }
@@ -52,7 +52,7 @@ public enum Result<T> {
     public func bind<U>(f:(T, (Result<U>->Void))->Void) -> (Result<U>->Void)->Void {
         return { g in
             switch self {
-            case let .Success(v): f(v.value, g)
+            case let .Success(v): f(v, g)
             case let .Error(error): g(.Error(error))
             }
         }
@@ -70,8 +70,8 @@ public enum Result<T> {
     
     public var value: T? {
         switch self {
-        case let .Success(v): return v.value
-        case let .Error(error): return nil
+        case let .Success(v): return v
+        case .Error(_): return nil
         }
     }
 }
