@@ -20,7 +20,14 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+/**
+    This class is used to wrap a Result.Success value. In Swift 2 this is no longer needed.
+    Create a box with a value, e.g.
+        Box("Hello")
+*/
 public final class Box<A> {
+    
+    /// The contained value. Access this property to unwrap the value of a box.
     public let value: A
     
     public init(_ value: A) {
