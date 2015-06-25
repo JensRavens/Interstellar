@@ -7,7 +7,7 @@ The simplest `Signal<T>` implementation for Functional Reactive Programming you 
 - [x] Lightweight, simple, cross plattform FRP
 - [x] Multithreading with GCD becomes a breeze
 - [x] Most of your methods will conform to the needed syntax anyway.
-- [x] Swift 2 compability on branch [swift2](https://github.com/JensRavens/Interstellar/tree/swift2)
+- [x] Swift 2 compability
 
 ## Requirements
 
@@ -31,7 +31,7 @@ text.next { string in
     println("Hello \(string)")
 }
 
-text.update(.Success(Box("World")))
+text.update(.Success("World"))
 ```
 
 ### Mapping and transforming signals
@@ -47,7 +47,7 @@ greeting.next { text in
     println(text)
 }
 
-text.update(.Success(Box("World")))
+text.update(.Success("World"))
 ```
 
 ### Use functions as transforms
@@ -60,7 +60,7 @@ let greet: String->String = { subject in
 text.map(greet).next { text in
     println(text)
 }
-text.update(.Success(Box("World")))
+text.update(.Success("World"))
 ```
 
 ### Ridiculously simple multithreading
@@ -75,7 +75,7 @@ let greet: String->String = { subject in
 text.ensure(Thread.background).map(greet).ensure(Thread.main).next { text in
     println(text)
 }
-text.update(.Success(Box("World")))
+text.update(.Success("World"))
 ```
 
 ### Handle errors in sequences of functions
@@ -97,7 +97,7 @@ text.bind(greet)
 .error { error in
     println("There was a greeting error")
 }
-text.update(.Success(Box("World")))
+text.update(.Success("World"))
 ```
 
 ### This also works for asynchronous functions
@@ -119,7 +119,7 @@ text.bind(greet)
 .error { error in
     println("There was a greeting error")
 }
-text.update(.Success(Box("World")))
+text.update(.Success("World"))
 ```
 
 ---
@@ -153,7 +153,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 use_frameworks!
 
-pod 'Interstellar', '~> 1.0'
+pod 'Interstellar', :git => 'https://github.com/JensRavens/Interstellar.git', :branch => 'swift2'
 ```
 
 Then, run the following command:
@@ -176,7 +176,7 @@ $ brew install carthage
 To integrate Interstellar into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "JensRavens/Interstellar" >= 1.0
+github "JensRavens/Interstellar" "swift2"
 ```
 
 ---
