@@ -20,10 +20,21 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+
+/**
+    A result contains the result of a computation or task. It might be either successfull
+    with an attached value or a failure with an attached error (which conforms to Swift 2's
+    ErrorType). You can read more about the implementation in
+    [this blog post](http://jensravens.de/a-swifter-way-of-handling-errors/).
+*/
 public enum Result<T> {
     case Success(T)
-    case Error(NSError)
+    case Error(ErrorType)
     
+    /**
+        Transform a result into another result using a function. If the result was an error,
+        the function will not be executed and the error returned instead.
+    */
     public func map<U>(f: T -> U) -> Result<U> {
         switch self {
         case let .Success(v): return .Success(f(v))
@@ -31,6 +42,10 @@ public enum Result<T> {
         }
     }
     
+    /**
+        Transform a result into another result using a function. If the result was an error,
+        the function will not be executed and the error returned instead.
+    */
     public func map<U>(f:(T, (U->Void))->Void) -> (Result<U>->Void)->Void {
         return { g in
             switch self {
@@ -42,6 +57,10 @@ public enum Result<T> {
         }
     }
     
+    /**
+        Transform a result into another result using a function. If the result was an error,
+        the function will not be executed and the error returned instead.
+    */
     public func bind<U>(f: T -> Result<U>) -> Result<U> {
         switch self {
         case let .Success(v): return f(v)
@@ -49,6 +68,10 @@ public enum Result<T> {
         }
     }
     
+    /**
+        Transform a result into another result using a function. If the result was an error,
+        the function will not be executed and the error returned instead.
+    */
     public func bind<U>(f:(T, (Result<U>->Void))->Void) -> (Result<U>->Void)->Void {
         return { g in
             switch self {
@@ -58,16 +81,28 @@ public enum Result<T> {
         }
     }
     
+    /** 
+        Call a function with the result as an argument. Use this if the function should be
+        executed no matter if the result was a success or not.
+    */
     public func ensure<U>(f: Result<T> -> Result<U>) -> Result<U> {
         return f(self)
     }
     
+    /**
+        Call a function with the result as an argument. Use this if the function should be
+        executed no matter if the result was a success or not.
+    */
     public func ensure<U>(f:(Result<T>, (Result<U>->Void))->Void) -> (Result<U>->Void)->Void {
         return { g in
             f(self, g)
         }
     }
     
+    /**
+        Direct access to the content of the result as an optional. If the result was a success,
+        the optional will contain the value of the result.
+    */
     public var value: T? {
         switch self {
         case let .Success(v): return v
