@@ -20,9 +20,17 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+public protocol ErrorType {
+    
+}
+
+extension NSError: ErrorType {
+    
+}
+
 public enum Result<T> {
     case Success(Box<T>)
-    case Error(NSError)
+    case Error(ErrorType)
     
     public func map<U>(f: T -> U) -> Result<U> {
         switch self {

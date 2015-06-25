@@ -98,7 +98,7 @@ public final class Signal<T> {
         return self
     }
     
-    public func error(g: NSError -> Void) -> Signal<T> {
+    public func error(g: ErrorType -> Void) -> Signal<T> {
         subscribe { result in
             switch(result) {
             case let .Success(_): return
@@ -120,7 +120,7 @@ public final class Signal<T> {
                 signal.update(.Success(Box((a,b))))
             }
         }
-        let errorHandler = { (error: NSError) in
+        let errorHandler = { (error: ErrorType) in
             signal.update(.Error(error))
         }
         self.error(errorHandler)
