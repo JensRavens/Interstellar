@@ -66,11 +66,12 @@ public final class Signal<T> {
         return signal
     }
     
-    public func subscribe(f: Result<T> -> Void) {
+    public func subscribe(f: Result<T> -> Void) -> Signal<T> {
         if let value = value {
             f(value)
         }
         callbacks.append(f)
+        return self
     }
     
     public func filter(f: T -> Bool) -> Signal<T>{
@@ -87,22 +88,24 @@ public final class Signal<T> {
         return signal
     }
     
-    public func next(g: T -> Void) {
+    public func next(g: T -> Void) -> Signal<T> {
         subscribe { result in
             switch(result) {
             case let .Success(box): g(box.value)
             case .Error(_): return
             }
         }
+        return self
     }
     
-    public func error(g: NSError -> Void) {
+    public func error(g: NSError -> Void) -> Signal<T> {
         subscribe { result in
             switch(result) {
             case let .Success(_): return
             case let .Error(error): g(error)
             }
         }
+        return self
     }
     
     public func merge<U>(merge: Signal<U>) -> Signal<(T,U)> {
