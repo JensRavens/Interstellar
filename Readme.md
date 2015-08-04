@@ -90,7 +90,7 @@ func greetMaybe(subject: String)->Result<String> {
         return .Error(error)
     }
 }
-text.bind(greet)
+text.bind(greetMaybe)
 .next { text in
     println(text)
 }
@@ -112,7 +112,7 @@ func greetMaybe(subject: String, completion: Result<String>->Void) {
         completion(.Error(error))
     }
 }
-text.bind(greet)
+text.bind(greetMaybe)
 .next { text in
     println(text)
 }
