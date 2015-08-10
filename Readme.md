@@ -132,7 +132,7 @@ text.update(.Success(Box("World")))
 
 ## Installation
 
-> **Embedded frameworks require a minimum deployment target of iOS 8 or OS X Mavericks.**
+> **Dynamic frameworks on iOS require a minimum deployment target of iOS 8 or later.**
 >
 > To use Interstellar with a project targeting iOS 7, you must include all Swift files directly in your project.
 
