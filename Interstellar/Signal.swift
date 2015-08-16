@@ -31,10 +31,10 @@
         let text = Signal<String>()
 
         text.next { string in
-        println("Hello \(string)")
+            println("Hello \(string)")
         }
 
-        text.update(.Success(Box("World")))
+        text.update(.Success("World"))
 
 */
 public final class Signal<T> {
@@ -79,8 +79,8 @@ public final class Signal<T> {
     */
     public func bind<U>(f: (T, (Result<U>->Void))->Void) -> Signal<U> {
         let signal = Signal<U>()
-        subscribe { value in
-            value.bind(f)(signal.update)
+        subscribe { result in
+            result.bind(f)(signal.update)
         }
         return signal
     }
@@ -93,8 +93,8 @@ public final class Signal<T> {
     */
     public func ensure<U>(f: (Result<T>, (Result<U>->Void))->Void) -> Signal<U> {
         let signal = Signal<U>()
-        subscribe { value in
-            f(value) { signal.update($0) }
+        subscribe { result in
+            f(result) { signal.update($0) }
         }
         return signal
     }
@@ -113,11 +113,11 @@ public final class Signal<T> {
     
     public func filter(f: T -> Bool) -> Signal<T>{
         let signal = Signal<T>()
-        subscribe { value in
-            switch(value) {
-            case let .Success(box):
-                if f(box) {
-                    signal.update(value)
+        subscribe { result in
+            switch(result) {
+            case let .Success(value):
+                if f(value) {
+                    signal.update(result)
                 }
             case let .Error(error): signal.update(.Error(error))
             }
