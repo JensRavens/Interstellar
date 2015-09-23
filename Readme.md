@@ -12,7 +12,7 @@ The simplest `Signal<T>` implementation for Functional Reactive Programming you 
 ## Requirements
 
 - iOS 7.0+ / Mac OS X 10.9+
-- Xcode 6.3
+- Xcode 7
 
 ---
 
@@ -153,7 +153,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 use_frameworks!
 
-pod 'Interstellar', :git => 'https://github.com/JensRavens/Interstellar.git', :branch => 'swift2'
+pod 'Interstellar'
 ```
 
 Then, run the following command:
