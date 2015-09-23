@@ -66,10 +66,10 @@ public final class Signal<T> {
     /**
         Transform the signal into another signal using a function.
     */
-    public func bind<U>(f: T -> Result<U>) -> Signal<U> {
+    public func flatMap<U>(f: T -> Result<U>) -> Signal<U> {
         let signal = Signal<U>()
         subscribe { result in
-            signal.update(result.bind(f))
+            signal.update(result.flatMap(f))
         }
         return signal
     }
@@ -77,10 +77,10 @@ public final class Signal<T> {
     /**
     Transform the signal into another signal using a function.
     */
-    public func bind<U>(f: T throws -> U) -> Signal<U> {
+    public func flatMap<U>(f: T throws -> U) -> Signal<U> {
         let signal = Signal<U>()
         subscribe { result in
-            signal.update(result.bind(f))
+            signal.update(result.flatMap(f))
         }
         return signal
     }
@@ -88,10 +88,10 @@ public final class Signal<T> {
     /**
         Transform the signal into another signal using a function.
     */
-    public func bind<U>(f: (T, (Result<U>->Void))->Void) -> Signal<U> {
+    public func flatMap<U>(f: (T, (Result<U>->Void))->Void) -> Signal<U> {
         let signal = Signal<U>()
         subscribe { result in
-            result.bind(f)(signal.update)
+            result.flatMap(f)(signal.update)
         }
         return signal
     }
@@ -201,7 +201,7 @@ public final class Signal<T> {
         objc_sync_enter(self)
         defer { objc_sync_exit(self) }
         self.value = value
-        self.callbacks.map{$0(value)}
+        self.callbacks.forEach{$0(value)}
     }
     
     /**

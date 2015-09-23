@@ -36,12 +36,12 @@ class InterstellarTests: XCTestCase {
     }
     
     func testBindingASignal() {
-        let greeting = Signal("World").bind(greeter).peek()!
+        let greeting = Signal("World").flatMap(greeter).peek()!
         XCTAssertEqual(greeting, "Hello World")
     }
     
     func testError() {
-        let greeting = Signal("").bind(greeter).peek()
+        let greeting = Signal("").flatMap(greeter).peek()
         XCTAssertNil(greeting)
     }
     
@@ -62,7 +62,7 @@ class InterstellarTests: XCTestCase {
         
         let result = Result.Success(1)
         
-        let transformed = result.bind(throwing)
+        let transformed = result.flatMap(throwing)
         
         XCTAssertNil(transformed.value)
     }
@@ -75,7 +75,7 @@ class InterstellarTests: XCTestCase {
         let signal = Signal<Int>()
         let expectation = expectationWithDescription("subscription not completed")
         
-        signal.bind(throwing).error { _ in expectation.fulfill() }
+        signal.flatMap(throwing).error { _ in expectation.fulfill() }
         signal.update(.Success(1))
         
         waitForExpectationsWithTimeout(0.2, handler: nil)

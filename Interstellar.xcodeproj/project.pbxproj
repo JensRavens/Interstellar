@@ -13,6 +13,7 @@
 		8F2B8D861B07A9410063EB9C /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2B8D821B07A9410063EB9C /* Result.swift */; };
 		8F2B8D871B07A9410063EB9C /* Signal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2B8D831B07A9410063EB9C /* Signal.swift */; };
 		8F2B8D891B07A9550063EB9C /* InterstellarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2B8D881B07A9550063EB9C /* InterstellarTests.swift */; };
+		8F93E2871BB27ECA00B47924 /* Compatibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F93E2861BB27ECA00B47924 /* Compatibility.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +36,7 @@
 		8F2B8D821B07A9410063EB9C /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		8F2B8D831B07A9410063EB9C /* Signal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Signal.swift; sourceTree = "<group>"; };
 		8F2B8D881B07A9550063EB9C /* InterstellarTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterstellarTests.swift; sourceTree = "<group>"; };
+		8F93E2861BB27ECA00B47924 /* Compatibility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Compatibility.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				8F1848BA1B08E3E60028D0A0 /* Threading.swift */,
 				8F2B8D821B07A9410063EB9C /* Result.swift */,
 				8F2B8D831B07A9410063EB9C /* Signal.swift */,
+				8F93E2861BB27ECA00B47924 /* Compatibility.swift */,
 				8F2B8D671B07A92C0063EB9C /* Supporting Files */,
 			);
 			path = Interstellar;
@@ -219,6 +222,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F93E2871BB27ECA00B47924 /* Compatibility.swift in Sources */,
 				8F2B8D861B07A9410063EB9C /* Result.swift in Sources */,
 				8F2B8D871B07A9410063EB9C /* Signal.swift in Sources */,
 				8F1848BB1B08E3E60028D0A0 /* Threading.swift in Sources */,
