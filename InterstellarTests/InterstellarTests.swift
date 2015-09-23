@@ -12,8 +12,8 @@ import Interstellar
 class InterstellarTests: XCTestCase {
     
     func greeter(subject: String) -> Result<String> {
-        if count(subject) > 0 {
-            return .Success(Box("Hello \(subject)"))
+        if subject.characters.count > 0 {
+            return .Success("Hello \(subject)")
         } else {
             let error: NSError = NSError(domain: "No one to greet!", code: 404, userInfo: nil)
             return .Error(error)
@@ -21,7 +21,7 @@ class InterstellarTests: XCTestCase {
     }
     
     func identity(a: String) -> Result<String> {
-        return .Success(Box(a))
+        return .Success(a)
     }
     
     func asyncIdentity(a: String, completion: Result<String>->Void) {
@@ -51,7 +51,7 @@ class InterstellarTests: XCTestCase {
         signal.next { a in
             expectation.fulfill()
         }
-        signal.update(Result.Success(Box("Hello")))
+        signal.update(Result.Success("Hello"))
         waitForExpectationsWithTimeout(0.2, handler: nil)
     }
 }
