@@ -54,4 +54,30 @@ class InterstellarTests: XCTestCase {
         signal.update(Result.Success("Hello"))
         waitForExpectationsWithTimeout(0.2, handler: nil)
     }
+    
+    func testThrowingFunction() {
+        func throwing(i: Int) throws -> Int {
+            throw NSError(domain: "Error", code: 404, userInfo: nil)
+        }
+        
+        let result = Result.Success(1)
+        
+        let transformed = result.bind(throwing)
+        
+        XCTAssertNil(transformed.value)
+    }
+    
+    func testThrowingSignal() {
+        func throwing(i: Int) throws -> Int {
+            throw NSError(domain: "Error", code: 404, userInfo: nil)
+        }
+        
+        let signal = Signal<Int>()
+        let expectation = expectationWithDescription("subscription not completed")
+        
+        signal.bind(throwing).error { _ in expectation.fulfill() }
+        signal.update(.Success(1))
+        
+        waitForExpectationsWithTimeout(0.2, handler: nil)
+    }
 }

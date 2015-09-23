@@ -69,6 +69,19 @@ public enum Result<T> {
     }
     
     /**
+    Transform a result into another result using a function. If the result was an error,
+    the function will not be executed and the error returned instead.
+    */
+    public func bind<U>(f: T throws -> U) -> Result<U> {
+        return bind { t in
+            do {
+                return .Success(try f(t))
+            } catch let error {
+                return .Error(error)
+            }
+        }
+    }
+    /**
         Transform a result into another result using a function. If the result was an error,
         the function will not be executed and the error returned instead.
     */

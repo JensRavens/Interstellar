@@ -75,6 +75,17 @@ public final class Signal<T> {
     }
     
     /**
+    Transform the signal into another signal using a function.
+    */
+    public func bind<U>(f: T throws -> U) -> Signal<U> {
+        let signal = Signal<U>()
+        subscribe { result in
+            signal.update(result.bind(f))
+        }
+        return signal
+    }
+    
+    /**
         Transform the signal into another signal using a function.
     */
     public func bind<U>(f: (T, (Result<U>->Void))->Void) -> Signal<U> {
