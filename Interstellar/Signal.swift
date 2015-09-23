@@ -198,6 +198,8 @@ public final class Signal<T> {
         about the new value.
     */
     public func update(value: Result<T>) {
+        objc_sync_enter(self)
+        defer { objc_sync_exit(self) }
         self.value = value
         self.callbacks.map{$0(value)}
     }
