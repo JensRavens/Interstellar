@@ -2,6 +2,10 @@
 
 The simplest `Signal<T>` implementation for Functional Reactive Programming you will ever find.
 
+> This library does not use the term FRP (Functional Reactive Programming) in the way it was
+> defined by Conal Elliot, but as a paradigm that is both functional and reactive. Read more
+> about the difference at [Why I cannot say FRP but I just did](https://medium.com/@andrestaltz/why-i-cannot-say-frp-but-i-just-did-d5ffaa23973b).
+
 ## Features
 
 - [x] Lightweight, simple, cross plattform FRP
