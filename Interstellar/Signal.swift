@@ -37,6 +37,8 @@
         text.update(.Success("World"))
 
 */
+import Foundation
+
 public final class Signal<T> {
     
     private var value: Result<T>?
