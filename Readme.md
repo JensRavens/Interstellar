@@ -12,6 +12,7 @@ The simplest `Signal<T>` implementation for Functional Reactive Programming you 
 - [x] Multithreading with GCD becomes a breeze
 - [x] Most of your methods will conform to the needed syntax anyway.
 - [x] Swift 2 compability
+- [x] Multithreading with GCD becomes a breeze via [WarpDrive](https://github.com/jensravens/warpdrive)
 
 ## Requirements
 
@@ -22,7 +23,7 @@ The simplest `Signal<T>` implementation for Functional Reactive Programming you 
 
 ## Usage
 
-> For a full guide on how this implementation works the the series of blog posts about 
+> For a full guide on how this implementation works the the series of blog posts about
 > [Functional Reactive Programming in Swift](http://jensravens.de/series/functional-reactive-programming-in-swift/)
 > or the talk at UIKonf 2015 [How to use Functional Reactive Programming without Black Magic](http://jensravens.de/uikonf-talk/).
 
@@ -30,7 +31,7 @@ The simplest `Signal<T>` implementation for Functional Reactive Programming you 
 
 ```swift
 let text = Signal<String>()
-        
+
 text.next { string in
     println("Hello \(string)")
 }
@@ -42,7 +43,7 @@ text.update(.Success("World"))
 
 ```swift
 let text = Signal<String>()
-        
+
 let greeting = text.map { subject in
     return "Hello \(subject)"
 }
@@ -62,21 +63,6 @@ let greet: String->String = { subject in
     return "Hello \(subject)"
 }
 text.map(greet).next { text in
-    println(text)
-}
-text.update(.Success("World"))
-```
-
-### Ridiculously simple multithreading
-
-This example executes the greet function on a background thread, then calls next on the main thread.
-
-```swift
-let text = Signal<String>()
-let greet: String->String = { subject in
-    return "Hello \(subject)"
-}
-text.ensure(Thread.background).map(greet).ensure(Thread.main).next { text in
     println(text)
 }
 text.update(.Success("World"))
@@ -196,6 +182,11 @@ Interstellar is meant to be lightweight. There are no UIKit bindings, no heavy c
 ## Credits
 
 Interstellar is owned and maintained by [Jens Ravens](http://jensravens.de).
+
+## Changelog
+
+- *1.1* added compability with Swift 2. Also renamed bind to flatMap to be consistent with `Optional` and `Array`.
+- *1.2* `Thread` was moved to a new project called [WarpDrive](https://github.com/jensravens/warpdrive)
 
 ## License
 

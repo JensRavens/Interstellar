@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'Interstellar'
-  s.version = '1.1.0'
+  s.version = '1.2.0'
   s.license = 'MIT'
   s.summary = 'The simplest Signal<T> implementation for Functional Reactive Programming you will ever find.'
   s.homepage = 'https://github.com/JensRavens/Interstellar'

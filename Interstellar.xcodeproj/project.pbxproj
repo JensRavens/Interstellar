@@ -7,13 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8F1848BB1B08E3E60028D0A0 /* Threading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1848BA1B08E3E60028D0A0 /* Threading.swift */; };
 		8F2B8D6A1B07A92C0063EB9C /* Interstellar.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F2B8D691B07A92C0063EB9C /* Interstellar.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8F2B8D701B07A92C0063EB9C /* Interstellar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F2B8D641B07A92C0063EB9C /* Interstellar.framework */; };
 		8F2B8D861B07A9410063EB9C /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2B8D821B07A9410063EB9C /* Result.swift */; };
 		8F2B8D871B07A9410063EB9C /* Signal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2B8D831B07A9410063EB9C /* Signal.swift */; };
 		8F2B8D891B07A9550063EB9C /* InterstellarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2B8D881B07A9550063EB9C /* InterstellarTests.swift */; };
-		8F93E2871BB27ECA00B47924 /* Compatibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F93E2861BB27ECA00B47924 /* Compatibility.swift */; settings = {ASSET_TAGS = (); }; };
+		8F93E2871BB27ECA00B47924 /* Compatibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F93E2861BB27ECA00B47924 /* Compatibility.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,7 +26,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		8F1848BA1B08E3E60028D0A0 /* Threading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Threading.swift; sourceTree = "<group>"; };
 		8F2B8D641B07A92C0063EB9C /* Interstellar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Interstellar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F2B8D681B07A92C0063EB9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8F2B8D691B07A92C0063EB9C /* Interstellar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Interstellar.h; sourceTree = "<group>"; };
@@ -79,7 +77,6 @@
 		8F2B8D661B07A92C0063EB9C /* Interstellar */ = {
 			isa = PBXGroup;
 			children = (
-				8F1848BA1B08E3E60028D0A0 /* Threading.swift */,
 				8F2B8D821B07A9410063EB9C /* Result.swift */,
 				8F2B8D831B07A9410063EB9C /* Signal.swift */,
 				8F93E2861BB27ECA00B47924 /* Compatibility.swift */,
@@ -225,7 +222,6 @@
 				8F93E2871BB27ECA00B47924 /* Compatibility.swift in Sources */,
 				8F2B8D861B07A9410063EB9C /* Result.swift in Sources */,
 				8F2B8D871B07A9410063EB9C /* Signal.swift in Sources */,
-				8F1848BB1B08E3E60028D0A0 /* Threading.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
