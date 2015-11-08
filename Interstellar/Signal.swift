@@ -199,11 +199,27 @@ public final class Signal<T> {
         Update the content of the signal. This will notify all subscribers of this signal
         about the new value.
     */
-    public func update(value: Result<T>) {
+    public func update(result: Result<T>) {
         objc_sync_enter(self)
         defer { objc_sync_exit(self) }
-        self.value = value
-        self.callbacks.forEach{$0(value)}
+        self.value = result
+        self.callbacks.forEach{$0(result)}
+    }
+    
+    /**
+     Update the content of the signal. This will notify all subscribers of this signal
+     about the new value.
+     */
+    public func update(value: T) {
+        update(.Success(value))
+    }
+    
+    /**
+     Update the content of the signal. This will notify all subscribers of this signal
+     about the new value.
+     */
+    public func update(error: ErrorType) {
+        update(.Error(error))
     }
     
     /**
