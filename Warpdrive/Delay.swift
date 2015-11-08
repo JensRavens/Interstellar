@@ -29,8 +29,7 @@ public extension Signal {
     public func delay(seconds: NSTimeInterval, queue: dispatch_queue_t = dispatch_get_main_queue()) -> Signal<T> {
         let signal = Signal<T>()
         subscribe { result in
-            let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(seconds * Double(NSEC_PER_SEC)))
-            dispatch_after(delayTime, queue) {
+            dispatch_after(seconds.dispatchTime, queue) {
                 signal.update(result)
             }
         }

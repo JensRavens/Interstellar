@@ -29,6 +29,12 @@ public struct TimeoutError: ErrorType {
     internal init() {}
 }
 
+internal extension NSTimeInterval {
+    var dispatchTime: dispatch_time_t {
+        return dispatch_time(DISPATCH_TIME_NOW, Int64(self * Double(NSEC_PER_SEC)))
+    }
+}
+
 public extension Signal {
     /**
         Wait until the signal updates the next time. This will block the current thread until there 
@@ -42,12 +48,7 @@ public extension Signal {
             result = r
             dispatch_group_leave(group)
         }
-        let timestamp: dispatch_time_t
-        if let timeout = timeout {
-            timestamp = dispatch_time(DISPATCH_TIME_NOW, Int64(timeout * Double(NSEC_PER_SEC)))
-        } else {
-            timestamp = DISPATCH_TIME_FOREVER
-        }
+        let timestamp = timeout.map{ $0.dispatchTime } ?? DISPATCH_TIME_FOREVER
         if dispatch_group_wait(group, timestamp) != 0 {
             throw TimeoutError()
         }
