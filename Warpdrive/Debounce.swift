@@ -41,16 +41,12 @@ public extension Signal {
         let signal = Signal<T>()
         
         subscribe { result in
-            print("called for \(result.value!)")
             let currentTime = NSDate()
             func updateIfNeeded(signal: Signal<T>)(result: Result<T>) {
-                print("lc: \(signal.lastCalled)")
                 let timeSinceLastCall = signal.lastCalled?.timeIntervalSinceNow
                 if timeSinceLastCall == nil || timeSinceLastCall <= -seconds {
-                    print("tslc: \(timeSinceLastCall)")
                     // no update before or update outside of debounce window
                     signal.lastCalled = NSDate()
-                    print(signal.lastCalled)
                     signal.update(result)
                 } else {
                     // skip result if there was a newer result
