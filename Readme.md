@@ -37,7 +37,7 @@ The simplest `Signal<T>` implementation for Functional Reactive Programming you 
 let text = Signal<String>()
 
 text.next { string in
-    println("Hello \(string)")
+    print("Hello \(string)")
 }
 
 text.update(.Success("World"))
@@ -53,7 +53,7 @@ let greeting = text.map { subject in
 }
 
 greeting.next { text in
-    println(text)
+    print(text)
 }
 
 text.update(.Success("World"))
@@ -67,7 +67,7 @@ let greet: String->String = { subject in
     return "Hello \(subject)"
 }
 text.map(greet).next { text in
-    println(text)
+    print(text)
 }
 text.update(.Success("World"))
 ```
@@ -77,8 +77,8 @@ text.update(.Success("World"))
 ``` swift
 let text = Signal<String>()
 func greetMaybe(subject: String)->Result<String> {
-    if count(subject) % 2 == 0 {
-        return .Success(Box("Hello \(subject)"))
+    if subject.characters.count % 2 == 0 {
+        return .Success("Hello \(subject)")
     } else {
         let error = NSError(domain: "Don't feel like greeting you.", code: 401, userInfo: nil)
         return .Error(error)
@@ -86,10 +86,10 @@ func greetMaybe(subject: String)->Result<String> {
 }
 text.flatMap(greetMaybe)
 .next { text in
-    println(text)
+    print(text)
 }
 .error { error in
-    println("There was a greeting error")
+    print("There was a greeting error")
 }
 text.update(.Success("World"))
 ```
@@ -99,8 +99,8 @@ text.update(.Success("World"))
 ``` swift
 let text = Signal<String>()
 func greetMaybe(subject: String, completion: Result<String>->Void) {
-    if count(subject) % 2 == 0 {
-        completion(.Success(Box("Hello \(subject)")))
+    if subject.characters.count % 2 == 0 {
+        completion(.Success("Hello \(subject)"))
     } else {
         let error = NSError(domain: "Don't feel like greeting you.", code: 401, userInfo: nil)
         completion(.Error(error))
@@ -108,10 +108,10 @@ func greetMaybe(subject: String, completion: Result<String>->Void) {
 }
 text.flatMap(greetMaybe)
 .next { text in
-    println(text)
+    print(text)
 }
 .error { error in
-    println("There was a greeting error")
+    print("There was a greeting error")
 }
 text.update(.Success("World"))
 ```
