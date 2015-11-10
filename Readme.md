@@ -3,9 +3,7 @@
 The simplest `Signal<T>` implementation for Functional Reactive Programming you will ever find.
 
 > This library does not use the term FRP (Functional Reactive Programming) in the way it was
-> 
 > defined by Conal Elliot, but as a paradigm that is both functional and reactive. Read more
-> 
 > about the difference at [Why I cannot say FRP but I just did](https://medium.com/@andrestaltz/why-i-cannot-say-frp-but-i-just-did-d5ffaa23973b).
 
 ## Features
@@ -26,9 +24,7 @@ The simplest `Signal<T>` implementation for Functional Reactive Programming you 
 ## Usage
 
 > For a full guide on how this implementation works the the series of blog posts about
-> 
 > [Functional Reactive Programming in Swift](http://jensravens.de/series/functional-reactive-programming-in-swift/)
-> 
 > or the talk at UIKonf 2015 [How to use Functional Reactive Programming without Black Magic](http://jensravens.de/uikonf-talk/).
 
 ### Creating and updating a signal
