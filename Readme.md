@@ -3,7 +3,9 @@
 The simplest `Signal<T>` implementation for Functional Reactive Programming you will ever find.
 
 > This library does not use the term FRP (Functional Reactive Programming) in the way it was
+> 
 > defined by Conal Elliot, but as a paradigm that is both functional and reactive. Read more
+> 
 > about the difference at [Why I cannot say FRP but I just did](https://medium.com/@andrestaltz/why-i-cannot-say-frp-but-i-just-did-d5ffaa23973b).
 
 ## Features
@@ -24,12 +26,14 @@ The simplest `Signal<T>` implementation for Functional Reactive Programming you 
 ## Usage
 
 > For a full guide on how this implementation works the the series of blog posts about
+> 
 > [Functional Reactive Programming in Swift](http://jensravens.de/series/functional-reactive-programming-in-swift/)
+> 
 > or the talk at UIKonf 2015 [How to use Functional Reactive Programming without Black Magic](http://jensravens.de/uikonf-talk/).
 
 ### Creating and updating a signal
 
-```swift
+``` swift
 let text = Signal<String>()
 
 text.next { string in
@@ -41,7 +45,7 @@ text.update(.Success("World"))
 
 ### Mapping and transforming signals
 
-```swift
+``` swift
 let text = Signal<String>()
 
 let greeting = text.map { subject in
@@ -57,7 +61,7 @@ text.update(.Success("World"))
 
 ### Use functions as transforms
 
-```swift
+``` swift
 let text = Signal<String>()
 let greet: String->String = { subject in
     return "Hello \(subject)"
@@ -70,7 +74,7 @@ text.update(.Success("World"))
 
 ### Handle errors in sequences of functions
 
-```swift
+``` swift
 let text = Signal<String>()
 func greetMaybe(subject: String)->Result<String> {
     if count(subject) % 2 == 0 {
@@ -92,7 +96,7 @@ text.update(.Success("World"))
 
 ### This also works for asynchronous functions
 
-```swift
+``` swift
 let text = Signal<String>()
 func greetMaybe(subject: String, completion: Result<String>->Void) {
     if count(subject) % 2 == 0 {
@@ -123,7 +127,9 @@ text.update(.Success("World"))
 ## Installation
 
 > **Dynamic frameworks on iOS require a minimum deployment target of iOS 8 or later.**
+
 >
+
 > To use Interstellar with a project targeting iOS 7, you must include all Swift files directly in your project.
 
 ### CocoaPods
@@ -132,13 +138,13 @@ text.update(.Success("World"))
 
 CocoaPods 0.36 adds supports for Swift and embedded frameworks. You can install it with the following command:
 
-```bash
+``` bash
 $ gem install cocoapods
 ```
 
 To integrate Interstellar into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
-```ruby
+``` ruby
 source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 use_frameworks!
@@ -148,7 +154,7 @@ pod 'Interstellar'
 
 Then, run the following command:
 
-```bash
+``` bash
 $ pod install
 ```
 
@@ -158,15 +164,15 @@ $ pod install
 
 You can install Carthage with [Homebrew](http://brew.sh/) using the following command:
 
-```bash
+``` bash
 $ brew update
 $ brew install carthage
 ```
 
 To integrate Interstellar into your Xcode project using Carthage, specify it in your `Cartfile`:
 
-```ogdl
-github "JensRavens/Interstellar" "swift2"
+``` ogdl
+github "JensRavens/Interstellar"
 ```
 
 ---
