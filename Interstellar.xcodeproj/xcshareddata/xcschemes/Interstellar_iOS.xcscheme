@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0710"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -16,31 +16,17 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8F2B8D631B07A92C0063EB9C"
                BuildableName = "Interstellar.framework"
-               BlueprintName = "Interstellar"
-               ReferencedContainer = "container:Interstellar.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8F2B8D6E1B07A92C0063EB9C"
-               BuildableName = "InterstellarTests.xctest"
-               BlueprintName = "InterstellarTests"
+               BlueprintName = "Interstellar_iOS"
                ReferencedContainer = "container:Interstellar.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES"
-      buildConfiguration = "Debug">
+      shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
             skipped = "NO">
@@ -58,7 +44,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8F2B8D631B07A92C0063EB9C"
             BuildableName = "Interstellar.framework"
-            BlueprintName = "Interstellar"
+            BlueprintName = "Interstellar_iOS"
             ReferencedContainer = "container:Interstellar.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -66,11 +52,11 @@
       </AdditionalOptions>
    </TestAction>
    <LaunchAction
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Release"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
@@ -80,7 +66,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8F2B8D631B07A92C0063EB9C"
             BuildableName = "Interstellar.framework"
-            BlueprintName = "Interstellar"
+            BlueprintName = "Interstellar_iOS"
             ReferencedContainer = "container:Interstellar.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -88,17 +74,17 @@
       </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
+      buildConfiguration = "Release"
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8F2B8D631B07A92C0063EB9C"
             BuildableName = "Interstellar.framework"
-            BlueprintName = "Interstellar"
+            BlueprintName = "Interstellar_iOS"
             ReferencedContainer = "container:Interstellar.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
