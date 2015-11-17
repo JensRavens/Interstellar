@@ -1,5 +1,9 @@
 ![Interstellar](https://raw.githubusercontent.com/JensRavens/Interstellar/assets/header.jpg)
 
+[![Build Status](https://travis-ci.org/JensRavens/Interstellar.svg)](https://travis-ci.org/JensRavens/Interstellar)
+[![Cocoa Pods Version](https://img.shields.io/cocoapods/v/Interstellar.svg)](https://cocoapods.org/pods/Interstellar)
+[![Cocoa Pods Plattforms](https://img.shields.io/cocoapods/p/Interstellar.svg)](https://cocoapods.org/pods/Interstellar)
+
 The simplest `Signal<T>` implementation for Functional Reactive Programming you will ever find.
 
 > This library does not use the term FRP (Functional Reactive Programming) in the way it was
