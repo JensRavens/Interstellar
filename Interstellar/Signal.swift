@@ -132,7 +132,7 @@ public final class Signal<T> {
                 if f(value) {
                     signal.update(result)
                 }
-            case let .Error(error): signal.update(.Error(error))
+            case let .Failure(error): signal.update(.Failure(error))
             }
         }
         return signal
@@ -146,21 +146,21 @@ public final class Signal<T> {
         subscribe { result in
             switch(result) {
             case let .Success(value): g(value)
-            case .Error(_): return
+            case .Failure(_): return
             }
         }
         return self
     }
     
     /**
-        Subscribe to the changes of this signal (.Error only).
+        Subscribe to the changes of this signal (.Failure only).
         This method is chainable.
     */
     public func error(g: ErrorType -> Void) -> Signal<T> {
         subscribe { result in
             switch(result) {
             case .Success(_): return
-            case let .Error(error): g(error)
+            case let .Failure(error): g(error)
             }
         }
         return self
@@ -188,7 +188,7 @@ public final class Signal<T> {
             }
         }
         let errorHandler = { (error: ErrorType) in
-            signal.update(.Error(error))
+            signal.update(.Failure(error))
         }
         self.error(errorHandler)
         merge.error(errorHandler)
@@ -219,7 +219,7 @@ public final class Signal<T> {
      about the new value.
      */
     public func update(error: ErrorType) {
-        update(.Error(error))
+        update(.Failure(error))
     }
     
     /**
