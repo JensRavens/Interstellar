@@ -16,7 +16,7 @@ class InterstellarTests: XCTestCase {
             return .Success("Hello \(subject)")
         } else {
             let error: NSError = NSError(domain: "No one to greet!", code: 404, userInfo: nil)
-            return .Error(error)
+            return .Failure(error)
         }
     }
     

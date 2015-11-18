@@ -81,7 +81,7 @@ func greetMaybe(subject: String)->Result<String> {
         return .Success("Hello \(subject)")
     } else {
         let error = NSError(domain: "Don't feel like greeting you.", code: 401, userInfo: nil)
-        return .Error(error)
+        return .Failure(error)
     }
 }
 text.flatMap(greetMaybe)
@@ -103,7 +103,7 @@ func greetMaybe(subject: String, completion: Result<String>->Void) {
         completion(.Success("Hello \(subject)"))
     } else {
         let error = NSError(domain: "Don't feel like greeting you.", code: 401, userInfo: nil)
-        completion(.Error(error))
+        completion(.Failure(error))
     }
 }
 text.flatMap(greetMaybe)

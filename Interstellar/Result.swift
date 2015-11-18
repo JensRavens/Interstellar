@@ -29,7 +29,7 @@
 */
 public enum Result<T> {
     case Success(T)
-    case Error(ErrorType)
+    case Failure(ErrorType)
     
     /**
         Transform a result into another result using a function. If the result was an error,
@@ -38,7 +38,7 @@ public enum Result<T> {
     public func map<U>(f: T -> U) -> Result<U> {
         switch self {
         case let .Success(v): return .Success(f(v))
-        case let .Error(error): return .Error(error)
+        case let .Failure(error): return .Failure(error)
         }
     }
     
@@ -52,7 +52,7 @@ public enum Result<T> {
             case let .Success(v): f(v){ transformed in
                     g(.Success(transformed))
                 }
-            case let .Error(error): g(.Error(error))
+            case let .Failure(error): g(.Failure(error))
             }
         }
     }
@@ -64,7 +64,7 @@ public enum Result<T> {
     public func flatMap<U>(f: T -> Result<U>) -> Result<U> {
         switch self {
         case let .Success(v): return f(v)
-        case let .Error(error): return .Error(error)
+        case let .Failure(error): return .Failure(error)
         }
     }
     
@@ -77,7 +77,7 @@ public enum Result<T> {
             do {
                 return .Success(try f(t))
             } catch let error {
-                return .Error(error)
+                return .Failure(error)
             }
         }
     }
@@ -89,7 +89,7 @@ public enum Result<T> {
         return { g in
             switch self {
             case let .Success(v): f(v, g)
-            case let .Error(error): g(.Error(error))
+            case let .Failure(error): g(.Failure(error))
             }
         }
     }
@@ -119,7 +119,7 @@ public enum Result<T> {
     public var value: T? {
         switch self {
         case let .Success(v): return v
-        case .Error(_): return nil
+        case .Failure(_): return nil
         }
     }
 }

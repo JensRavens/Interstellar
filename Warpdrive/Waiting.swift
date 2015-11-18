@@ -54,7 +54,7 @@ public extension Signal {
         }
         switch result! {
         case let .Success(t): return t
-        case let .Error(e): throw e
+        case let .Failure(e): throw e
         }
     }
 }
