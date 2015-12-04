@@ -2,6 +2,7 @@
 
 //: Handle errors in sequences of functions
 
+import Foundation
 import Interstellar
 
 let text = Signal<String>()
