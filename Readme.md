@@ -214,6 +214,7 @@ Interstellar is owned and maintained by [Jens Ravens](http://jensravens.de).
 - *1.1* added compability with Swift 2. Also renamed bind to flatMap to be consistent with `Optional` and `Array`.
 - *1.2* `Thread` was moved to a new project called [WarpDrive](https://github.com/jensravens/warpdrive)
 - *1.3* WarpDrive has been merged into Interstellar. Also Interstellar is now divided into subspecs via cocoapods to make it easy to just select the needed components. The basic signal library is now "Interstellar/Core".
+- *1.4* Support `swift build` and the new Swift package manager, including support for Linux. Also removed deprecated bind methods.
 
 ## License
 
