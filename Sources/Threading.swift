@@ -38,10 +38,12 @@ public final class Thread {
     
     #if os(Linux)
     #else
-    /// Transform the signal to a specified queue (despite the name this could also be the main queue)
-    public static func queue<T>(queue: dispatch_queue_t)(_ a: Result<T>, _ completion: Result<T>->Void) {
-        dispatch_async(queue){
-            completion(a)
+    /// Transform the signal to a specified queue
+    public static func queue<T>(queue: dispatch_queue_t) -> (Result<T>, Result<T>->Void) -> Void {
+        return { a, completion in
+            dispatch_async(queue){
+                completion(a)
+            }
         }
     }
     #endif

@@ -49,22 +49,24 @@ public extension Signal {
         
         subscribe { result in
             let currentTime = NSDate()
-            func updateIfNeeded(signal: Signal<T>)(result: Result<T>) {
-                let timeSinceLastCall = signal.lastCalled?.timeIntervalSinceNow
-                if timeSinceLastCall == nil || timeSinceLastCall <= -seconds {
-                    // no update before or update outside of debounce window
-                    signal.lastCalled = NSDate()
-                    signal.update(result)
-                } else {
-                    // skip result if there was a newer result
-                    if currentTime.compare(signal.lastCalled!) == .OrderedDescending {
-                        let s = Signal<T>()
-                        s.delay(seconds - timeSinceLastCall!).subscribe(updateIfNeeded(signal))
-                        s.update(result)
+            func updateIfNeeded(signal: Signal<T>) -> Result<T> -> Void {
+                return { result in
+                    let timeSinceLastCall = signal.lastCalled?.timeIntervalSinceNow
+                    if timeSinceLastCall == nil || timeSinceLastCall <= -seconds {
+                        // no update before or update outside of debounce window
+                        signal.lastCalled = NSDate()
+                        signal.update(result)
+                    } else {
+                        // skip result if there was a newer result
+                        if currentTime.compare(signal.lastCalled!) == .OrderedDescending {
+                            let s = Signal<T>()
+                            s.delay(seconds - timeSinceLastCall!).subscribe(updateIfNeeded(signal))
+                            s.update(result)
+                        }
                     }
                 }
             }
-            updateIfNeeded(signal)(result:result)
+            updateIfNeeded(signal)(result)
         }
         
         return signal
