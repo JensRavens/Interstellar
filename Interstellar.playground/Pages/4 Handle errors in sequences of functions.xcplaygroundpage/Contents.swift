@@ -13,13 +13,14 @@ func greetMaybe(subject: String)->Result<String> {
         return .Error(error)
     }
 }
-text.flatMap(greetMaybe)
-.next { text in
-    print(text)
-}
-.error { error in
-    print("There was a greeting error")
-}
+text
+    .flatMap(greetMaybe)
+    .next { text in
+        print(text)
+    }
+    .error { error in
+        print("There was a greeting error")
+    }
 text.update(.Success("World"))
 
 //: [Next](@next)

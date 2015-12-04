@@ -10,6 +10,6 @@ text.next { string in
     print("Hello \(string)")
 }
 
-text.update(.Success("World"))
+text.update("World")
 
 //: [Next](@next)

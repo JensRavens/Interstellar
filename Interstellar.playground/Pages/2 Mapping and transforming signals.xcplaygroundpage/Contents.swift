@@ -14,6 +14,6 @@ greeting.next { text in
     print(text)
 }
 
-text.update(.Success("World"))
+text.update("World")
 
 //: [Next](@next)
