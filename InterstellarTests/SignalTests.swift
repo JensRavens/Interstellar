@@ -9,7 +9,7 @@
 import XCTest
 import Interstellar
 
-class InterstellarTests: XCTestCase {
+class SignalTests: XCTestCase {
     
     func greeter(subject: String) -> Result<String> {
         if subject.characters.count > 0 {
@@ -32,11 +32,11 @@ class InterstellarTests: XCTestCase {
         let greeting = Signal("World").map { subject in
             "Hello \(subject)"
         }
-        XCTAssertEqual(greeting.peek()!, "Hello World")
+        XCTAssertEqual(greeting.peek(), "Hello World")
     }
     
     func testBindingASignal() {
-        let greeting = Signal("World").flatMap(greeter).peek()!
+        let greeting = Signal("World").flatMap(greeter).peek()
         XCTAssertEqual(greeting, "Hello World")
     }
     
@@ -51,7 +51,7 @@ class InterstellarTests: XCTestCase {
         signal.next { a in
             expectation.fulfill()
         }
-        signal.update(Result.Success("Hello"))
+        signal.update(Result(success:"Hello"))
         waitForExpectationsWithTimeout(0.2, handler: nil)
     }
     
@@ -60,9 +60,7 @@ class InterstellarTests: XCTestCase {
             throw NSError(domain: "Error", code: 404, userInfo: nil)
         }
         
-        let result = Result.Success(1)
-        
-        let transformed = result.flatMap(throwing)
+        let transformed = Result(success: 1).flatMap(throwing)
         
         XCTAssertNil(transformed.value)
     }

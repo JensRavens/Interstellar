@@ -27,7 +27,7 @@
 		8F2B8D701B07A92C0063EB9C /* Interstellar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F2B8D641B07A92C0063EB9C /* Interstellar.framework */; };
 		8F2B8D861B07A9410063EB9C /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2B8D821B07A9410063EB9C /* Result.swift */; };
 		8F2B8D871B07A9410063EB9C /* Signal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2B8D831B07A9410063EB9C /* Signal.swift */; };
-		8F2B8D891B07A9550063EB9C /* InterstellarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2B8D881B07A9550063EB9C /* InterstellarTests.swift */; };
+		8F2B8D891B07A9550063EB9C /* SignalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2B8D881B07A9550063EB9C /* SignalTests.swift */; };
 		8F4870C21BEF936C0098C305 /* Delay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F4870BF1BEF936C0098C305 /* Delay.swift */; };
 		8F4870C31BEF936C0098C305 /* Threading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F4870C01BEF936C0098C305 /* Threading.swift */; };
 		8F4870C41BEF936C0098C305 /* Waiting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F4870C11BEF936C0098C305 /* Waiting.swift */; };
@@ -36,6 +36,7 @@
 		8F4870CC1BEF93B10098C305 /* WaitingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F4870C91BEF93B10098C305 /* WaitingTests.swift */; };
 		8F4870CF1BEF9C940098C305 /* Debounce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F4870CD1BEF9C8E0098C305 /* Debounce.swift */; };
 		8F4870D11BEF9CFA0098C305 /* DebounceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F4870D01BEF9CFA0098C305 /* DebounceTests.swift */; };
+		8F5775BC1C11850A002E134D /* ResultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775BB1C11850A002E134D /* ResultTests.swift */; };
 		8F93E2871BB27ECA00B47924 /* Compatibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F93E2861BB27ECA00B47924 /* Compatibility.swift */; };
 /* End PBXBuildFile section */
 
@@ -60,7 +61,7 @@
 		8F2B8D751B07A92C0063EB9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8F2B8D821B07A9410063EB9C /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		8F2B8D831B07A9410063EB9C /* Signal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Signal.swift; sourceTree = "<group>"; };
-		8F2B8D881B07A9550063EB9C /* InterstellarTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterstellarTests.swift; sourceTree = "<group>"; };
+		8F2B8D881B07A9550063EB9C /* SignalTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignalTests.swift; sourceTree = "<group>"; };
 		8F4870BF1BEF936C0098C305 /* Delay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Delay.swift; sourceTree = "<group>"; };
 		8F4870C01BEF936C0098C305 /* Threading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Threading.swift; sourceTree = "<group>"; };
 		8F4870C11BEF936C0098C305 /* Waiting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Waiting.swift; sourceTree = "<group>"; };
@@ -69,6 +70,7 @@
 		8F4870C91BEF93B10098C305 /* WaitingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaitingTests.swift; sourceTree = "<group>"; };
 		8F4870CD1BEF9C8E0098C305 /* Debounce.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debounce.swift; sourceTree = "<group>"; };
 		8F4870D01BEF9CFA0098C305 /* DebounceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebounceTests.swift; sourceTree = "<group>"; };
+		8F5775BB1C11850A002E134D /* ResultTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultTests.swift; sourceTree = "<group>"; };
 		8F93E2861BB27ECA00B47924 /* Compatibility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Compatibility.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -179,7 +181,8 @@
 		8F4870C51BEF938E0098C305 /* Interstellar */ = {
 			isa = PBXGroup;
 			children = (
-				8F2B8D881B07A9550063EB9C /* InterstellarTests.swift */,
+				8F2B8D881B07A9550063EB9C /* SignalTests.swift */,
+				8F5775BB1C11850A002E134D /* ResultTests.swift */,
 			);
 			name = Interstellar;
 			sourceTree = "<group>";
@@ -416,7 +419,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8F2B8D891B07A9550063EB9C /* InterstellarTests.swift in Sources */,
+				8F5775BC1C11850A002E134D /* ResultTests.swift in Sources */,
+				8F2B8D891B07A9550063EB9C /* SignalTests.swift in Sources */,
 				8F4870CB1BEF93B10098C305 /* ThreadingTests.swift in Sources */,
 				8F4870CA1BEF93B10098C305 /* DelayTests.swift in Sources */,
 				8F4870CC1BEF93B10098C305 /* WaitingTests.swift in Sources */,
