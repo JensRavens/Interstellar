@@ -7,37 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		244984DF1BFBE0A200C8FEE0 /* Debounce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F4870CD1BEF9C8E0098C305 /* Debounce.swift */; };
-		244984E01BFBE0A200C8FEE0 /* Threading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F4870C01BEF936C0098C305 /* Threading.swift */; };
-		244984E11BFBE0A200C8FEE0 /* Waiting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F4870C11BEF936C0098C305 /* Waiting.swift */; };
-		244984E21BFBE0A200C8FEE0 /* Compatibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F93E2861BB27ECA00B47924 /* Compatibility.swift */; };
-		244984E31BFBE0A200C8FEE0 /* Delay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F4870BF1BEF936C0098C305 /* Delay.swift */; };
-		244984E41BFBE0A200C8FEE0 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2B8D821B07A9410063EB9C /* Result.swift */; };
-		244984E51BFBE0A200C8FEE0 /* Signal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2B8D831B07A9410063EB9C /* Signal.swift */; };
-		244984E81BFBE0A200C8FEE0 /* Interstellar.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F2B8D691B07A92C0063EB9C /* Interstellar.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		45DE51F01BF83F7A009BC378 /* Delay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F4870BF1BEF936C0098C305 /* Delay.swift */; };
-		45DE51F11BF83F7A009BC378 /* Threading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F4870C01BEF936C0098C305 /* Threading.swift */; };
-		45DE51F21BF83F7A009BC378 /* Waiting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F4870C11BEF936C0098C305 /* Waiting.swift */; };
-		45DE51F31BF83F7A009BC378 /* Debounce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F4870CD1BEF9C8E0098C305 /* Debounce.swift */; };
-		45DE51F41BF83F7A009BC378 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2B8D821B07A9410063EB9C /* Result.swift */; };
-		45DE51F51BF83F7A009BC378 /* Signal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2B8D831B07A9410063EB9C /* Signal.swift */; };
-		45DE51F61BF83F7A009BC378 /* Compatibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F93E2861BB27ECA00B47924 /* Compatibility.swift */; };
-		45DE51F71BF83F93009BC378 /* Interstellar.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F2B8D691B07A92C0063EB9C /* Interstellar.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8F2B8D6A1B07A92C0063EB9C /* Interstellar.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F2B8D691B07A92C0063EB9C /* Interstellar.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8F2B8D701B07A92C0063EB9C /* Interstellar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F2B8D641B07A92C0063EB9C /* Interstellar.framework */; };
-		8F2B8D861B07A9410063EB9C /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2B8D821B07A9410063EB9C /* Result.swift */; };
-		8F2B8D871B07A9410063EB9C /* Signal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2B8D831B07A9410063EB9C /* Signal.swift */; };
-		8F2B8D891B07A9550063EB9C /* SignalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2B8D881B07A9550063EB9C /* SignalTests.swift */; };
-		8F4870C21BEF936C0098C305 /* Delay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F4870BF1BEF936C0098C305 /* Delay.swift */; };
-		8F4870C31BEF936C0098C305 /* Threading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F4870C01BEF936C0098C305 /* Threading.swift */; };
-		8F4870C41BEF936C0098C305 /* Waiting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F4870C11BEF936C0098C305 /* Waiting.swift */; };
-		8F4870CA1BEF93B10098C305 /* DelayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F4870C71BEF93B10098C305 /* DelayTests.swift */; };
-		8F4870CB1BEF93B10098C305 /* ThreadingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F4870C81BEF93B10098C305 /* ThreadingTests.swift */; };
-		8F4870CC1BEF93B10098C305 /* WaitingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F4870C91BEF93B10098C305 /* WaitingTests.swift */; };
-		8F4870CF1BEF9C940098C305 /* Debounce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F4870CD1BEF9C8E0098C305 /* Debounce.swift */; };
-		8F4870D11BEF9CFA0098C305 /* DebounceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F4870D01BEF9CFA0098C305 /* DebounceTests.swift */; };
-		8F5775BC1C11850A002E134D /* ResultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775BB1C11850A002E134D /* ResultTests.swift */; };
-		8F93E2871BB27ECA00B47924 /* Compatibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F93E2861BB27ECA00B47924 /* Compatibility.swift */; };
+		8F5775CB1C118F6B002E134D /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775C91C118F6B002E134D /* Result.swift */; };
+		8F5775CC1C118F6B002E134D /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775C91C118F6B002E134D /* Result.swift */; };
+		8F5775CD1C118F6B002E134D /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775C91C118F6B002E134D /* Result.swift */; };
+		8F5775CE1C118F6B002E134D /* Signal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775CA1C118F6B002E134D /* Signal.swift */; };
+		8F5775CF1C118F6B002E134D /* Signal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775CA1C118F6B002E134D /* Signal.swift */; };
+		8F5775D01C118F6B002E134D /* Signal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775CA1C118F6B002E134D /* Signal.swift */; };
+		8F5775D51C118F78002E134D /* Debounce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775D11C118F78002E134D /* Debounce.swift */; };
+		8F5775D61C118F78002E134D /* Debounce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775D11C118F78002E134D /* Debounce.swift */; };
+		8F5775D71C118F78002E134D /* Debounce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775D11C118F78002E134D /* Debounce.swift */; };
+		8F5775D81C118F78002E134D /* Delay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775D21C118F78002E134D /* Delay.swift */; };
+		8F5775D91C118F78002E134D /* Delay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775D21C118F78002E134D /* Delay.swift */; };
+		8F5775DA1C118F78002E134D /* Delay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775D21C118F78002E134D /* Delay.swift */; };
+		8F5775DB1C118F78002E134D /* Threading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775D31C118F78002E134D /* Threading.swift */; };
+		8F5775DC1C118F78002E134D /* Threading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775D31C118F78002E134D /* Threading.swift */; };
+		8F5775DD1C118F78002E134D /* Threading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775D31C118F78002E134D /* Threading.swift */; };
+		8F5775DE1C118F78002E134D /* Waiting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775D41C118F78002E134D /* Waiting.swift */; };
+		8F5775DF1C118F78002E134D /* Waiting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775D41C118F78002E134D /* Waiting.swift */; };
+		8F5775E01C118F78002E134D /* Waiting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775D41C118F78002E134D /* Waiting.swift */; };
+		8F5775E71C118FBF002E134D /* ResultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775E51C118FBF002E134D /* ResultTests.swift */; };
+		8F5775E81C118FBF002E134D /* SignalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775E61C118FBF002E134D /* SignalTests.swift */; };
+		8F5775ED1C118FC9002E134D /* DebounceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775E91C118FC9002E134D /* DebounceTests.swift */; };
+		8F5775EE1C118FC9002E134D /* DelayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775EA1C118FC9002E134D /* DelayTests.swift */; };
+		8F5775EF1C118FC9002E134D /* ThreadingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775EB1C118FC9002E134D /* ThreadingTests.swift */; };
+		8F5775F01C118FC9002E134D /* WaitingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775EC1C118FC9002E134D /* WaitingTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,23 +49,22 @@
 		4583FA021BF99EE60093BFFE /* Interstellar.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Interstellar.playground; sourceTree = "<group>"; };
 		45DE51E81BF83F67009BC378 /* Interstellar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Interstellar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F2B8D641B07A92C0063EB9C /* Interstellar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Interstellar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8F2B8D681B07A92C0063EB9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8F2B8D691B07A92C0063EB9C /* Interstellar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Interstellar.h; sourceTree = "<group>"; };
 		8F2B8D6F1B07A92C0063EB9C /* InterstellarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InterstellarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8F2B8D751B07A92C0063EB9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8F2B8D821B07A9410063EB9C /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
-		8F2B8D831B07A9410063EB9C /* Signal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Signal.swift; sourceTree = "<group>"; };
-		8F2B8D881B07A9550063EB9C /* SignalTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignalTests.swift; sourceTree = "<group>"; };
-		8F4870BF1BEF936C0098C305 /* Delay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Delay.swift; sourceTree = "<group>"; };
-		8F4870C01BEF936C0098C305 /* Threading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Threading.swift; sourceTree = "<group>"; };
-		8F4870C11BEF936C0098C305 /* Waiting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Waiting.swift; sourceTree = "<group>"; };
-		8F4870C71BEF93B10098C305 /* DelayTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DelayTests.swift; sourceTree = "<group>"; };
-		8F4870C81BEF93B10098C305 /* ThreadingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreadingTests.swift; sourceTree = "<group>"; };
-		8F4870C91BEF93B10098C305 /* WaitingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaitingTests.swift; sourceTree = "<group>"; };
-		8F4870CD1BEF9C8E0098C305 /* Debounce.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debounce.swift; sourceTree = "<group>"; };
-		8F4870D01BEF9CFA0098C305 /* DebounceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebounceTests.swift; sourceTree = "<group>"; };
-		8F5775BB1C11850A002E134D /* ResultTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultTests.swift; sourceTree = "<group>"; };
-		8F93E2861BB27ECA00B47924 /* Compatibility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Compatibility.swift; sourceTree = "<group>"; };
+		8F5775C91C118F6B002E134D /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Result.swift; path = Sources/Result.swift; sourceTree = SOURCE_ROOT; };
+		8F5775CA1C118F6B002E134D /* Signal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Signal.swift; path = Sources/Signal.swift; sourceTree = SOURCE_ROOT; };
+		8F5775D11C118F78002E134D /* Debounce.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Debounce.swift; path = Sources/Debounce.swift; sourceTree = SOURCE_ROOT; };
+		8F5775D21C118F78002E134D /* Delay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Delay.swift; path = Sources/Delay.swift; sourceTree = SOURCE_ROOT; };
+		8F5775D31C118F78002E134D /* Threading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Threading.swift; path = Sources/Threading.swift; sourceTree = SOURCE_ROOT; };
+		8F5775D41C118F78002E134D /* Waiting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Waiting.swift; path = Sources/Waiting.swift; sourceTree = SOURCE_ROOT; };
+		8F5775E11C118F93002E134D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Support/Info.plist; sourceTree = SOURCE_ROOT; };
+		8F5775E21C118F93002E134D /* Interstellar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Interstellar.h; path = Support/Interstellar.h; sourceTree = SOURCE_ROOT; };
+		8F5775E31C118FAC002E134D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Tests/Info.plist; sourceTree = SOURCE_ROOT; };
+		8F5775E51C118FBF002E134D /* ResultTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResultTests.swift; path = Tests/ResultTests.swift; sourceTree = SOURCE_ROOT; };
+		8F5775E61C118FBF002E134D /* SignalTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignalTests.swift; path = Tests/SignalTests.swift; sourceTree = SOURCE_ROOT; };
+		8F5775E91C118FC9002E134D /* DebounceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DebounceTests.swift; path = Tests/DebounceTests.swift; sourceTree = SOURCE_ROOT; };
+		8F5775EA1C118FC9002E134D /* DelayTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DelayTests.swift; path = Tests/DelayTests.swift; sourceTree = SOURCE_ROOT; };
+		8F5775EB1C118FC9002E134D /* ThreadingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ThreadingTests.swift; path = Tests/ThreadingTests.swift; sourceTree = SOURCE_ROOT; };
+		8F5775EC1C118FC9002E134D /* WaitingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WaitingTests.swift; path = Tests/WaitingTests.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,9 +125,8 @@
 		8F2B8D661B07A92C0063EB9C /* Interstellar */ = {
 			isa = PBXGroup;
 			children = (
-				8F2B8D821B07A9410063EB9C /* Result.swift */,
-				8F2B8D831B07A9410063EB9C /* Signal.swift */,
-				8F93E2861BB27ECA00B47924 /* Compatibility.swift */,
+				8F5775C91C118F6B002E134D /* Result.swift */,
+				8F5775CA1C118F6B002E134D /* Signal.swift */,
 				8F2B8D671B07A92C0063EB9C /* Supporting Files */,
 			);
 			path = Interstellar;
@@ -143,8 +135,8 @@
 		8F2B8D671B07A92C0063EB9C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				8F2B8D691B07A92C0063EB9C /* Interstellar.h */,
-				8F2B8D681B07A92C0063EB9C /* Info.plist */,
+				8F5775E11C118F93002E134D /* Info.plist */,
+				8F5775E21C118F93002E134D /* Interstellar.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -162,7 +154,7 @@
 		8F2B8D741B07A92C0063EB9C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				8F2B8D751B07A92C0063EB9C /* Info.plist */,
+				8F5775E31C118FAC002E134D /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -170,10 +162,10 @@
 		8F4870BE1BEF936C0098C305 /* Warpdrive */ = {
 			isa = PBXGroup;
 			children = (
-				8F4870BF1BEF936C0098C305 /* Delay.swift */,
-				8F4870C01BEF936C0098C305 /* Threading.swift */,
-				8F4870C11BEF936C0098C305 /* Waiting.swift */,
-				8F4870CD1BEF9C8E0098C305 /* Debounce.swift */,
+				8F5775D11C118F78002E134D /* Debounce.swift */,
+				8F5775D21C118F78002E134D /* Delay.swift */,
+				8F5775D31C118F78002E134D /* Threading.swift */,
+				8F5775D41C118F78002E134D /* Waiting.swift */,
 			);
 			path = Warpdrive;
 			sourceTree = "<group>";
@@ -181,8 +173,8 @@
 		8F4870C51BEF938E0098C305 /* Interstellar */ = {
 			isa = PBXGroup;
 			children = (
-				8F2B8D881B07A9550063EB9C /* SignalTests.swift */,
-				8F5775BB1C11850A002E134D /* ResultTests.swift */,
+				8F5775E51C118FBF002E134D /* ResultTests.swift */,
+				8F5775E61C118FBF002E134D /* SignalTests.swift */,
 			);
 			name = Interstellar;
 			sourceTree = "<group>";
@@ -190,10 +182,10 @@
 		8F4870C61BEF93960098C305 /* Warpdrive */ = {
 			isa = PBXGroup;
 			children = (
-				8F4870D01BEF9CFA0098C305 /* DebounceTests.swift */,
-				8F4870C71BEF93B10098C305 /* DelayTests.swift */,
-				8F4870C81BEF93B10098C305 /* ThreadingTests.swift */,
-				8F4870C91BEF93B10098C305 /* WaitingTests.swift */,
+				8F5775E91C118FC9002E134D /* DebounceTests.swift */,
+				8F5775EA1C118FC9002E134D /* DelayTests.swift */,
+				8F5775EB1C118FC9002E134D /* ThreadingTests.swift */,
+				8F5775EC1C118FC9002E134D /* WaitingTests.swift */,
 			);
 			name = Warpdrive;
 			sourceTree = "<group>";
@@ -205,7 +197,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				244984E81BFBE0A200C8FEE0 /* Interstellar.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,7 +204,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				45DE51F71BF83F93009BC378 /* Interstellar.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,7 +211,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8F2B8D6A1B07A92C0063EB9C /* Interstellar.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,7 +295,7 @@
 		8F2B8D5B1B07A92C0063EB9C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0700;
+				LastSwiftUpdateCheck = 0710;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "nerdgeschoss GmbH";
 				TargetAttributes = {
@@ -377,13 +366,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				244984DF1BFBE0A200C8FEE0 /* Debounce.swift in Sources */,
-				244984E01BFBE0A200C8FEE0 /* Threading.swift in Sources */,
-				244984E11BFBE0A200C8FEE0 /* Waiting.swift in Sources */,
-				244984E21BFBE0A200C8FEE0 /* Compatibility.swift in Sources */,
-				244984E31BFBE0A200C8FEE0 /* Delay.swift in Sources */,
-				244984E41BFBE0A200C8FEE0 /* Result.swift in Sources */,
-				244984E51BFBE0A200C8FEE0 /* Signal.swift in Sources */,
+				8F5775DD1C118F78002E134D /* Threading.swift in Sources */,
+				8F5775E01C118F78002E134D /* Waiting.swift in Sources */,
+				8F5775CD1C118F6B002E134D /* Result.swift in Sources */,
+				8F5775DA1C118F78002E134D /* Delay.swift in Sources */,
+				8F5775D71C118F78002E134D /* Debounce.swift in Sources */,
+				8F5775D01C118F6B002E134D /* Signal.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,13 +379,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				45DE51F11BF83F7A009BC378 /* Threading.swift in Sources */,
-				45DE51F51BF83F7A009BC378 /* Signal.swift in Sources */,
-				45DE51F41BF83F7A009BC378 /* Result.swift in Sources */,
-				45DE51F21BF83F7A009BC378 /* Waiting.swift in Sources */,
-				45DE51F31BF83F7A009BC378 /* Debounce.swift in Sources */,
-				45DE51F01BF83F7A009BC378 /* Delay.swift in Sources */,
-				45DE51F61BF83F7A009BC378 /* Compatibility.swift in Sources */,
+				8F5775DC1C118F78002E134D /* Threading.swift in Sources */,
+				8F5775DF1C118F78002E134D /* Waiting.swift in Sources */,
+				8F5775CC1C118F6B002E134D /* Result.swift in Sources */,
+				8F5775D91C118F78002E134D /* Delay.swift in Sources */,
+				8F5775D61C118F78002E134D /* Debounce.swift in Sources */,
+				8F5775CF1C118F6B002E134D /* Signal.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,13 +392,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8F4870CF1BEF9C940098C305 /* Debounce.swift in Sources */,
-				8F4870C31BEF936C0098C305 /* Threading.swift in Sources */,
-				8F4870C41BEF936C0098C305 /* Waiting.swift in Sources */,
-				8F93E2871BB27ECA00B47924 /* Compatibility.swift in Sources */,
-				8F4870C21BEF936C0098C305 /* Delay.swift in Sources */,
-				8F2B8D861B07A9410063EB9C /* Result.swift in Sources */,
-				8F2B8D871B07A9410063EB9C /* Signal.swift in Sources */,
+				8F5775DB1C118F78002E134D /* Threading.swift in Sources */,
+				8F5775DE1C118F78002E134D /* Waiting.swift in Sources */,
+				8F5775CB1C118F6B002E134D /* Result.swift in Sources */,
+				8F5775D81C118F78002E134D /* Delay.swift in Sources */,
+				8F5775D51C118F78002E134D /* Debounce.swift in Sources */,
+				8F5775CE1C118F6B002E134D /* Signal.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,12 +405,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8F5775BC1C11850A002E134D /* ResultTests.swift in Sources */,
-				8F2B8D891B07A9550063EB9C /* SignalTests.swift in Sources */,
-				8F4870CB1BEF93B10098C305 /* ThreadingTests.swift in Sources */,
-				8F4870CA1BEF93B10098C305 /* DelayTests.swift in Sources */,
-				8F4870CC1BEF93B10098C305 /* WaitingTests.swift in Sources */,
-				8F4870D11BEF9CFA0098C305 /* DebounceTests.swift in Sources */,
+				8F5775E71C118FBF002E134D /* ResultTests.swift in Sources */,
+				8F5775EF1C118FC9002E134D /* ThreadingTests.swift in Sources */,
+				8F5775EE1C118FC9002E134D /* DelayTests.swift in Sources */,
+				8F5775ED1C118FC9002E134D /* DebounceTests.swift in Sources */,
+				8F5775E81C118FBF002E134D /* SignalTests.swift in Sources */,
+				8F5775F01C118FC9002E134D /* WaitingTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,7 +433,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Interstellar/Info.plist;
+				INFOPLIST_FILE = Support/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -469,7 +455,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Interstellar/Info.plist;
+				INFOPLIST_FILE = Support/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -485,6 +471,7 @@
 		45DE51EE1BF83F67009BC378 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
@@ -492,7 +479,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = Interstellar/Info.plist;
+				INFOPLIST_FILE = Support/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
@@ -500,19 +487,21 @@
 				PRODUCT_NAME = Interstellar;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		45DE51EF1BF83F67009BC378 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = Interstellar/Info.plist;
+				INFOPLIST_FILE = Support/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
@@ -621,7 +610,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Interstellar/Info.plist;
+				INFOPLIST_FILE = Support/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -640,7 +629,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Interstellar/Info.plist;
+				INFOPLIST_FILE = Support/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -662,7 +651,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = InterstellarTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "de.nerdgeschoss.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -678,7 +667,7 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = InterstellarTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "de.nerdgeschoss.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";

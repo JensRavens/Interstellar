@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = "Interstellar"
-  s.version = "1.3.0"
+  s.version = "1.4.0"
   s.license = "MIT"
   s.summary = "The simplest Signal<T> implementation for Functional Reactive Programming you will ever find."
   s.homepage = "https://github.com/JensRavens/Interstellar"
@@ -14,12 +14,12 @@ Pod::Spec.new do |s|
   s.tvos.deployment_target = "9.0"
 
   s.subspec "Core" do |cs|
-    cs.source_files = "Interstellar/*.swift"
+    cs.source_files = ["Sources/Result.swift", "Sources/Signal.swift"]
   end
 
   s.subspec "Warpdrive" do |cs|
     cs.dependency "Interstellar/Core"
-    cs.source_files = "Warpdrive/*.swift"
+    cs.source_files = ["Sources/Debounce.swift", "Sources/Delay.swift", "Sources/Threading.swift", "Sources/Waiting.swift"]
   end
 
   s.requires_arc = true

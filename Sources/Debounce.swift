@@ -24,6 +24,8 @@ import Foundation
 
 private var SignalUpdateCalledHandle: UInt8 = 0
 public extension Signal {
+    #if os(Linux)
+    #else
     internal var lastCalled: NSDate? {
         get {
             if let handle = objc_getAssociatedObject(self, &SignalUpdateCalledHandle) as? NSDate {
@@ -37,6 +39,11 @@ public extension Signal {
         }
     }
     
+    /**
+        Creates a new signal that is only firing once per specified time interval. The last 
+        call to update will always be delivered (although it might be delayed up to the
+        specified amount of seconds).
+    */
     public func debounce(seconds: NSTimeInterval) -> Signal<T> {
         let signal = Signal<T>()
         
@@ -62,4 +69,5 @@ public extension Signal {
         
         return signal
     }
+    #endif
 }

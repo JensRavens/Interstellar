@@ -22,17 +22,45 @@
 
 import Foundation
 
-public extension Signal {
-    /**
-        Creates a new signal that mirrors the original signal but is delayed by x seconds. If no queue is specified, the new signal will call it's observers and transforms on the main queue.
-    */
-    public func delay(seconds: NSTimeInterval, queue: dispatch_queue_t = dispatch_get_main_queue()) -> Signal<T> {
-        let signal = Signal<T>()
-        subscribe { result in
-            dispatch_after(seconds.dispatchTime, queue) {
-                signal.update(result)
-            }
-        }
-        return signal;
+/**
+ This error is thrown if the signal doesn't complete within the specified timeout in a wait function.
+ */
+public struct TimeoutError: ErrorType {
+    internal init() {}
+}
+
+#if os(Linux)
+#else
+internal extension NSTimeInterval {
+    var dispatchTime: dispatch_time_t {
+        return dispatch_time(DISPATCH_TIME_NOW, Int64(self * Double(NSEC_PER_SEC)))
     }
+}
+#endif
+
+public extension Signal {
+    #if os(Linux)
+    #else
+    /**
+        Wait until the signal updates the next time. This will block the current thread until there 
+        is an error or a successfull value. In case of an error, the error will be thrown.
+    */
+    public func wait(timeout: NSTimeInterval? = nil) throws -> T {
+        let group = dispatch_group_create()
+        var result: Result<T>?
+        dispatch_group_enter(group)
+        subscribe { r in
+            result = r
+            dispatch_group_leave(group)
+        }
+        let timestamp = timeout.map{ $0.dispatchTime } ?? DISPATCH_TIME_FOREVER
+        if dispatch_group_wait(group, timestamp) != 0 {
+            throw TimeoutError()
+        }
+        switch result! {
+        case let .Success(t): return t
+        case let .Error(e): throw e
+        }
+    }
+    #endif
 }

@@ -200,8 +200,11 @@ public final class Signal<T> {
         about the new value.
     */
     public func update(result: Result<T>) {
+        #if os(Linux)
+        #else
         objc_sync_enter(self)
         defer { objc_sync_exit(self) }
+        #endif
         self.value = result
         self.callbacks.forEach{$0(result)}
     }

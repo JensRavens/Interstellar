@@ -22,25 +22,32 @@
 
 import Foundation
 
-/** 
+/**
     Several functions that should make multithreading simpler.
     Use this functions together with Signal.ensure:
         Signal.ensure(Thread.main) // will create a new Signal on the main queue
 */
 public final class Thread {
-    
+    #if os(Linux)
+    #else
     /// Transform a signal to the main queue
     public static func main<T>(a: Result<T>, completion: Result<T>->Void) {
         queue(dispatch_get_main_queue())(a, completion)
     }
+    #endif
     
+    #if os(Linux)
+    #else
     /// Transform the signal to a specified queue (despite the name this could also be the main queue)
     public static func queue<T>(queue: dispatch_queue_t)(_ a: Result<T>, _ completion: Result<T>->Void) {
         dispatch_async(queue){
             completion(a)
         }
     }
+    #endif
     
+    #if os(Linux)
+    #else
     /// Transform the signal to a global background queue with priority default
     public static func background<T>(a: Result<T>, completion: Result<T>->Void) {
         let q = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
@@ -48,4 +55,5 @@ public final class Thread {
             completion(a)
         }
     }
+    #endif
 }
