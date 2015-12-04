@@ -2,6 +2,7 @@
 
 //: This also works for asynchronous functions
 
+import Foundation
 import Interstellar
 
 let text = Signal<String>()
