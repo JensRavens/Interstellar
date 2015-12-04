@@ -16,11 +16,12 @@ The simplest `Signal<T>` implementation for Functional Reactive Programming you 
 - [x] Multithreading with GCD becomes a breeze
 - [x] Most of your methods will conform to the needed syntax anyway.
 - [x] Swift 2 compability
-- [x] Multithreading with GCD becomes a breeze via [WarpDrive](https://github.com/jensravens/warpdrive)
+- [x] Multithreading with GCD becomes a breeze via WarpDrive
+- [x] Supports Linux and `swift build`
 
 ## Requirements
 
-- iOS 7.0+ / Mac OS X 10.9+
+- iOS 7.0+ / Mac OS X 10.9+ / Ubuntu 14.10
 - Xcode 7
 
 ---
@@ -37,10 +38,10 @@ The simplest `Signal<T>` implementation for Functional Reactive Programming you 
 let text = Signal<String>()
 
 text.next { string in
-    print("Hello \(string)")
+  print("Hello \(string)")
 }
 
-text.update(.Success("World"))
+text.update("World")
 ```
 
 ### Mapping and transforming signals
@@ -49,14 +50,14 @@ text.update(.Success("World"))
 let text = Signal<String>()
 
 let greeting = text.map { subject in
-    return "Hello \(subject)"
+  return "Hello \(subject)"
 }
 
 greeting.next { text in
-    print(text)
+  print(text)
 }
 
-text.update(.Success("World"))
+text.update("World")
 ```
 
 ### Use functions as transforms
@@ -64,34 +65,39 @@ text.update(.Success("World"))
 ``` swift
 let text = Signal<String>()
 let greet: String->String = { subject in
-    return "Hello \(subject)"
+  return "Hello \(subject)"
 }
-text.map(greet).next { text in
+text
+  .map(greet)
+  .next { text in
     print(text)
-}
-text.update(.Success("World"))
+  }
+text.update("World")
 ```
 
 ### Handle errors in sequences of functions
 
 ``` swift
 let text = Signal<String>()
+
 func greetMaybe(subject: String)->Result<String> {
-    if subject.characters.count % 2 == 0 {
-        return .Success("Hello \(subject)")
-    } else {
-        let error = NSError(domain: "Don't feel like greeting you.", code: 401, userInfo: nil)
-        return .Error(error)
-    }
+  if subject.characters.count % 2 == 0 {
+    return .Success("Hello \(subject)")
+  } else {
+    let error = NSError(domain: "Don't feel like greeting you.", code: 401, userInfo: nil)
+    return .Error(error)
+  }
 }
-text.flatMap(greetMaybe)
-.next { text in
+
+text
+  .flatMap(greetMaybe)
+  .next { text in
     print(text)
-}
-.error { error in
+  }
+  .error { error in
     print("There was a greeting error")
-}
-text.update(.Success("World"))
+  }
+text.update("World")
 ```
 
 ### This also works for asynchronous functions
@@ -99,20 +105,21 @@ text.update(.Success("World"))
 ``` swift
 let text = Signal<String>()
 func greetMaybe(subject: String, completion: Result<String>->Void) {
-    if subject.characters.count % 2 == 0 {
-        completion(.Success("Hello \(subject)"))
-    } else {
-        let error = NSError(domain: "Don't feel like greeting you.", code: 401, userInfo: nil)
-        completion(.Error(error))
-    }
+  if subject.characters.count % 2 == 0 {
+    completion(.Success("Hello \(subject)"))
+  } else {
+    let error = NSError(domain: "Don't feel like greeting you.", code: 401, userInfo: nil)
+    completion(.Error(error))
+  }
 }
-text.flatMap(greetMaybe)
-.next { text in
+text
+  .flatMap(greetMaybe)
+  .next { text in
     print(text)
-}
-.error { error in
+  }
+  .error { error in
     print("There was a greeting error")
-}
+  }
 text.update(.Success("World"))
 ```
 
@@ -127,9 +134,6 @@ text.update(.Success("World"))
 ## Installation
 
 > **Dynamic frameworks on iOS require a minimum deployment target of iOS 8 or later.**
-
->
-
 > To use Interstellar with a project targeting iOS 7, you must include all Swift files directly in your project.
 
 ### CocoaPods
@@ -156,6 +160,22 @@ Then, run the following command:
 
 ``` bash
 $ pod install
+```
+
+### swift build
+
+Add Interstellar to your `Package.swift`:
+
+```swift
+import PackageDescription
+
+let package = Package(
+  name: "Your Awesome App",
+  targets: [],
+  dependencies: [
+    .Package(url: "https://github.com/jensravens/interstellar.git", majorVersion: 1),
+  ]
+)
 ```
 
 ### Carthage
