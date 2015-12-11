@@ -233,3 +233,11 @@ public final class Signal<T> {
         return value?.value
     }
 }
+
+extension Signal {
+    func observable() -> Observable<Result<T>> {
+        let observable = Observable<Result<T>>(options: [.InitialValue])
+        subscribe(observable.update)
+        return observable
+    }
+}

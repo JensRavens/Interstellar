@@ -27,7 +27,7 @@
     ErrorType). You can read more about the implementation in
     [this blog post](http://jensravens.de/a-swifter-way-of-handling-errors/).
 */
-public enum Result<T> {
+public enum Result<T>: ResultType {
     case Success(T)
     case Error(ErrorType)
     

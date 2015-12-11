@@ -31,31 +31,52 @@ public final class Thread {
     #if os(Linux)
     #else
     /// Transform a signal to the main queue
-    public static func main<T>(a: Result<T>, completion: Result<T>->Void) {
+    public static func main<T>(a: T, completion: T->Void) {
         queue(dispatch_get_main_queue())(a, completion)
     }
-    #endif
-    
-    #if os(Linux)
-    #else
+
     /// Transform the signal to a specified queue
-    public static func queue<T>(queue: dispatch_queue_t) -> (Result<T>, Result<T>->Void) -> Void {
+    public static func queue<T>(queue: dispatch_queue_t) -> (T, T->Void) -> Void {
         return { a, completion in
             dispatch_async(queue){
                 completion(a)
             }
         }
     }
-    #endif
-    
-    #if os(Linux)
-    #else
+
     /// Transform the signal to a global background queue with priority default
-    public static func background<T>(a: Result<T>, completion: Result<T>->Void) {
+    public static func background<T>(a: T, completion: T->Void) {
         let q = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
         dispatch_async(q) {
             completion(a)
         }
+    }
+    #endif
+}
+
+public final class Queue {
+    #if os(Linux)
+    #else
+    /// Transform a signal to the main queue
+    public static func main<T>(a: T) -> Observable<T> {
+        return queue(dispatch_get_main_queue())(a)
+    }
+    
+    /// Transform the signal to a specified queue
+    public static func queue<T>(queue: dispatch_queue_t) -> (T) -> Observable<T> {
+        return { t in
+            let observable = Observable<T>(options: [.Once])
+            dispatch_async(queue){
+                observable.update(t)
+            }
+            return observable
+        }
+    }
+    
+    /// Transform the signal to a global background queue with priority default
+    public static func background<T>(a: T) -> Observable<T> {
+        let q = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+        return queue(q)(a)
     }
     #endif
 }

@@ -39,4 +39,11 @@ class ThreadingTests: XCTestCase {
         s.update("hello")
         waitForExpectationsWithTimeout(0.1, handler: nil)
     }
+    
+    func testObservable() {
+        let observable = Observable<String>()
+        let log: String -> Void = { print($0) }
+        observable.flatMap(Queue.main).subscribe(log)
+        
+    }
 }

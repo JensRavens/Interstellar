@@ -64,3 +64,27 @@ public extension Signal {
     }
     #endif
 }
+
+public extension Observable {
+    #if os(Linux)
+    #else
+    /**
+     Wait until the observable updates the next time. This will block the current thread until 
+     there is a new value.
+     */
+    public func wait(timeout: NSTimeInterval? = nil) throws -> T {
+        let group = dispatch_group_create()
+        var value: T! = nil
+        dispatch_group_enter(group)
+        subscribe {
+            value = $0
+            dispatch_group_leave(group)
+        }
+        let timestamp = timeout.map{ $0.dispatchTime } ?? DISPATCH_TIME_FOREVER
+        if dispatch_group_wait(group, timestamp) != 0 {
+            throw TimeoutError()
+        }
+        return value
+    }
+    #endif
+}
