@@ -48,7 +48,7 @@ public final class Signal<T> {
     
     private var value: Result<T>?
     private var callbacks: [Result<T> -> Void] = []
-    private let lock = Lock()
+    private let mutex = Mutex()
     
     /// Automatically infer the type of the signal from the argument.
     public convenience init(_ value: T){
@@ -126,7 +126,7 @@ public final class Signal<T> {
         if let value = value {
             f(value)
         }
-        lock.sync {
+        mutex.lock {
             callbacks.append(f)
         }
         return self
@@ -208,7 +208,7 @@ public final class Signal<T> {
         about the new value.
     */
     public func update(result: Result<T>) {
-        lock.sync {
+        mutex.lock {
             value = result
             callbacks.forEach{$0(result)}
         }
@@ -240,7 +240,7 @@ public final class Signal<T> {
 }
 
 
-private class Lock {
+private class Mutex {
     private var mutex = pthread_mutex_t()
 
     init() {
@@ -251,10 +251,18 @@ private class Lock {
         pthread_mutex_destroy(&mutex)
     }
 
-    func sync(@noescape closure: () -> Void) {
-        let status = pthread_mutex_lock(&mutex)
+    func lock() -> Int32 {
+        return pthread_mutex_lock(&mutex)
+    }
+
+    func unlock() -> Int32 {
+        return pthread_mutex_unlock(&mutex)
+    }
+
+    func lock(@noescape closure: () -> Void) {
+        let status = lock()
         assert(status == 0, "pthread_mutex_lock: \(strerror(status))")
-        defer { pthread_mutex_unlock(&mutex) }
+        defer { unlock() }
         closure()
     }
 }
