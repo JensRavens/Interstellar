@@ -38,11 +38,17 @@
 
 */
 import Foundation
+#if os(Linux)
+    import Glibc
+#else
+    import Darwin
+#endif
 
 public final class Signal<T> {
     
     private var value: Result<T>?
     private var callbacks: [Result<T> -> Void] = []
+    private let lock = Lock()
     
     /// Automatically infer the type of the signal from the argument.
     public convenience init(_ value: T){
@@ -51,7 +57,7 @@ public final class Signal<T> {
     }
     
     public init() {
-        
+
     }
     
     /**
@@ -200,13 +206,10 @@ public final class Signal<T> {
         about the new value.
     */
     public func update(result: Result<T>) {
-        #if os(Linux)
-        #else
-        objc_sync_enter(self)
-        defer { objc_sync_exit(self) }
-        #endif
-        self.value = result
-        self.callbacks.forEach{$0(result)}
+        lock.sync {
+            value = result
+            callbacks.forEach{$0(result)}
+        }
     }
     
     /**
@@ -231,5 +234,25 @@ public final class Signal<T> {
     */
     public func peek() -> T? {
         return value?.value
+    }
+}
+
+
+private class Lock {
+    private var mutex = pthread_mutex_t()
+
+    init() {
+        pthread_mutex_init(&mutex, nil)
+    }
+
+    deinit {
+        pthread_mutex_destroy(&mutex)
+    }
+
+    func sync(@noescape closure: () -> Void) {
+        let status = pthread_mutex_lock(&mutex)
+        assert(status == 0, "pthread_mutex_lock: \(strerror(status))")
+        defer { pthread_mutex_unlock(&mutex) }
+        closure()
     }
 }
