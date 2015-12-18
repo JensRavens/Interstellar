@@ -126,7 +126,9 @@ public final class Signal<T> {
         if let value = value {
             f(value)
         }
-        callbacks.append(f)
+        lock.sync {
+            callbacks.append(f)
+        }
         return self
     }
     
