@@ -124,6 +124,15 @@ public final class Signal<T> {
         return self
     }
     
+    /**
+        Subscribe to the following changes of this signal without getting informed directly.
+        This method is chainable.
+    */
+    public func subscribeNext(f: Result<T> -> Void) -> Signal<T> {
+        callbacks.append(f)
+        return self
+    }
+    
     public func filter(f: T -> Bool) -> Signal<T>{
         let signal = Signal<T>()
         subscribe { result in
