@@ -120,8 +120,7 @@ public final class Signal<T> {
         if let value = value {
             f(value)
         }
-        callbacks.append(f)
-        return self
+        return subscribeNext(f)
     }
     
     /**
