@@ -99,6 +99,26 @@ public final class Signal<T> {
     }
     
     /**
+        Transform the signal into another signal using a function, return the
+        value of the inner signal
+    */
+    public func flatMap<U>(f: (T -> Signal<U>)) -> Signal<U> {
+        let signal = Signal<U>()
+        subscribe { result in
+            switch(result) {
+            case let .Success(value):
+                let innerSignal = f(value)
+                innerSignal.subscribe { innerResult in
+                    signal.update(innerResult)
+                }
+            case let .Error(error):
+                signal.update(.Error(error))
+            }
+        }
+        return signal
+    }
+    
+    /**
         Call a function with the result as an argument. Use this if the function should be
         executed no matter if the signal is a success or not.
         This method can also be used to convert an .Error into a .Success which might be handy
