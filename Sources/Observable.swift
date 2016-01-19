@@ -71,13 +71,13 @@ private extension Observable {
 }
 
 extension Observable {
-    func map<U>(transform: T->U) -> Observable<U> {
+    public func map<U>(transform: T->U) -> Observable<U> {
         let observable = Observable<U>(options: options)
         subscribe { observable.update(transform($0)) }
         return observable
     }
     
-    func flatMap<U>(transform: T->Observable<U>) -> Observable<U> {
+    public func flatMap<U>(transform: T->Observable<U>) -> Observable<U> {
         let observable = Observable<U>(options: options)
         subscribe { transform($0).subscribe(observable.update) }
         return observable

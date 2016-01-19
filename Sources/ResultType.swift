@@ -6,7 +6,7 @@
 //  Copyright © 2015 nerdgeschoss GmbH. All rights reserved.
 //
 
-protocol ResultType {
+public protocol ResultType {
     typealias Value
     
     var error: ErrorType? { get }
@@ -16,7 +16,7 @@ protocol ResultType {
 }
 
 extension Result {
-    init(value: T?, error: ErrorType?) {
+    public init(value: T?, error: ErrorType?) {
         if let error = error {
             self = Error(error)
         } else {
@@ -24,7 +24,7 @@ extension Result {
         }
     }
     
-    var result: Result<T> {
+    public var result: Result<T> {
         return self
     }
 }
