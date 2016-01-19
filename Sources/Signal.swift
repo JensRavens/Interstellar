@@ -38,11 +38,17 @@
 
 */
 import Foundation
+#if os(Linux)
+    import Glibc
+#else
+    import Darwin
+#endif
 
 public final class Signal<T> {
     
     private var value: Result<T>?
     private var callbacks: [Result<T> -> Void] = []
+    private let mutex = Mutex()
     
     /// Automatically infer the type of the signal from the argument.
     public convenience init(_ value: T){
@@ -51,7 +57,7 @@ public final class Signal<T> {
     }
     
     public init() {
-        
+
     }
     
     /**
@@ -140,7 +146,9 @@ public final class Signal<T> {
         if let value = value {
             f(value)
         }
-        callbacks.append(f)
+        mutex.lock {
+            callbacks.append(f)
+        }
         return self
     }
     
@@ -220,13 +228,10 @@ public final class Signal<T> {
         about the new value.
     */
     public func update(result: Result<T>) {
-        #if os(Linux)
-        #else
-        objc_sync_enter(self)
-        defer { objc_sync_exit(self) }
-        #endif
-        self.value = result
-        self.callbacks.forEach{$0(result)}
+        mutex.lock {
+            value = result
+            callbacks.forEach{$0(result)}
+        }
     }
     
     /**
@@ -251,5 +256,33 @@ public final class Signal<T> {
     */
     public func peek() -> T? {
         return value?.value
+    }
+}
+
+
+private class Mutex {
+    private var mutex = pthread_mutex_t()
+
+    init() {
+        pthread_mutex_init(&mutex, nil)
+    }
+
+    deinit {
+        pthread_mutex_destroy(&mutex)
+    }
+
+    func lock() -> Int32 {
+        return pthread_mutex_lock(&mutex)
+    }
+
+    func unlock() -> Int32 {
+        return pthread_mutex_unlock(&mutex)
+    }
+
+    func lock(@noescape closure: () -> Void) {
+        let status = lock()
+        assert(status == 0, "pthread_mutex_lock: \(strerror(status))")
+        defer { unlock() }
+        closure()
     }
 }
