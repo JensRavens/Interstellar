@@ -123,6 +123,35 @@ text
 text.update(.Success("World"))
 ```
 
+## FlatMapping across a signal that returns signals
+
+```swift
+let baseCost = Signal<Int>()
+
+
+let total = baseCost
+    .flatMap { base in
+        // Marks up the price
+        return Signal(base * 2)
+    }
+    .map { amount in
+        // Adds sales tax
+        return Double(amount) * 1.09
+    }
+
+total.next { total in
+    print("Your total is: \(total)")
+}
+
+baseCost.update(10)
+baseCost.update(122)
+
+/* Output:
+Your total is: 21.8
+Your total is: 265.96
+*/
+```
+
 ---
 
 ## Communication
