@@ -44,6 +44,11 @@ import Foundation
     import Darwin
 #endif
 
+enum SignalError: ErrorType
+{
+    case MergeAllIncomplete
+}
+
 public final class Signal<T> {
     
     private var value: Result<T>?
@@ -222,7 +227,46 @@ public final class Signal<T> {
         merge.error(errorHandler)
         return signal
     }
-    
+
+    /**
+        Merge an array of signals into a composite signal. This creates a signal that is
+        a success if all source signals are a success. The value of the signal is an
+        Array of the values of the contained signals.
+     
+            let signals = [Signal("Hello"),Signal("World")]
+            let compositeSignal = Signal<String>.mergeAll(signals)
+            signal.value! == ["Hello", "World"]
+     */
+
+    public class func mergeAll<T>(signals: [Signal<T>]) -> Signal<([T])> {
+        
+        let combinedSignal = Signal<([T])>()
+        
+        signals.forEach { (signal) -> () in
+            signal.next({ (_) -> Void in
+                do {
+                    let values = try signals.reduce([T](), combine: { (values: [T], signal) -> [T] in
+                        guard let value: T = signal.peek() else { throw SignalError.MergeAllIncomplete }
+                        var mutatedValues = values
+                        mutatedValues.append(value)
+                        return mutatedValues
+                    })
+                    combinedSignal.update(values)
+                } catch {
+                    combinedSignal.update(error)
+                }
+            })
+        }
+        
+        signals.forEach { (signal) -> () in
+            signal.error({ (error) -> Void in
+                combinedSignal.update(error)
+            })
+        }
+        
+        return combinedSignal
+    }
+
     /**
         Update the content of the signal. This will notify all subscribers of this signal
         about the new value.
