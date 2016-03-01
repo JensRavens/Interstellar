@@ -47,6 +47,12 @@ class SignalTests: XCTestCase {
         XCTAssertEqual(greeting, "Hello World")
     }
     
+    func testMergeAll() {
+        let signals = [Signal("Hello"),Signal("World")]
+        let compositeSignal = Signal<String>.mergeAll(signals)
+        XCTAssertEqual(compositeSignal.peek()!, ["Hello","World"])
+    }
+    
     func testError() {
         let greeting = Signal("").flatMap(greeter).peek()
         XCTAssertNil(greeting)

@@ -235,7 +235,7 @@ public final class Signal<T> {
      
             let signals = [Signal("Hello"),Signal("World")]
             let compositeSignal = Signal<String>.mergeAll(signals)
-            signal.value! == ["Hello", "World"]
+            assert(compositeSignal.peek()! == ["Hello","World"])
      */
 
     public class func mergeAll<T>(signals: [Signal<T>]) -> Signal<([T])> {
