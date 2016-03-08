@@ -136,7 +136,7 @@ let total = baseCost
     }
     .map { amount in
         // Adds sales tax
-        return Double(amount) * 1.09
+        return Double(amount.peek()!) * 1.09
     }
 
 total.next { total in
