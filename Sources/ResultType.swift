@@ -7,7 +7,7 @@
 //
 
 public protocol ResultType {
-    typealias Value
+    associatedtype Value
     
     var error: ErrorType? { get }
     var value: Value? { get }

@@ -11,12 +11,9 @@
 		8F4D98571C1B1E68009A91E5 /* Observable+Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F50D39A1C1A5126002F998A /* Observable+Result.swift */; };
 		8F4D98581C1B1E68009A91E5 /* Observable+Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F50D39A1C1A5126002F998A /* Observable+Result.swift */; };
 		8F50D38F1C1A300A002F998A /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F50D38E1C1A300A002F998A /* Observable.swift */; };
-		8F50D3911C1A343A002F998A /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F50D3901C1A343A002F998A /* Observer.swift */; };
 		8F50D3931C1A3870002F998A /* ResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F50D3921C1A3870002F998A /* ResultType.swift */; };
 		8F50D3941C1A3DA7002F998A /* ResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F50D3921C1A3870002F998A /* ResultType.swift */; };
 		8F50D3951C1A3DA8002F998A /* ResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F50D3921C1A3870002F998A /* ResultType.swift */; };
-		8F50D3961C1A3DAB002F998A /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F50D3901C1A343A002F998A /* Observer.swift */; };
-		8F50D3971C1A3DAC002F998A /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F50D3901C1A343A002F998A /* Observer.swift */; };
 		8F50D3981C1A3DAF002F998A /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F50D38E1C1A300A002F998A /* Observable.swift */; };
 		8F50D3991C1A3DB0002F998A /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F50D38E1C1A300A002F998A /* Observable.swift */; };
 		8F50D39B1C1A5126002F998A /* Observable+Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F50D39A1C1A5126002F998A /* Observable+Result.swift */; };
@@ -44,6 +41,8 @@
 		8F5775EE1C118FC9002E134D /* DelayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775EA1C118FC9002E134D /* DelayTests.swift */; };
 		8F5775EF1C118FC9002E134D /* ThreadingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775EB1C118FC9002E134D /* ThreadingTests.swift */; };
 		8F5775F01C118FC9002E134D /* WaitingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775EC1C118FC9002E134D /* WaitingTests.swift */; };
+		8FFAF5081CBC11B400C60CCB /* ObservableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FFAF5071CBC11B400C60CCB /* ObservableTests.swift */; };
+		8FFAF50A1CBC150200C60CCB /* ResultObservableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FFAF5091CBC150200C60CCB /* ResultObservableTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,7 +62,6 @@
 		8F2B8D641B07A92C0063EB9C /* Interstellar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Interstellar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F2B8D6F1B07A92C0063EB9C /* InterstellarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InterstellarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F50D38E1C1A300A002F998A /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Observable.swift; path = Sources/Observable.swift; sourceTree = SOURCE_ROOT; };
-		8F50D3901C1A343A002F998A /* Observer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Observer.swift; path = Sources/Observer.swift; sourceTree = SOURCE_ROOT; };
 		8F50D3921C1A3870002F998A /* ResultType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResultType.swift; path = Sources/ResultType.swift; sourceTree = SOURCE_ROOT; };
 		8F50D39A1C1A5126002F998A /* Observable+Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Observable+Result.swift"; path = "Sources/Observable+Result.swift"; sourceTree = SOURCE_ROOT; };
 		8F5775C91C118F6B002E134D /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Result.swift; path = Sources/Result.swift; sourceTree = SOURCE_ROOT; };
@@ -81,6 +79,8 @@
 		8F5775EA1C118FC9002E134D /* DelayTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DelayTests.swift; path = Tests/DelayTests.swift; sourceTree = SOURCE_ROOT; };
 		8F5775EB1C118FC9002E134D /* ThreadingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ThreadingTests.swift; path = Tests/ThreadingTests.swift; sourceTree = SOURCE_ROOT; };
 		8F5775EC1C118FC9002E134D /* WaitingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WaitingTests.swift; path = Tests/WaitingTests.swift; sourceTree = SOURCE_ROOT; };
+		8FFAF5071CBC11B400C60CCB /* ObservableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ObservableTests.swift; path = Tests/ObservableTests.swift; sourceTree = SOURCE_ROOT; };
+		8FFAF5091CBC150200C60CCB /* ResultObservableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResultObservableTests.swift; path = Tests/ResultObservableTests.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,7 +146,6 @@
 				8F2B8D671B07A92C0063EB9C /* Supporting Files */,
 				8F50D38E1C1A300A002F998A /* Observable.swift */,
 				8F50D39A1C1A5126002F998A /* Observable+Result.swift */,
-				8F50D3901C1A343A002F998A /* Observer.swift */,
 				8F50D3921C1A3870002F998A /* ResultType.swift */,
 			);
 			path = Interstellar;
@@ -195,6 +194,8 @@
 			children = (
 				8F5775E51C118FBF002E134D /* ResultTests.swift */,
 				8F5775E61C118FBF002E134D /* SignalTests.swift */,
+				8FFAF5071CBC11B400C60CCB /* ObservableTests.swift */,
+				8FFAF5091CBC150200C60CCB /* ResultObservableTests.swift */,
 			);
 			name = Interstellar;
 			sourceTree = "<group>";
@@ -387,7 +388,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8F50D3951C1A3DA8002F998A /* ResultType.swift in Sources */,
-				8F50D3971C1A3DAC002F998A /* Observer.swift in Sources */,
 				8F5775DD1C118F78002E134D /* Threading.swift in Sources */,
 				8F5775E01C118F78002E134D /* Waiting.swift in Sources */,
 				8F50D3991C1A3DB0002F998A /* Observable.swift in Sources */,
@@ -404,7 +404,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8F50D3941C1A3DA7002F998A /* ResultType.swift in Sources */,
-				8F50D3961C1A3DAB002F998A /* Observer.swift in Sources */,
 				8F5775DC1C118F78002E134D /* Threading.swift in Sources */,
 				8F5775DF1C118F78002E134D /* Waiting.swift in Sources */,
 				8F50D3981C1A3DAF002F998A /* Observable.swift in Sources */,
@@ -421,7 +420,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8F5775DB1C118F78002E134D /* Threading.swift in Sources */,
-				8F50D3911C1A343A002F998A /* Observer.swift in Sources */,
 				8F5775DE1C118F78002E134D /* Waiting.swift in Sources */,
 				8F5775CB1C118F6B002E134D /* Result.swift in Sources */,
 				8F50D3931C1A3870002F998A /* ResultType.swift in Sources */,
@@ -438,9 +436,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				8F5775E71C118FBF002E134D /* ResultTests.swift in Sources */,
+				8FFAF5081CBC11B400C60CCB /* ObservableTests.swift in Sources */,
 				8F5775EF1C118FC9002E134D /* ThreadingTests.swift in Sources */,
 				8F5775EE1C118FC9002E134D /* DelayTests.swift in Sources */,
 				8F5775ED1C118FC9002E134D /* DebounceTests.swift in Sources */,
+				8FFAF50A1CBC150200C60CCB /* ResultObservableTests.swift in Sources */,
 				8F5775E81C118FBF002E134D /* SignalTests.swift in Sources */,
 				8F5775F01C118FC9002E134D /* WaitingTests.swift in Sources */,
 			);

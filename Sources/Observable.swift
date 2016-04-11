@@ -12,13 +12,13 @@ public struct ObservingOptions: OptionSetType {
     public let rawValue: Int
     public init(rawValue: Int) { self.rawValue = rawValue }
     
-    public static let None = ObservingOptions(rawValue: 0)
-    public static let InitialValue = ObservingOptions(rawValue: 1)
+    public static let NoInitialValue = ObservingOptions(rawValue: 1)
     public static let Once = ObservingOptions(rawValue: 2)
 }
 
 public final class Observable<T> {
-    private var observers = [ObserverType<T>]()
+    private typealias Observer = T->Void
+    private var observers = [Int:Observer]()
     private var lastValue: T?
     public let options: ObservingOptions
     
@@ -26,39 +26,63 @@ public final class Observable<T> {
         self.options = options
     }
     
-    public init(value: T, options: ObservingOptions = [.InitialValue]) {
+    public init(_ value: T, options: ObservingOptions = []) {
         self.options = options
-        lastValue = value
-    }
-    
-    public func subscribe(observer: ObserverType<T>) {
-        sync {
-            observers.append(observer)
-            if let value = lastValue where options.contains(.InitialValue) {
-                observer.observe(value)
-            }
+        if !options.contains(.NoInitialValue){
+            lastValue = value
         }
     }
     
-    public func unsubscribe(observer: ObserverType<T>) {
+    public func subscribe(observer: T -> Void) -> ObserverToken {
+        var token: ObserverToken!
         sync {
-            guard let index = observers.indexOf(observer) else { return }
-            observers.removeAtIndex(index)
+            token = nextToken()
+            if !(options.contains(.Once) && lastValue != nil) {
+                observers[token.hash()] = observer
+            }
+            if let value = lastValue where !options.contains(.NoInitialValue) {
+                observer(value)
+            }
+        }
+        return token
+    }
+    
+    public func unsubscribe(token: ObserverToken) {
+        sync {
+            observers[token.hash()] = nil
         }
     }
     
     public func update(value: T) {
         sync {
-            if options.contains(.InitialValue) {
+            if !options.contains(.NoInitialValue) {
                 lastValue = value
             }
-            for observer in observers {
-                observer.observe(value)
+            for observe in observers.values {
+                observe(value)
             }
             if options.contains(.Once) {
                 observers.removeAll()
             }
         }
+    }
+    
+    public func peek() -> T? {
+        return lastValue
+    }
+    
+    private func nextToken() -> ObserverToken {
+        return (observers.keys.maxElement() ?? -1) + 1
+    }
+}
+
+public protocol ObserverToken {
+    func hash() -> Int
+}
+
+extension Int: ObserverToken {
+    public func hash() -> Int {
+        return self
     }
 }
 
