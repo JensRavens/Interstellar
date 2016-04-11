@@ -36,4 +36,8 @@ public extension Observable where T : ResultType {
         }
         return self
     }
+    
+    public func peekValue() -> T.Value? {
+        return peek()?.value
+    }
 }

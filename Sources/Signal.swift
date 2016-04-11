@@ -236,7 +236,7 @@ public final class Signal<T> {
 
 extension Signal {
     func observable() -> Observable<Result<T>> {
-        let observable = Observable<Result<T>>(options: [.InitialValue])
+        let observable = Observable<Result<T>>()
         subscribe(observable.update)
         return observable
     }
