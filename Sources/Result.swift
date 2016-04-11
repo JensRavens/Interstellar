@@ -83,8 +83,8 @@ public enum Result<T> {
     }
     
     /**
-    Transform a result into another result using a function. If the result was an error,
-    the function will not be executed and the error returned instead.
+        Transform a result into another result using a function. If the result was an error,
+        the function will not be executed and the error returned instead.
     */
     public func flatMap<U>(@noescape f: T throws -> U) -> Result<U> {
         return flatMap { t in
