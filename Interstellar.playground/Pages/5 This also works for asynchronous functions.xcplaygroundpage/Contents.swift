@@ -5,14 +5,14 @@
 import Foundation
 import Interstellar
 
-let text = Signal<String>()
+let text = Observable<String>()
 
-func greetMaybe(subject: String, completion: Result<String>->Void) {
+func greetMaybe(subject: String) -> Observable<Result<String>> {
     if subject.characters.count % 2 == 0 {
-        completion(.Success("Hello \(subject)"))
+        return Observable(.Success("Hello \(subject)"))
     } else {
         let error = NSError(domain: "Don't feel like greeting you.", code: 401, userInfo: nil)
-        completion(.Error(error))
+        return Observable(.Error(error))
     }
 }
 

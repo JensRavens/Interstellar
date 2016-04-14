@@ -24,7 +24,7 @@ class ObservableTests: XCTestCase {
         XCTAssertEqual(greeting.peek(), "Hello World")
     }
     
-    func testFlatMappingSignal() {
+    func testFlatMappingObservable() {
         let greeting = Observable("World").flatMap(greetLater)
         XCTAssertEqual(greeting.peek(), "Hello World")
     }

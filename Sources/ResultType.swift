@@ -24,6 +24,14 @@ extension Result {
         }
     }
     
+    public init(block: Void throws -> T) {
+        do {
+            self = try Success(block())
+        } catch let e {
+            self = Error(e)
+        }
+    }
+    
     public var result: Result<T> {
         return self
     }
