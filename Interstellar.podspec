@@ -1,8 +1,8 @@
 Pod::Spec.new do |s|
   s.name = "Interstellar"
-  s.version = "1.4.0"
+  s.version = "1.5.0"
   s.license = "MIT"
-  s.summary = "The simplest Signal<T> implementation for Functional Reactive Programming you will ever find."
+  s.summary = "The simplest Observable<T> implementation for Functional Reactive Programming you will ever find."
   s.homepage = "https://github.com/JensRavens/Interstellar"
   s.social_media_url = "http://twitter.com/JensRavens"
   s.authors = { "Jens Ravens" => "jens@nerdgeschoss.de" }
@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
   s.tvos.deployment_target = "9.0"
 
   s.subspec "Core" do |cs|
-    cs.source_files = ["Sources/Result.swift", "Sources/Signal.swift"]
+    cs.source_files = ["Sources/Result.swift", "Sources/Signal.swift", "Sources/Observable.swift", "Sources/Mutex.swift"]
   end
 
   s.subspec "Warpdrive" do |cs|
