@@ -35,25 +35,25 @@ The simplest `Signal<T>` implementation for Functional Reactive Programming you 
 ### Creating and updating a signal
 
 ``` swift
-let text = Signal<String>()
+let text = Observable<String>()
 
-text.next { string in
+text.subscribe { string in
   print("Hello \(string)")
 }
 
 text.update("World")
 ```
 
-### Mapping and transforming signals
+### Mapping and transforming observables
 
 ``` swift
-let text = Signal<String>()
+let text = Observable<String>()
 
 let greeting = text.map { subject in
   return "Hello \(subject)"
 }
 
-greeting.next { text in
+greeting.subscribe { text in
   print(text)
 }
 
@@ -63,13 +63,13 @@ text.update("World")
 ### Use functions as transforms
 
 ``` swift
-let text = Signal<String>()
-let greet: String->String = { subject in
+let text = Observable<String>()
+let greet: String -> String = { subject in
   return "Hello \(subject)"
 }
 text
   .map(greet)
-  .next { text in
+  .subscribe { text in
     print(text)
   }
 text.update("World")
@@ -78,20 +78,19 @@ text.update("World")
 ### Handle errors in sequences of functions
 
 ``` swift
-let text = Signal<String>()
+let text = Observable<String>()
 
-func greetMaybe(subject: String)->Result<String> {
+func greetMaybe(subject: String) throws -> String {
   if subject.characters.count % 2 == 0 {
-    return .Success("Hello \(subject)")
+    return "Hello \(subject)"
   } else {
-    let error = NSError(domain: "Don't feel like greeting you.", code: 401, userInfo: nil)
-    return .Error(error)
+    throw NSError(domain: "Don't feel like greeting you.", code: 401, userInfo: nil)
   }
 }
 
 text
-  .flatMap(greetMaybe)
-  .next { text in
+  .map(greetMaybe)
+  .then { text in
     print(text)
   }
   .error { error in
@@ -103,18 +102,19 @@ text.update("World")
 ### This also works for asynchronous functions
 
 ``` swift
-let text = Signal<String>()
-func greetMaybe(subject: String, completion: Result<String>->Void) {
+let text = Observable<String>()
+func greetMaybe(subject: String) -> Observable<Result<String>> {
   if subject.characters.count % 2 == 0 {
-    completion(.Success("Hello \(subject)"))
+    return Observable(.Success("Hello \(subject)"))
   } else {
     let error = NSError(domain: "Don't feel like greeting you.", code: 401, userInfo: nil)
-    completion(.Error(error))
+    return Observable(.Error(error))
   }
 }
+
 text
   .flatMap(greetMaybe)
-  .next { text in
+  .then { text in
     print(text)
   }
   .error { error in
@@ -123,33 +123,28 @@ text
 text.update(.Success("World"))
 ```
 
-## FlatMapping across a signal that returns signals
+## Flatmap is also available on observables
 
 ```swift
-let baseCost = Signal<Int>()
-
+let baseCost = Observable<Int>()
 
 let total = baseCost
     .flatMap { base in
         // Marks up the price
-        return Signal(base * 2)
+        return Observable(base * 2)
     }
     .map { amount in
         // Adds sales tax
         return Double(amount) * 1.09
     }
 
-total.next { total in
+total.subscribe { total in
     print("Your total is: \(total)")
 }
 
-baseCost.update(10)
-baseCost.update(122)
+baseCost.update(10) // prints "Your total is: 21.8"
+baseCost.update(122) // prints "Your total is: 265.96"
 
-/* Output:
-Your total is: 21.8
-Your total is: 265.96
-*/
 ```
 
 ---
@@ -244,6 +239,7 @@ Interstellar is owned and maintained by [Jens Ravens](http://jensravens.de).
 - *1.2* `Thread` was moved to a new project called [WarpDrive](https://github.com/jensravens/warpdrive)
 - *1.3* WarpDrive has been merged into Interstellar. Also Interstellar is now divided into subspecs via cocoapods to make it easy to just select the needed components. The basic signal library is now "Interstellar/Core".
 - *1.4* Support `swift build` and the new Swift package manager, including support for Linux. Also removed deprecated bind methods.
+- *1.5* Introduce `Observable<T>`, the successor of Signal. Use the `observable` property on signals to migrate your code as `Signal<T>` will be removed in Interstellar 2.0.
 
 ## License
 
