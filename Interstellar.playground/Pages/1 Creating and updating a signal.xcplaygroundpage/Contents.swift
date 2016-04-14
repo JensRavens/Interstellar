@@ -4,9 +4,9 @@
 
 import Interstellar
 
-let text = Signal<String>()
+let text = Observable<String>()
 
-text.next { string in
+text.subscribe { string in
     print("Hello \(string)")
 }
 

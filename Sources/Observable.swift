@@ -95,9 +95,17 @@ private extension Observable {
 }
 
 extension Observable {
-    public func map<U>(transform: T->U) -> Observable<U> {
+    public func map<U>(transform: T -> U) -> Observable<U> {
         let observable = Observable<U>(options: options)
         subscribe { observable.update(transform($0)) }
+        return observable
+    }
+    
+    public func map<U>(transform: T throws -> U) -> Observable<Result<U>> {
+        let observable = Observable<Result<U>>(options: options)
+        subscribe { value in
+            observable.update(Result(block: { return try transform(value) }))
+        }
         return observable
     }
     

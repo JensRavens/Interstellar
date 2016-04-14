@@ -4,13 +4,13 @@
 
 import Interstellar
 
-let text = Signal<String>()
+let text = Observable<String>()
 let greet: String->String = { subject in
     return "Hello \(subject)"
 }
 text
     .map(greet)
-    .next { text in
+    .subscribe { text in
         print(text)
     }
 text.update("World")

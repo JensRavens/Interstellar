@@ -5,23 +5,23 @@
 import Foundation
 import Interstellar
 
-let text = Signal<String>()
-func greetMaybe(subject: String)->Result<String> {
+let text = Observable<String>()
+func greetMaybe(subject: String) throws -> String {
     if subject.characters.count % 2 == 0 {
-        return .Success("Hello \(subject)")
+        return "Hello \(subject)"
     } else {
-        let error = NSError(domain: "Don't feel like greeting you.", code: 401, userInfo: nil)
-        return .Error(error)
+        throw NSError(domain: "Don't feel like greeting you.", code: 401, userInfo: nil)
     }
 }
-text
-    .flatMap(greetMaybe)
-    .next { text in
+let content = text
+    .map(greetMaybe)
+    .then { text in
         print(text)
     }
     .error { error in
         print("There was a greeting error")
     }
-text.update(.Success("World"))
+
+text.update("World")
 
 //: [Next](@next)
