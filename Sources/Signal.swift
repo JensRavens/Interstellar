@@ -37,12 +37,6 @@
         text.update(.Success("World"))
 
 */
-import Foundation
-#if os(Linux)
-    import Glibc
-#else
-    import Darwin
-#endif
 
 public final class Signal<T> {
     
@@ -264,33 +258,5 @@ extension Signal {
         let observable = Observable<Result<T>>()
         subscribe(observable.update)
         return observable
-    }
-}
-
-
-private class Mutex {
-    private var mutex = pthread_mutex_t()
-
-    init() {
-        pthread_mutex_init(&mutex, nil)
-    }
-
-    deinit {
-        pthread_mutex_destroy(&mutex)
-    }
-
-    func lock() -> Int32 {
-        return pthread_mutex_lock(&mutex)
-    }
-
-    func unlock() -> Int32 {
-        return pthread_mutex_unlock(&mutex)
-    }
-
-    func lock(@noescape closure: () -> Void) {
-        let status = lock()
-        assert(status == 0, "pthread_mutex_lock: \(strerror(status))")
-        defer { unlock() }
-        closure()
     }
 }

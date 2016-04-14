@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8F2B8D701B07A92C0063EB9C /* Interstellar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F2B8D641B07A92C0063EB9C /* Interstellar.framework */; };
+		8F2DC41C1CC03E380055DC5C /* Mutex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2DC41B1CC03E380055DC5C /* Mutex.swift */; };
 		8F4D98571C1B1E68009A91E5 /* Observable+Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F50D39A1C1A5126002F998A /* Observable+Result.swift */; };
 		8F4D98581C1B1E68009A91E5 /* Observable+Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F50D39A1C1A5126002F998A /* Observable+Result.swift */; };
 		8F50D38F1C1A300A002F998A /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F50D38E1C1A300A002F998A /* Observable.swift */; };
@@ -61,6 +62,7 @@
 		45DE51E81BF83F67009BC378 /* Interstellar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Interstellar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F2B8D641B07A92C0063EB9C /* Interstellar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Interstellar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F2B8D6F1B07A92C0063EB9C /* InterstellarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InterstellarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F2DC41B1CC03E380055DC5C /* Mutex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Mutex.swift; path = Sources/Mutex.swift; sourceTree = SOURCE_ROOT; };
 		8F50D38E1C1A300A002F998A /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Observable.swift; path = Sources/Observable.swift; sourceTree = SOURCE_ROOT; };
 		8F50D3921C1A3870002F998A /* ResultType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResultType.swift; path = Sources/ResultType.swift; sourceTree = SOURCE_ROOT; };
 		8F50D39A1C1A5126002F998A /* Observable+Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Observable+Result.swift"; path = "Sources/Observable+Result.swift"; sourceTree = SOURCE_ROOT; };
@@ -147,6 +149,7 @@
 				8F50D38E1C1A300A002F998A /* Observable.swift */,
 				8F50D39A1C1A5126002F998A /* Observable+Result.swift */,
 				8F50D3921C1A3870002F998A /* ResultType.swift */,
+				8F2DC41B1CC03E380055DC5C /* Mutex.swift */,
 			);
 			path = Interstellar;
 			sourceTree = "<group>";
@@ -424,6 +427,7 @@
 				8F5775CB1C118F6B002E134D /* Result.swift in Sources */,
 				8F50D3931C1A3870002F998A /* ResultType.swift in Sources */,
 				8F50D38F1C1A300A002F998A /* Observable.swift in Sources */,
+				8F2DC41C1CC03E380055DC5C /* Mutex.swift in Sources */,
 				8F5775D81C118F78002E134D /* Delay.swift in Sources */,
 				8F50D39B1C1A5126002F998A /* Observable+Result.swift in Sources */,
 				8F5775D51C118F78002E134D /* Debounce.swift in Sources */,
