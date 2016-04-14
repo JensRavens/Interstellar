@@ -21,6 +21,7 @@ public final class Observable<T> {
     private var observers = [Int:Observer]()
     private var lastValue: T?
     public let options: ObservingOptions
+    private let mutex = Mutex()
     
     public init(options: ObservingOptions = []) {
         self.options = options
@@ -35,7 +36,7 @@ public final class Observable<T> {
     
     public func subscribe(observer: T -> Void) -> ObserverToken {
         var token: ObserverToken!
-        sync {
+        mutex.lock {
             token = nextToken()
             if !(options.contains(.Once) && lastValue != nil) {
                 observers[token.hash()] = observer
@@ -48,13 +49,13 @@ public final class Observable<T> {
     }
     
     public func unsubscribe(token: ObserverToken) {
-        sync {
+        mutex.lock {
             observers[token.hash()] = nil
         }
     }
     
     public func update(value: T) {
-        sync {
+        mutex.lock {
             if !options.contains(.NoInitialValue) {
                 lastValue = value
             }
@@ -83,14 +84,6 @@ public protocol ObserverToken {
 extension Int: ObserverToken {
     public func hash() -> Int {
         return self
-    }
-}
-
-private extension Observable {
-    private func sync(@noescape block: Void->Void) {
-        objc_sync_enter(self)
-        defer { objc_sync_exit(self) }
-        block()
     }
 }
 
