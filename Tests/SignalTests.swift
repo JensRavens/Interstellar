@@ -40,6 +40,13 @@ class SignalTests: XCTestCase {
         XCTAssertEqual(greeting, "Hello World")
     }
     
+    func testFlatMappingASignal() {
+        let greeting = Signal("Hello").flatMap { greeting in
+            Signal(greeting + " World")
+        }.peek()
+        XCTAssertEqual(greeting, "Hello World")
+    }
+    
     func testError() {
         let greeting = Signal("").flatMap(greeter).peek()
         XCTAssertNil(greeting)

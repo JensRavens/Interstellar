@@ -38,11 +38,17 @@
 
 */
 import Foundation
+#if os(Linux)
+    import Glibc
+#else
+    import Darwin
+#endif
 
 public final class Signal<T> {
     
     private var value: Result<T>?
     private var callbacks: [Result<T> -> Void] = []
+    private let mutex = Mutex()
     
     /// Automatically infer the type of the signal from the argument.
     public convenience init(_ value: T){
@@ -51,7 +57,7 @@ public final class Signal<T> {
     }
     
     public init() {
-        
+
     }
     
     /**
@@ -99,6 +105,26 @@ public final class Signal<T> {
     }
     
     /**
+        Transform the signal into another signal using a function, return the
+        value of the inner signal
+    */
+    public func flatMap<U>(f: (T -> Signal<U>)) -> Signal<U> {
+        let signal = Signal<U>()
+        subscribe { result in
+            switch(result) {
+            case let .Success(value):
+                let innerSignal = f(value)
+                innerSignal.subscribe { innerResult in
+                    signal.update(innerResult)
+                }
+            case let .Error(error):
+                signal.update(.Error(error))
+            }
+        }
+        return signal
+    }
+    
+    /**
         Call a function with the result as an argument. Use this if the function should be
         executed no matter if the signal is a success or not.
         This method can also be used to convert an .Error into a .Success which might be handy
@@ -120,7 +146,9 @@ public final class Signal<T> {
         if let value = value {
             f(value)
         }
-        callbacks.append(f)
+        mutex.lock {
+            callbacks.append(f)
+        }
         return self
     }
     
@@ -200,13 +228,10 @@ public final class Signal<T> {
         about the new value.
     */
     public func update(result: Result<T>) {
-        #if os(Linux)
-        #else
-        objc_sync_enter(self)
-        defer { objc_sync_exit(self) }
-        #endif
-        self.value = result
-        self.callbacks.forEach{$0(result)}
+        mutex.lock {
+            value = result
+            callbacks.forEach{$0(result)}
+        }
     }
     
     /**
@@ -239,5 +264,33 @@ extension Signal {
         let observable = Observable<Result<T>>()
         subscribe(observable.update)
         return observable
+    }
+}
+
+
+private class Mutex {
+    private var mutex = pthread_mutex_t()
+
+    init() {
+        pthread_mutex_init(&mutex, nil)
+    }
+
+    deinit {
+        pthread_mutex_destroy(&mutex)
+    }
+
+    func lock() -> Int32 {
+        return pthread_mutex_lock(&mutex)
+    }
+
+    func unlock() -> Int32 {
+        return pthread_mutex_unlock(&mutex)
+    }
+
+    func lock(@noescape closure: () -> Void) {
+        let status = lock()
+        assert(status == 0, "pthread_mutex_lock: \(strerror(status))")
+        defer { unlock() }
+        closure()
     }
 }
