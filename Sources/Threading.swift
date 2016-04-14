@@ -57,12 +57,12 @@ public final class Thread {
 public final class Queue {
     #if os(Linux)
     #else
-    /// Transform a signal to the main queue
+    /// Transform an observable to the main queue
     public static func main<T>(a: T) -> Observable<T> {
         return queue(dispatch_get_main_queue())(a)
     }
     
-    /// Transform the signal to a specified queue
+    /// Transform the observalbe to a specified queue
     public static func queue<T>(queue: dispatch_queue_t) -> (T) -> Observable<T> {
         return { t in
             let observable = Observable<T>(options: [.Once])
@@ -73,7 +73,7 @@ public final class Queue {
         }
     }
     
-    /// Transform the signal to a global background queue with priority default
+    /// Transform the observable to a global background queue with priority default
     public static func background<T>(a: T) -> Observable<T> {
         let q = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
         return queue(q)(a)

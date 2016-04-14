@@ -35,7 +35,25 @@ public extension Signal {
                 signal.update(result)
             }
         }
-        return signal;
+        return signal
+    }
+    #endif
+}
+
+public extension Observable {
+    #if os(Linux)
+    #else
+    /**
+     Creates a new signal that mirrors the original observable but is delayed by x seconds. If no queue is specified, the new observable will call it's observers and transforms on the main queue.
+     */
+    public func delay(seconds: NSTimeInterval, queue: dispatch_queue_t = dispatch_get_main_queue()) -> Observable<T> {
+        let observable = Observable<T>()
+        subscribe { result in
+            dispatch_after(seconds.dispatchTime, queue) {
+                observable.update(result)
+            }
+        }
+        return observable
     }
     #endif
 }
