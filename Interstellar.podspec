@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
   s.tvos.deployment_target = "9.0"
 
   s.subspec "Core" do |cs|
-    cs.source_files = ["Sources/Result.swift", "Sources/Signal.swift", "Sources/Observable.swift", "Sources/Mutex.swift"]
+    cs.source_files = ["Sources/Result.swift", "Sources/Signal.swift", "Sources/Observable.swift", "Sources/Mutex.swift", "Sources/ResultType.swift", "Sources/Observable+Result.swift"]
   end
 
   s.subspec "Warpdrive" do |cs|
