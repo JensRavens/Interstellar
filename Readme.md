@@ -15,7 +15,7 @@ The simplest `Signal<T>` implementation for Functional Reactive Programming you 
 - [x] Lightweight, simple, cross plattform FRP
 - [x] Multithreading with GCD becomes a breeze
 - [x] Most of your methods will conform to the needed syntax anyway.
-- [x] Swift 2 compability
+- [x] Swift 2 compatibility
 - [x] Multithreading with GCD becomes a breeze via WarpDrive
 - [x] Supports Linux and `swift build`
 
