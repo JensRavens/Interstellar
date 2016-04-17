@@ -83,7 +83,7 @@ public final class Signal<T> {
     }
     
     /**
-    Transform the signal into another signal using a function.
+        Transform the signal into another signal using a function.
     */
     public func flatMap<U>(f: T throws -> U) -> Signal<U> {
         let signal = Signal<U>()
@@ -235,16 +235,16 @@ public final class Signal<T> {
     }
     
     /**
-     Update the content of the signal. This will notify all subscribers of this signal
-     about the new value.
+        Update the content of the signal. This will notify all subscribers of this signal
+        about the new value.
      */
     public func update(value: T) {
         update(.Success(value))
     }
     
     /**
-     Update the content of the signal. This will notify all subscribers of this signal
-     about the new value.
+        Update the content of the signal. This will notify all subscribers of this signal
+        about the new value.
      */
     public func update(error: ErrorType) {
         update(.Error(error))

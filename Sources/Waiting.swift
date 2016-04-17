@@ -23,7 +23,7 @@
 import Foundation
 
 /**
- This error is thrown if the signal doesn't complete within the specified timeout in a wait function.
+    This error is thrown if the signal doesn't complete within the specified timeout in a wait function.
  */
 public struct TimeoutError: ErrorType {
     internal init() {}
