@@ -18,7 +18,8 @@ public struct ObservingOptions: OptionSetType {
 
 public final class Observable<T> {
     private typealias Observer = T->Void
-    private var observers = [Int:Observer]()
+    public typealias ObserverToken = Int
+    private var observers = [ObserverToken:Observer]()
     private var lastValue: T?
     public let options: ObservingOptions
     private let mutex = Mutex()
@@ -39,7 +40,7 @@ public final class Observable<T> {
         mutex.lock {
             token = nextToken()
             if !(options.contains(.Once) && lastValue != nil) {
-                observers[token.hash()] = observer
+                observers[token] = observer
             }
             if let value = lastValue where !options.contains(.NoInitialValue) {
                 observer(value)
@@ -50,7 +51,7 @@ public final class Observable<T> {
     
     public func unsubscribe(token: ObserverToken) {
         mutex.lock {
-            observers[token.hash()] = nil
+            observers[token] = nil
         }
     }
     
@@ -74,16 +75,6 @@ public final class Observable<T> {
     
     private func nextToken() -> ObserverToken {
         return (observers.keys.maxElement() ?? -1) + 1
-    }
-}
-
-public protocol ObserverToken {
-    func hash() -> Int
-}
-
-extension Int: ObserverToken {
-    public func hash() -> Int {
-        return self
     }
 }
 
