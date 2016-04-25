@@ -78,4 +78,31 @@ class ObservableTests: XCTestCase {
         observable.update("Hello")
         XCTAssertEqual(count, 1)
     }
+
+    func testMergeInvocations() {
+        let lhs = Observable<String>()
+        let rhs = Observable<String>()
+        var count = 0
+        lhs.merge(rhs).subscribe { _, _ in
+            count += 1
+        }
+        lhs.update("")
+        XCTAssertEqual(count, 0)
+        rhs.update("")
+        XCTAssertEqual(count, 1)
+    }
+
+    func testMergeValues() {
+        let lhs = Observable<String>()
+        let rhs = Observable<String>()
+        var first = "", second = ""
+        lhs.merge(rhs).subscribe { lhs, rhs in
+            first = lhs
+            second = rhs
+        }
+        lhs.update("first")
+        rhs.update("second")
+        XCTAssertEqual(first, "first")
+        XCTAssertEqual(second, "second")
+    }
 }
