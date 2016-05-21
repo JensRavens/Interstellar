@@ -18,7 +18,8 @@ public struct ObservingOptions: OptionSetType {
 
 public final class Observable<T> {
     private typealias Observer = T->Void
-    private var observers = [Int:Observer]()
+    private typealias ObserverTokenType = ObserverToken<T>
+    private var observers = [ObserverTokenType: Observer]()
     private var lastValue: T?
     public let options: ObservingOptions
     private let mutex = Mutex()
@@ -34,24 +35,19 @@ public final class Observable<T> {
         }
     }
     
-    public func subscribe(observer: T -> Void) -> ObserverToken {
-        var token: ObserverToken!
+    public func subscribe(observer: T -> Void) -> ObserverToken<T> {
+        var token: ObserverToken<T>!
         mutex.lock {
-            token = nextToken()
+            let newHashValue = nextTokenHash()
+            token = ObserverToken(hashValue: newHashValue, observable: self)
             if !(options.contains(.Once) && lastValue != nil) {
-                observers[token.hash()] = observer
+                observers[token] = observer
             }
             if let value = lastValue where !options.contains(.NoInitialValue) {
                 observer(value)
             }
         }
         return token
-    }
-    
-    public func unsubscribe(token: ObserverToken) {
-        mutex.lock {
-            observers[token.hash()] = nil
-        }
     }
     
     public func update(value: T) {
@@ -72,19 +68,34 @@ public final class Observable<T> {
         return lastValue
     }
     
-    private func nextToken() -> ObserverToken {
-        return (observers.keys.maxElement() ?? -1) + 1
+    private func nextTokenHash() -> Int {
+        return (observers.keys.map({$0.hashValue}).maxElement() ?? -1) + 1
+    }
+
+    private func unsubscribe(token: ObserverToken<T>) {
+        mutex.lock {
+            observers[token] = nil
+        }
     }
 }
 
-public protocol ObserverToken {
-    func hash() -> Int
+public final class ObserverToken<T>: Hashable {
+    public let hashValue: Int
+    private weak var observable: Observable<T>?
+
+    // Private to avoid instantiation outside this file.
+    private init (hashValue: Int, observable: Observable<T>?) {
+        self.hashValue = hashValue
+        self.observable = observable
+    }
+
+    public func unsubscribe() {
+        observable?.unsubscribe(self)
+    }
 }
 
-extension Int: ObserverToken {
-    public func hash() -> Int {
-        return self
-    }
+public func ==<T>(lhs: ObserverToken<T>, rhs: ObserverToken<T>) -> Bool {
+    return lhs.hashValue == rhs.hashValue
 }
 
 extension Observable {

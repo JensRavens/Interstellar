@@ -74,7 +74,7 @@ class ObservableTests: XCTestCase {
             count += 1
         }
         observable.update("Hello")
-        observable.unsubscribe(token)
+        token.unsubscribe()
         observable.update("Hello")
         XCTAssertEqual(count, 1)
     }
