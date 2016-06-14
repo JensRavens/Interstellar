@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4EE634691CD0C18E007A602B"
-               BuildableName = "Interstellar_watchOS.framework"
+               BuildableName = "Interstellar.framework"
                BlueprintName = "Interstellar_watchOS"
                ReferencedContainer = "container:Interstellar.xcodeproj">
             </BuildableReference>
@@ -46,7 +46,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4EE634691CD0C18E007A602B"
-            BuildableName = "Interstellar_watchOS.framework"
+            BuildableName = "Interstellar.framework"
             BlueprintName = "Interstellar_watchOS"
             ReferencedContainer = "container:Interstellar.xcodeproj">
          </BuildableReference>
@@ -64,7 +64,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4EE634691CD0C18E007A602B"
-            BuildableName = "Interstellar_watchOS.framework"
+            BuildableName = "Interstellar.framework"
             BlueprintName = "Interstellar_watchOS"
             ReferencedContainer = "container:Interstellar.xcodeproj">
          </BuildableReference>
