@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2873E1191D0FF50B00CB521F /* Mutex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2DC41B1CC03E380055DC5C /* Mutex.swift */; };
 		4EE634721CD0C23B007A602B /* Debounce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775D11C118F78002E134D /* Debounce.swift */; };
 		4EE634731CD0C23B007A602B /* Delay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775D21C118F78002E134D /* Delay.swift */; };
 		4EE634741CD0C23B007A602B /* Threading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775D31C118F78002E134D /* Threading.swift */; };
@@ -485,6 +486,7 @@
 				4EE634751CD0C23B007A602B /* Waiting.swift in Sources */,
 				4EE634781CD0C23B007A602B /* Observable.swift in Sources */,
 				4EE634761CD0C23B007A602B /* Result.swift in Sources */,
+				2873E1191D0FF50B00CB521F /* Mutex.swift in Sources */,
 				4EE634731CD0C23B007A602B /* Delay.swift in Sources */,
 				4EE634791CD0C23B007A602B /* Observable+Result.swift in Sources */,
 				4EE634721CD0C23B007A602B /* Debounce.swift in Sources */,
@@ -855,6 +857,7 @@
 				4EE634711CD0C18E007A602B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8F2B8D5E1B07A92C0063EB9C /* Build configuration list for PBXProject "Interstellar" */ = {
 			isa = XCConfigurationList;
