@@ -11,7 +11,7 @@ import Interstellar
 
 class ResultObservableTests: XCTestCase {
     
-    func greeter(subject: String) -> String {
+    func greeter(_ subject: String) -> String {
         return "Hello \(subject)"
     }
     

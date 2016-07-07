@@ -31,24 +31,24 @@ public final class Thread {
     #if os(Linux)
     #else
     /// Transform a signal to the main queue
-    public static func main<T>(a: T, completion: T->Void) {
-        queue(dispatch_get_main_queue())(a, completion)
+    public static func main<T>(a: T, completion: (T)->Void) {
+        queue(DispatchQueue.main)(a, completion)
     }
 
     /// Transform the signal to a specified queue
-    public static func queue<T>(queue: dispatch_queue_t) -> (T, T->Void) -> Void {
+    public static func queue<T>(_ queue: DispatchQueue) -> (T, (T)->Void) -> Void {
         return { a, completion in
-            dispatch_async(queue){
+            queue.async {
                 completion(a)
             }
         }
     }
 
     /// Transform the signal to a global background queue with priority default
-    public static func background<T>(a: T, completion: T->Void) {
-        let q = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
-        dispatch_async(q) {
-            completion(a)
+    public static func background<T>(a: T, completion: (T)->Void) {
+        let q = DispatchQueue.global()
+        q.async {
+          completion(a)
         }
     }
     #endif
@@ -59,14 +59,15 @@ public final class Queue {
     #else
     /// Transform an observable to the main queue
     public static func main<T>(a: T) -> Observable<T> {
-        return queue(dispatch_get_main_queue())(a)
+        //return queue(dispatch_get_main_queue())(a)
+      return queue(DispatchQueue.main)(a)
     }
     
     /// Transform the observalbe to a specified queue
-    public static func queue<T>(queue: dispatch_queue_t) -> (T) -> Observable<T> {
+    public static func queue<T>(_ queue: DispatchQueue) -> (T) -> Observable<T> {
         return { t in
             let observable = Observable<T>(options: [.Once])
-            dispatch_async(queue){
+            queue.async {
                 observable.update(t)
             }
             return observable
@@ -75,7 +76,7 @@ public final class Queue {
     
     /// Transform the observable to a global background queue with priority default
     public static func background<T>(a: T) -> Observable<T> {
-        let q = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+        let q = DispatchQueue.global()
         return queue(q)(a)
     }
     #endif

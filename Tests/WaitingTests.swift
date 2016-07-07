@@ -11,16 +11,17 @@ import XCTest
 import Interstellar
 
 class WaitingTests: XCTestCase {
-    func asyncOperation<T>(delay: Double)(t: T, completion: Result<T>->Void) {
-        let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
-        Signal(t).delay(delay, queue: queue).subscribe(completion)
+    func asyncOperation<T>(_ delay: Double) -> (T, (Result<T>) -> Void) -> Void {
+        return { (t: T, completion: (Result<T>) -> Void) in
+            let queue = DispatchQueue.global()
+            Signal(t).delay(delay, queue: queue).subscribe(completion)
+        }
     }
-    
+
     func fail<T>(t: T) throws -> T {
         throw NSError(domain: "Error", code: 400, userInfo: nil)
     }
-    
-    
+
     func testWaitingForSuccess() {
         let greeting = try! Signal("hello")
             .flatMap(self.asyncOperation(0.2))
@@ -44,10 +45,10 @@ class WaitingTests: XCTestCase {
     
     func testWaitingForFail() {
         do {
-            try Signal("hello")
-                .flatMap(self.asyncOperation(0.2))
-                .flatMap(fail)
-                .wait()
+            let _ = try Signal("hello")
+                        .flatMap(self.asyncOperation(0.2))
+                        .flatMap(fail)
+                        .wait()
             XCTFail("This place should never be reached due to an error.")
         } catch {
             

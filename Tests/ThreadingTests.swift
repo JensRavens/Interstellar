@@ -10,39 +10,42 @@ import Foundation
 import XCTest
 @testable import Interstellar
 
-func mainTest(expectation: XCTestExpectation?)(r: Result<String>, completion:(Result<String>->Void)) {
-    XCTAssertTrue(NSThread.isMainThread())
+
+func mainTest(_ expectation: XCTestExpectation?) -> (Result<String>, (Result<String>) -> Void) -> Void {
+  return { (r: Result<String>, completion: (Result<String>) -> Void) in
+    XCTAssertTrue(Thread.isMainThread)
     expectation?.fulfill()
+  }
 }
 
 class ThreadingTests: XCTestCase {
     func testShouldDispatchToMainQueue() {
-        let expectation = expectationWithDescription("thread called")
-        let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
-        dispatch_async(queue) {
+      let promise = expectation(withDescription:"thread called")
+        let queue = DispatchQueue.global()
+        queue.async {
             let s = Signal<String>()
-            s.ensure(Thread.main)
-                .ensure(mainTest(expectation))
+            let _ = s.ensure(Thread.main)
+                     .ensure(mainTest(promise))
             s.update("hello")
         }
-        waitForExpectationsWithTimeout(0.1, handler: nil)
+        waitForExpectations(withTimeout:0.1, handler: nil)
     }
     
     func testDispatchToSelectedQueue() {
-        let expectation = expectationWithDescription("thread called")
+        let promise = expectation(withDescription:"thread called")
         let s = Signal<String>()
         s.ensure(Thread.background)
         .subscribe { _ in
-            XCTAssertFalse(NSThread.isMainThread())
-            expectation.fulfill()
+            XCTAssertFalse(Thread.isMainThread)
+            promise.fulfill()
         }
         s.update("hello")
-        waitForExpectationsWithTimeout(0.1, handler: nil)
+        waitForExpectations(withTimeout: 0.1, handler: nil)
     }
     
     func testObservable() {
         let observable = Observable<String>()
-        let log: String -> Void = { print($0) }
+        let log: (String) -> Void = { print($0) }
         observable.flatMap(Queue.main).subscribe(log)
         
     }

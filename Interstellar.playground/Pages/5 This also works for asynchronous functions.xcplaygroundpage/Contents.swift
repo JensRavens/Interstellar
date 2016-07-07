@@ -9,10 +9,10 @@ let text = Observable<String>()
 
 func greetMaybe(subject: String) -> Observable<Result<String>> {
     if subject.characters.count % 2 == 0 {
-        return Observable(.Success("Hello \(subject)"))
+        return Observable(.success("Hello \(subject)"))
     } else {
         let error = NSError(domain: "Don't feel like greeting you.", code: 401, userInfo: nil)
-        return Observable(.Error(error))
+        return Observable(.error(error))
     }
 }
 

@@ -32,7 +32,7 @@ class DebounceTests: XCTestCase {
         var string: String? = nil
         var called = 0
         let signal = Signal<String>()
-        let expectation = expectationWithDescription("Wait for debounce")
+        let promise = expectation(withDescription: "Wait for debounce")
         
         signal.debounce(0.5).next { called += 1; string = $0 }
         signal.update("Hello")
@@ -41,19 +41,19 @@ class DebounceTests: XCTestCase {
         Signal(0).delay(1).next { _ in
             XCTAssertEqual(called, 2)
             XCTAssertEqual(string, "World")
-            expectation.fulfill()
+            promise.fulfill()
         }
         
         XCTAssertEqual(called, 1)
         XCTAssertEqual(string, "Hello")
-        waitForExpectationsWithTimeout(2, handler: nil)
+        waitForExpectations(withTimeout: 2, handler: nil)
     }
     
     func testDebounceObservable() {
         var string: String? = nil
         var called = 0
         let observable = Observable<String>()
-        let expectation = expectationWithDescription("Wait for debounce")
+        let promise = expectation(withDescription: "Wait for debounce")
         
         observable.debounce(0.5).subscribe { called += 1; string = $0 }
         observable.update("Hello")
@@ -62,12 +62,11 @@ class DebounceTests: XCTestCase {
         Signal(1).delay(1).next { _ in
             XCTAssertEqual(called, 2)
             XCTAssertEqual(string, "World")
-            expectation.fulfill()
+            promise.fulfill()
         }
         
         XCTAssertEqual(called, 1)
         XCTAssertEqual(string, "Hello")
-        waitForExpectationsWithTimeout(2, handler: nil)
+        waitForExpectations(withTimeout: 2, handler: nil)
     }
-    
 }

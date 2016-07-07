@@ -30,22 +30,22 @@ public extension Signal {
         call to update will always be delivered (although it might be delayed up to the
         specified amount of seconds).
     */
-    public func debounce(seconds: NSTimeInterval) -> Signal<T> {
+    public func debounce(_ seconds: TimeInterval) -> Signal<T> {
         let signal = Signal<T>()
-        var lastCalled: NSDate?
+        var lastCalled: Date?
         
         subscribe { result in
-            let currentTime = NSDate()
-            func updateIfNeeded(signal: Signal<T>) -> Result<T> -> Void {
+            let currentTime = Date()
+            func updateIfNeeded(_ signal: Signal<T>) -> (Result<T>) -> Void {
                 return { result in
                     let timeSinceLastCall = lastCalled?.timeIntervalSinceNow
                     if timeSinceLastCall == nil || timeSinceLastCall <= -seconds {
                         // no update before or update outside of debounce window
-                        lastCalled = NSDate()
+                        lastCalled = Date()
                         signal.update(result)
                     } else {
                         // skip result if there was a newer result
-                        if currentTime.compare(lastCalled!) == .OrderedDescending {
+                        if currentTime.compare(lastCalled!) == .orderedDescending {
                             let s = Signal<T>()
                             s.delay(seconds - timeSinceLastCall!).subscribe(updateIfNeeded(signal))
                             s.update(result)
@@ -69,25 +69,25 @@ public extension Observable {
      call to update will always be delivered (although it might be delayed up to the
      specified amount of seconds).
      */
-    public func debounce(seconds: NSTimeInterval) -> Observable<T> {
+    public func debounce(_ seconds: TimeInterval) -> Observable<T> {
         let observable = Observable<T>()
-        var lastCalled: NSDate?
+        var lastCalled: Date?
         
         subscribe { value in
-            let currentTime = NSDate()
-            func updateIfNeeded(observable: Observable<T>) -> T -> Void {
+            let currentTime = Date()
+            func updateIfNeeded(_ observable: Observable<T>) -> (T) -> Void {
                 return { value in
                     let timeSinceLastCall = lastCalled?.timeIntervalSinceNow
                     if timeSinceLastCall == nil || timeSinceLastCall <= -seconds {
                         // no update before or update outside of debounce window
-                        lastCalled = NSDate()
+                        lastCalled = Date()
                         observable.update(value)
                     } else {
                         // skip result if there was a newer result
-                        if currentTime.compare(lastCalled!) == .OrderedDescending {
+                        if currentTime.compare(lastCalled!) == .orderedDescending {
                             let s = Observable<T>()
                             s.delay(seconds - timeSinceLastCall!).subscribe(updateIfNeeded(observable))
-                            s.update(value)
+                          s.update(value)
                         }
                     }
                 }

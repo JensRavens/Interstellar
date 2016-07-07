@@ -13,18 +13,18 @@ class SignalTests: XCTestCase {
     
     func greeter(subject: String) -> Result<String> {
         if subject.characters.count > 0 {
-            return .Success("Hello \(subject)")
+            return .success("Hello \(subject)")
         } else {
             let error: NSError = NSError(domain: "No one to greet!", code: 404, userInfo: nil)
-            return .Error(error)
+            return .error(error)
         }
     }
     
-    func identity(a: String) -> Result<String> {
-        return .Success(a)
+    func identity(_ a: String) -> Result<String> {
+        return .success(a)
     }
     
-    func asyncIdentity(a: String, completion: Result<String>->Void) {
+    func asyncIdentity(a: String, completion: (Result<String>) -> Void) {
         completion(identity(a))
     }
     
@@ -54,12 +54,12 @@ class SignalTests: XCTestCase {
     
     func testSubscription() {
         let signal = Signal<String>()
-        let expectation = expectationWithDescription("subscription not completed")
+        let promise = expectation(withDescription:"subscription not completed")
         signal.next { a in
-            expectation.fulfill()
+            promise.fulfill()
         }
-        signal.update(Result(success:"Hello"))
-        waitForExpectationsWithTimeout(0.2, handler: nil)
+        signal.update(.success("Hello"))
+        waitForExpectations(withTimeout:0.2, handler: nil)
     }
     
     func testThrowingFunction() {
@@ -78,11 +78,11 @@ class SignalTests: XCTestCase {
         }
         
         let signal = Signal<Int>()
-        let expectation = expectationWithDescription("subscription not completed")
-        
-        signal.flatMap(throwing).error { _ in expectation.fulfill() }
-        signal.update(.Success(1))
-        
-        waitForExpectationsWithTimeout(0.2, handler: nil)
+        let promise = expectation(withDescription: "subscription not completed")
+
+        signal.flatMap(throwing).error { _ in promise.fulfill() }
+        signal.update(.success(1))
+
+        waitForExpectations(withTimeout: 0.2, handler: nil)
     }
 }

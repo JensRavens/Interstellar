@@ -7,19 +7,19 @@
 //
 
 public extension Observable where T : ResultType {
-    public func then<U>(transform: T.Value -> Result<U>) -> Observable<Result<U>> {
+    public func then<U>(_ transform: (T.Value) -> Result<U>) -> Observable<Result<U>> {
         return map { $0.result.flatMap(transform) }
     }
     
-    public func then<U>(transform: T.Value -> U) -> Observable<Result<U>> {
+    public func then<U>(_ transform: (T.Value) -> U) -> Observable<Result<U>> {
         return map { $0.result.map(transform) }
     }
     
-    public func then<U>(transform: T.Value throws -> U) -> Observable<Result<U>> {
+    public func then<U>(_ transform: (T.Value) throws -> U) -> Observable<Result<U>> {
         return map { $0.result.flatMap(transform) }
     }
     
-    public func next(block: T.Value -> Void) -> Observable<T> {
+    public func next(block: (T.Value) -> Void) -> Observable<T> {
         subscribe { result in
             if let value = result.value {
                 block(value)
@@ -28,7 +28,7 @@ public extension Observable where T : ResultType {
         return self
     }
     
-    public func error(block: ErrorType -> Void) -> Observable<T> {
+    public func error(block: (ErrorProtocol) -> Void) -> Observable<T> {
         subscribe { result in
             if let error = result.error {
                 block(error)

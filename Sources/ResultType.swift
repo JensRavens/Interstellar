@@ -9,26 +9,26 @@
 public protocol ResultType {
     associatedtype Value
     
-    var error: ErrorType? { get }
+    var error: ErrorProtocol? { get }
     var value: Value? { get }
     
     var result: Result<Value> { get }
 }
 
 extension Result {
-    public init(value: T?, error: ErrorType?) {
-        if let error = error {
-            self = Error(error)
+    public init(value: T?, error err: ErrorProtocol?) {
+        if let err = err {
+            self = .error(err)
         } else {
-            self = Success(value!)
+            self = .success(value!)
         }
     }
     
-    public init(block: Void throws -> T) {
+    public init(block: (Void) throws -> T) {
         do {
-            self = try Success(block())
+            self = try .success(block())
         } catch let e {
-            self = Error(e)
+            self = .error(e)
         }
     }
     
