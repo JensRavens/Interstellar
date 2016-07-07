@@ -8,6 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		2873E1191D0FF50B00CB521F /* Mutex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2DC41B1CC03E380055DC5C /* Mutex.swift */; };
+		287D98551D2EA22800AC8D5F /* DebounceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775E91C118FC9002E134D /* DebounceTests.swift */; };
+		287D98561D2EA22800AC8D5F /* DelayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775EA1C118FC9002E134D /* DelayTests.swift */; };
+		287D98571D2EA22800AC8D5F /* ThreadingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775EB1C118FC9002E134D /* ThreadingTests.swift */; };
+		287D98581D2EA22800AC8D5F /* WaitingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775EC1C118FC9002E134D /* WaitingTests.swift */; };
+		287D98591D2EA22B00AC8D5F /* ResultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775E51C118FBF002E134D /* ResultTests.swift */; };
+		287D985A1D2EA22B00AC8D5F /* SignalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775E61C118FBF002E134D /* SignalTests.swift */; };
+		287D985B1D2EA22B00AC8D5F /* ObservableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FFAF5071CBC11B400C60CCB /* ObservableTests.swift */; };
+		287D985C1D2EA22B00AC8D5F /* ResultObservableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FFAF5091CBC150200C60CCB /* ResultObservableTests.swift */; };
+		28B7916C1D2EA01300E92194 /* Interstellar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45DE51E81BF83F67009BC378 /* Interstellar.framework */; };
+		28BFC1FA1D2EA05400D6709D /* DebounceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775E91C118FC9002E134D /* DebounceTests.swift */; };
+		28BFC1FB1D2EA05400D6709D /* DelayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775EA1C118FC9002E134D /* DelayTests.swift */; };
+		28BFC1FC1D2EA05400D6709D /* ThreadingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775EB1C118FC9002E134D /* ThreadingTests.swift */; };
+		28BFC1FD1D2EA05400D6709D /* WaitingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775EC1C118FC9002E134D /* WaitingTests.swift */; };
+		28BFC1FE1D2EA05800D6709D /* ResultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775E51C118FBF002E134D /* ResultTests.swift */; };
+		28BFC1FF1D2EA05800D6709D /* SignalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775E61C118FBF002E134D /* SignalTests.swift */; };
+		28BFC2001D2EA05800D6709D /* ObservableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FFAF5071CBC11B400C60CCB /* ObservableTests.swift */; };
+		28BFC2011D2EA05800D6709D /* ResultObservableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FFAF5091CBC150200C60CCB /* ResultObservableTests.swift */; };
+		28BFC20B1D2EA0EE00D6709D /* Interstellar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 244984ED1BFBE0A200C8FEE0 /* Interstellar.framework */; };
 		4EE634721CD0C23B007A602B /* Debounce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775D11C118F78002E134D /* Debounce.swift */; };
 		4EE634731CD0C23B007A602B /* Delay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775D21C118F78002E134D /* Delay.swift */; };
 		4EE634741CD0C23B007A602B /* Threading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775D31C118F78002E134D /* Threading.swift */; };
@@ -59,6 +77,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		28B7916D1D2EA01300E92194 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8F2B8D5B1B07A92C0063EB9C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 45DE51E71BF83F67009BC378;
+			remoteInfo = Interstellar_OSX;
+		};
+		28BFC20C1D2EA0EE00D6709D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8F2B8D5B1B07A92C0063EB9C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 244984DD1BFBE0A200C8FEE0;
+			remoteInfo = Interstellar_tvOS;
+		};
 		8F2B8D711B07A92C0063EB9C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8F2B8D5B1B07A92C0063EB9C /* Project object */;
@@ -70,11 +102,13 @@
 
 /* Begin PBXFileReference section */
 		244984ED1BFBE0A200C8FEE0 /* Interstellar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Interstellar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		28B791671D2EA01300E92194 /* Interstellar_macOS_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Interstellar_macOS_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		28BFC2061D2EA0EE00D6709D /* Interstellar_tvOS_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Interstellar_tvOS_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4583FA021BF99EE60093BFFE /* Interstellar.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Interstellar.playground; sourceTree = "<group>"; };
 		45DE51E81BF83F67009BC378 /* Interstellar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Interstellar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EE6346A1CD0C18E007A602B /* Interstellar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Interstellar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F2B8D641B07A92C0063EB9C /* Interstellar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Interstellar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8F2B8D6F1B07A92C0063EB9C /* InterstellarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InterstellarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F2B8D6F1B07A92C0063EB9C /* Interstellar_iOS_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Interstellar_iOS_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F2DC41B1CC03E380055DC5C /* Mutex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Mutex.swift; path = Sources/Mutex.swift; sourceTree = SOURCE_ROOT; };
 		8F50D38E1C1A300A002F998A /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Observable.swift; path = Sources/Observable.swift; sourceTree = SOURCE_ROOT; };
 		8F50D3921C1A3870002F998A /* ResultType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResultType.swift; path = Sources/ResultType.swift; sourceTree = SOURCE_ROOT; };
@@ -103,6 +137,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28B791641D2EA01300E92194 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28B7916C1D2EA01300E92194 /* Interstellar.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28BFC2031D2EA0EE00D6709D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28BFC20B1D2EA0EE00D6709D /* Interstellar.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,10 +203,12 @@
 			isa = PBXGroup;
 			children = (
 				8F2B8D641B07A92C0063EB9C /* Interstellar.framework */,
-				8F2B8D6F1B07A92C0063EB9C /* InterstellarTests.xctest */,
+				8F2B8D6F1B07A92C0063EB9C /* Interstellar_iOS_Tests.xctest */,
 				45DE51E81BF83F67009BC378 /* Interstellar.framework */,
 				244984ED1BFBE0A200C8FEE0 /* Interstellar.framework */,
 				4EE6346A1CD0C18E007A602B /* Interstellar.framework */,
+				28B791671D2EA01300E92194 /* Interstellar_macOS_Tests.xctest */,
+				28BFC2061D2EA0EE00D6709D /* Interstellar_tvOS_Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -287,9 +339,45 @@
 			productReference = 244984ED1BFBE0A200C8FEE0 /* Interstellar.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		45DE51E71BF83F67009BC378 /* Interstellar_OSX */ = {
+		28B791661D2EA01300E92194 /* Interstellar_macOS_Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 45DE51ED1BF83F67009BC378 /* Build configuration list for PBXNativeTarget "Interstellar_OSX" */;
+			buildConfigurationList = 28B7916F1D2EA01300E92194 /* Build configuration list for PBXNativeTarget "Interstellar_macOS_Tests" */;
+			buildPhases = (
+				28B791631D2EA01300E92194 /* Sources */,
+				28B791641D2EA01300E92194 /* Frameworks */,
+				28B791651D2EA01300E92194 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				28B7916E1D2EA01300E92194 /* PBXTargetDependency */,
+			);
+			name = Interstellar_macOS_Tests;
+			productName = Interstellar_macOS_Tests;
+			productReference = 28B791671D2EA01300E92194 /* Interstellar_macOS_Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		28BFC2051D2EA0EE00D6709D /* Interstellar_tvOS_Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 28BFC20E1D2EA0EE00D6709D /* Build configuration list for PBXNativeTarget "Interstellar_tvOS_Tests" */;
+			buildPhases = (
+				28BFC2021D2EA0EE00D6709D /* Sources */,
+				28BFC2031D2EA0EE00D6709D /* Frameworks */,
+				28BFC2041D2EA0EE00D6709D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				28BFC20D1D2EA0EE00D6709D /* PBXTargetDependency */,
+			);
+			name = Interstellar_tvOS_Tests;
+			productName = Interstellar_tvOS_Tests;
+			productReference = 28BFC2061D2EA0EE00D6709D /* Interstellar_tvOS_Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		45DE51E71BF83F67009BC378 /* Interstellar_macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 45DE51ED1BF83F67009BC378 /* Build configuration list for PBXNativeTarget "Interstellar_macOS" */;
 			buildPhases = (
 				45DE51E31BF83F67009BC378 /* Sources */,
 				45DE51E41BF83F67009BC378 /* Frameworks */,
@@ -300,7 +388,7 @@
 			);
 			dependencies = (
 			);
-			name = Interstellar_OSX;
+			name = Interstellar_macOS;
 			productName = Interstellar_OSX;
 			productReference = 45DE51E81BF83F67009BC378 /* Interstellar.framework */;
 			productType = "com.apple.product-type.framework";
@@ -341,9 +429,9 @@
 			productReference = 8F2B8D641B07A92C0063EB9C /* Interstellar.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		8F2B8D6E1B07A92C0063EB9C /* InterstellarTests */ = {
+		8F2B8D6E1B07A92C0063EB9C /* Interstellar_iOS_Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8F2B8D7D1B07A92C0063EB9C /* Build configuration list for PBXNativeTarget "InterstellarTests" */;
+			buildConfigurationList = 8F2B8D7D1B07A92C0063EB9C /* Build configuration list for PBXNativeTarget "Interstellar_iOS_Tests" */;
 			buildPhases = (
 				8F2B8D6B1B07A92C0063EB9C /* Sources */,
 				8F2B8D6C1B07A92C0063EB9C /* Frameworks */,
@@ -354,9 +442,9 @@
 			dependencies = (
 				8F2B8D721B07A92C0063EB9C /* PBXTargetDependency */,
 			);
-			name = InterstellarTests;
+			name = Interstellar_iOS_Tests;
 			productName = InterstellarTests;
-			productReference = 8F2B8D6F1B07A92C0063EB9C /* InterstellarTests.xctest */;
+			productReference = 8F2B8D6F1B07A92C0063EB9C /* Interstellar_iOS_Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -365,7 +453,7 @@
 		8F2B8D5B1B07A92C0063EB9C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0710;
+				LastSwiftUpdateCheck = 0800;
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "nerdgeschoss GmbH";
 				TargetAttributes = {
@@ -377,9 +465,11 @@
 					};
 					8F2B8D631B07A92C0063EB9C = {
 						CreatedOnToolsVersion = 6.3.1;
+						LastSwiftMigration = 0800;
 					};
 					8F2B8D6E1B07A92C0063EB9C = {
 						CreatedOnToolsVersion = 6.3.1;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -396,16 +486,32 @@
 			projectRoot = "";
 			targets = (
 				8F2B8D631B07A92C0063EB9C /* Interstellar_iOS */,
-				45DE51E71BF83F67009BC378 /* Interstellar_OSX */,
+				45DE51E71BF83F67009BC378 /* Interstellar_macOS */,
 				244984DD1BFBE0A200C8FEE0 /* Interstellar_tvOS */,
 				4EE634691CD0C18E007A602B /* Interstellar_watchOS */,
-				8F2B8D6E1B07A92C0063EB9C /* InterstellarTests */,
+				8F2B8D6E1B07A92C0063EB9C /* Interstellar_iOS_Tests */,
+				28B791661D2EA01300E92194 /* Interstellar_macOS_Tests */,
+				28BFC2051D2EA0EE00D6709D /* Interstellar_tvOS_Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		244984E91BFBE0A200C8FEE0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28B791651D2EA01300E92194 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28BFC2041D2EA0EE00D6709D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -457,6 +563,36 @@
 				8F4D98581C1B1E68009A91E5 /* Observable+Result.swift in Sources */,
 				8F5775D71C118F78002E134D /* Debounce.swift in Sources */,
 				8F5775D01C118F6B002E134D /* Signal.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28B791631D2EA01300E92194 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28BFC2001D2EA05800D6709D /* ObservableTests.swift in Sources */,
+				28BFC1FF1D2EA05800D6709D /* SignalTests.swift in Sources */,
+				28BFC2011D2EA05800D6709D /* ResultObservableTests.swift in Sources */,
+				28BFC1FE1D2EA05800D6709D /* ResultTests.swift in Sources */,
+				28BFC1FC1D2EA05400D6709D /* ThreadingTests.swift in Sources */,
+				28BFC1FA1D2EA05400D6709D /* DebounceTests.swift in Sources */,
+				28BFC1FB1D2EA05400D6709D /* DelayTests.swift in Sources */,
+				28BFC1FD1D2EA05400D6709D /* WaitingTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28BFC2021D2EA0EE00D6709D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				287D98551D2EA22800AC8D5F /* DebounceTests.swift in Sources */,
+				287D985B1D2EA22B00AC8D5F /* ObservableTests.swift in Sources */,
+				287D98571D2EA22800AC8D5F /* ThreadingTests.swift in Sources */,
+				287D98561D2EA22800AC8D5F /* DelayTests.swift in Sources */,
+				287D98591D2EA22B00AC8D5F /* ResultTests.swift in Sources */,
+				287D985C1D2EA22B00AC8D5F /* ResultObservableTests.swift in Sources */,
+				287D98581D2EA22800AC8D5F /* WaitingTests.swift in Sources */,
+				287D985A1D2EA22B00AC8D5F /* SignalTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -529,6 +665,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		28B7916E1D2EA01300E92194 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 45DE51E71BF83F67009BC378 /* Interstellar_macOS */;
+			targetProxy = 28B7916D1D2EA01300E92194 /* PBXContainerItemProxy */;
+		};
+		28BFC20D1D2EA0EE00D6709D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 244984DD1BFBE0A200C8FEE0 /* Interstellar_tvOS */;
+			targetProxy = 28BFC20C1D2EA0EE00D6709D /* PBXContainerItemProxy */;
+		};
 		8F2B8D721B07A92C0063EB9C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 8F2B8D631B07A92C0063EB9C /* Interstellar_iOS */;
@@ -578,6 +724,76 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Release;
+		};
+		28B791701D2EA01300E92194 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				INFOPLIST_FILE = Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = "de.nerdgeschoss.Interstellar-macOS-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		28B791711D2EA01300E92194 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = "de.nerdgeschoss.Interstellar-macOS-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		28BFC20F1D2EA0EE00D6709D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				INFOPLIST_FILE = Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "de.nerdgeschoss.Interstellar-tvOS-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.0;
+				TVOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Debug;
+		};
+		28BFC2101D2EA0EE00D6709D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				INFOPLIST_FILE = Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "de.nerdgeschoss.Interstellar-tvOS-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				TVOS_DEPLOYMENT_TARGET = 10.0;
 			};
 			name = Release;
 		};
@@ -850,7 +1066,25 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		45DE51ED1BF83F67009BC378 /* Build configuration list for PBXNativeTarget "Interstellar_OSX" */ = {
+		28B7916F1D2EA01300E92194 /* Build configuration list for PBXNativeTarget "Interstellar_macOS_Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				28B791701D2EA01300E92194 /* Debug */,
+				28B791711D2EA01300E92194 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		28BFC20E1D2EA0EE00D6709D /* Build configuration list for PBXNativeTarget "Interstellar_tvOS_Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				28BFC20F1D2EA0EE00D6709D /* Debug */,
+				28BFC2101D2EA0EE00D6709D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		45DE51ED1BF83F67009BC378 /* Build configuration list for PBXNativeTarget "Interstellar_macOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				45DE51EE1BF83F67009BC378 /* Debug */,
@@ -886,7 +1120,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8F2B8D7D1B07A92C0063EB9C /* Build configuration list for PBXNativeTarget "InterstellarTests" */ = {
+		8F2B8D7D1B07A92C0063EB9C /* Build configuration list for PBXNativeTarget "Interstellar_iOS_Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8F2B8D7E1B07A92C0063EB9C /* Debug */,

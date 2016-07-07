@@ -33,8 +33,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8F2B8D6E1B07A92C0063EB9C"
-               BuildableName = "InterstellarTests.xctest"
-               BlueprintName = "InterstellarTests"
+               BuildableName = "Interstellar_iOS_Tests.xctest"
+               BlueprintName = "Interstellar_iOS_Tests"
                ReferencedContainer = "container:Interstellar.xcodeproj">
             </BuildableReference>
          </TestableReference>
