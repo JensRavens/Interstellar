@@ -26,14 +26,14 @@ public extension Signal {
     #if os(Linux)
     #else
     /**
-        Creates a new signal that is only firing once per specified time interval. The last 
+        Creates a new signal that is only firing once per specified time interval. The last
         call to update will always be delivered (although it might be delayed up to the
         specified amount of seconds).
     */
     public func debounce(_ seconds: TimeInterval) -> Signal<T> {
         let signal = Signal<T>()
         var lastCalled: Date?
-        
+
         subscribe { result in
             let currentTime = Date()
             func updateIfNeeded(_ signal: Signal<T>) -> (Result<T>) -> Void {
@@ -55,7 +55,7 @@ public extension Signal {
             }
             updateIfNeeded(signal)(result)
         }
-        
+
         return signal
     }
     #endif
@@ -72,7 +72,7 @@ public extension Observable {
     public func debounce(_ seconds: TimeInterval) -> Observable<T> {
         let observable = Observable<T>()
         var lastCalled: Date?
-        
+
         subscribe { value in
             let currentTime = Date()
             func updateIfNeeded(_ observable: Observable<T>) -> (T) -> Void {
@@ -94,7 +94,7 @@ public extension Observable {
             }
             updateIfNeeded(observable)(value)
         }
-        
+
         return observable
     }
     #endif

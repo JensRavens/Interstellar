@@ -30,7 +30,7 @@ class ThreadingTests: XCTestCase {
         }
         waitForExpectations(withTimeout:0.1, handler: nil)
     }
-    
+
     func testDispatchToSelectedQueue() {
         let promise = expectation(withDescription:"thread called")
         let s = Signal<String>()
@@ -42,11 +42,11 @@ class ThreadingTests: XCTestCase {
         s.update("hello")
         waitForExpectations(withTimeout: 0.1, handler: nil)
     }
-    
+
     func testObservable() {
         let observable = Observable<String>()
         let log: (String) -> Void = { print($0) }
         observable.flatMap(Queue.main).subscribe(log)
-        
+
     }
 }

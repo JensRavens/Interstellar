@@ -23,26 +23,26 @@ class WaitingTests: XCTestCase {
     }
 
     func testWaitingForSuccess() {
-        let greeting = try! Signal("hello")
+        let greeting = try? Signal("hello")
             .flatMap(self.asyncOperation(0.2))
             .wait()
         XCTAssertEqual(greeting, "hello")
     }
-    
+
     func testWithinTimeoutForSuccess() {
-        let greeting = try! Signal("hello")
+        let greeting = try? Signal("hello")
             .flatMap(self.asyncOperation(0.2))
             .wait(0.3)
         XCTAssertEqual(greeting, "hello")
     }
-    
+
     func testWithinTimeoutForFail() {
         let greeting = try? Signal("hello")
             .flatMap(self.asyncOperation(0.2))
             .wait(0.1)
         XCTAssertEqual(greeting, nil)
     }
-    
+
     func testWaitingForFail() {
         do {
             let _ = try Signal("hello")
@@ -51,7 +51,7 @@ class WaitingTests: XCTestCase {
                         .wait()
             XCTFail("This place should never be reached due to an error.")
         } catch {
-            
+
         }
     }
 }

@@ -55,22 +55,22 @@ public enum Result<T>: ResultType {
         case let .error(error): return .error(error)
         }
     }
-    
+
     /**
         Transform a result into another result using a function. If the result was an error,
         the function will not be executed and the error returned instead.
     */
-    public func map<U>(_ f:(T, ((U) -> Void)) -> Void) -> ((Result<U>) -> Void) -> Void {
+    public func map<U>(_ f: (T, ((U) -> Void)) -> Void) -> ((Result<U>) -> Void) -> Void {
         return { g in
             switch self {
-            case let .success(v): f(v){ transformed in
+            case let .success(v): f(v) { transformed in
                     g(.success(transformed))
                 }
             case let .error(error): g(.error(error))
             }
         }
     }
-    
+
     /**
         Transform a result into another result using a function. If the result was an error,
         the function will not be executed and the error returned instead.
@@ -81,7 +81,7 @@ public enum Result<T>: ResultType {
         case let .error(error): return .error(error)
         }
     }
-    
+
     /**
     Transform a result into another result using a function. If the result was an error,
     the function will not be executed and the error returned instead.
@@ -99,7 +99,7 @@ public enum Result<T>: ResultType {
         Transform a result into another result using a function. If the result was an error,
         the function will not be executed and the error returned instead.
     */
-    public func flatMap<U>(_ f:(T, ((Result<U>) -> Void)) -> Void) -> ((Result<U>) -> Void) -> Void {
+    public func flatMap<U>(_ f: (T, ((Result<U>) -> Void)) -> Void) -> ((Result<U>) -> Void) -> Void {
         return { g in
             switch self {
             case let .success(v): f(v, g)
@@ -107,25 +107,25 @@ public enum Result<T>: ResultType {
             }
         }
     }
-    
-    /** 
+
+    /**
         Call a function with the result as an argument. Use this if the function should be
         executed no matter if the result was a success or not.
     */
     public func ensure<U>(_  f: @noescape (Result<T>) -> Result<U>) -> Result<U> {
         return f(self)
     }
-    
+
     /**
         Call a function with the result as an argument. Use this if the function should be
         executed no matter if the result was a success or not.
     */
-    public func ensure<U>(_ f:(Result<T>, ((Result<U>) -> Void)) -> Void) -> ((Result<U>) -> Void) -> Void {
+    public func ensure<U>(_ f: (Result<T>, ((Result<U>) -> Void)) -> Void) -> ((Result<U>) -> Void) -> Void {
         return { g in
             f(self, g)
         }
     }
-    
+
     /**
         Direct access to the content of the result as an optional. If the result was a success,
         the optional will contain the value of the result.
@@ -136,7 +136,7 @@ public enum Result<T>: ResultType {
         case .error(_): return nil
         }
     }
-    
+
     /**
         Direct access to the error of the result as an optional. If the result was an error,
         the optional will contain the error of the result.
@@ -147,7 +147,7 @@ public enum Result<T>: ResultType {
         case error(let x): return x
         }
     }
-    
+
     /**
         Access the value of this result. If the result contains an error, that error is thrown.
     */
@@ -158,7 +158,6 @@ public enum Result<T>: ResultType {
         }
     }
 }
-
 
 /**
     Provide a default value for failed results.

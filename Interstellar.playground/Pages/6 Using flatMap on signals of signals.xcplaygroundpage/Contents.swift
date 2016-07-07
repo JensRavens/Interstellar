@@ -3,7 +3,7 @@
 import Foundation
 import Interstellar
 
-/*: 
+/*:
 It's your first day at Space Inc, and you've been given the job to write some code
 to refuel an orbiting space station.  There's already been some code written, and
 at the center of this code are Signals.

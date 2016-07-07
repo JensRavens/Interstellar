@@ -8,10 +8,10 @@
 
 public protocol ResultType {
     associatedtype Value
-    
+
     var error: ErrorProtocol? { get }
     var value: Value? { get }
-    
+
     var result: Result<Value> { get }
 }
 
@@ -23,7 +23,7 @@ extension Result {
             self = .success(value!)
         }
     }
-    
+
     public init(block: (Void) throws -> T) {
         do {
             self = try .success(block())
@@ -31,7 +31,7 @@ extension Result {
             self = .error(e)
         }
     }
-    
+
     public var result: Result<T> {
         return self
     }

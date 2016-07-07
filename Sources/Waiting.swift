@@ -33,7 +33,7 @@ public extension Signal {
     #if os(Linux)
     #else
     /**
-        Wait until the signal updates the next time. This will block the current thread until there 
+        Wait until the signal updates the next time. This will block the current thread until there
         is an error or a successfull value. In case of an error, the error will be thrown.
     */
     public func wait(_ timeout: TimeInterval? = nil) throws -> T {
@@ -65,8 +65,8 @@ public extension Observable {
     #if os(Linux)
     #else
     /**
-     Wait until the observable updates the next time. This will block the current thread until 
-     there is a new value.
+        Wait until the observable updates the next time. This will block the current thread until
+        there is a new value.
      */
     public func wait(_ timeout: TimeInterval? = nil) throws -> T {
         let group = DispatchGroup()

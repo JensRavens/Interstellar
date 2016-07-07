@@ -10,25 +10,25 @@ import XCTest
 import Interstellar
 
 class ObservableTests: XCTestCase {
-    
+
     func greeter(_ subject: String) -> String {
         return "Hello \(subject)"
     }
-    
+
     func greetLater(subject: String) -> Observable<String> {
         return Observable("Hello \(subject)")
     }
-    
+
     func testMappingAnObservable() {
         let greeting = Observable("World").map(greeter)
         XCTAssertEqual(greeting.peek(), "Hello World")
     }
-    
+
     func testFlatMappingObservable() {
         let greeting = Observable("World").flatMap(greetLater)
         XCTAssertEqual(greeting.peek(), "Hello World")
     }
-    
+
     func testSubscription() {
         let observable = Observable<String>()
         let promise = expectation(withDescription: "subscription not completed")
@@ -38,7 +38,7 @@ class ObservableTests: XCTestCase {
         observable.update("Hello")
         waitForExpectations(withTimeout: 0.2, handler: nil)
     }
-    
+
     func testOnceSubscription() {
         let observable = Observable<String>(options:[.Once])
         var count = 0
@@ -49,7 +49,7 @@ class ObservableTests: XCTestCase {
         observable.update("Hello")
         XCTAssertEqual(count, 1)
     }
-    
+
     func testOnceSubscriptionAfterCompletion() {
         let observable = Observable<String>("Hello", options:[.Once])
         var count = 0
@@ -59,14 +59,14 @@ class ObservableTests: XCTestCase {
         observable.update("Hello")
         XCTAssertEqual(count, 1)
     }
-    
+
     func testLiveSubscriptions() {
         let observable = Observable<String>("Hello", options:[.NoInitialValue])
         XCTAssertNil(observable.peek())
         observable.update("Hello")
         XCTAssertNil(observable.peek())
     }
-    
+
     func testUnsubscribe() {
         let observable = Observable<String>()
         var count = 0

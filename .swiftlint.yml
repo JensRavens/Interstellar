@@ -1,0 +1,7 @@
+line_length: 110
+
+variable_name:
+  min_length: 1
+
+type_name:
+  min_length: 1

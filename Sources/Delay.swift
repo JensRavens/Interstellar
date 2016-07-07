@@ -26,7 +26,9 @@ public extension Signal {
     #if os(Linux)
     #else
     /**
-        Creates a new signal that mirrors the original signal but is delayed by x seconds. If no queue is specified, the new signal will call it's observers and transforms on the main queue.
+      Creates a new signal that mirrors the original signal but is delayed by x seconds.
+      If no queue is specified, the new signal will call it's observers and transforms
+      on the main queue.
     */
     public func delay(_ seconds: TimeInterval, queue: DispatchQueue = DispatchQueue.main) -> Signal<T> {
         let signal = Signal<T>()
@@ -44,7 +46,9 @@ public extension Observable {
     #if os(Linux)
     #else
     /**
-     Creates a new signal that mirrors the original observable but is delayed by x seconds. If no queue is specified, the new observable will call it's observers and transforms on the main queue.
+      Creates a new signal that mirrors the original observable but is delayed by x seconds.
+      If no queue is specified, the new observable will call it's observers and transforms
+      on the main queue.
      */
     public func delay(_ seconds: TimeInterval, queue: DispatchQueue = DispatchQueue.main) -> Observable<T> {
         let observable = Observable<T>()

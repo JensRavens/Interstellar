@@ -19,7 +19,7 @@ class DelayTests: XCTestCase {
         }
         waitForExpectations(withTimeout: 0.2, handler: nil)
     }
-    
+
     func testDispatchToSelectedQueue() {
         let queue = DispatchQueue.global()
         let promise = expectation(withDescription: "delay called")
@@ -32,7 +32,7 @@ class DelayTests: XCTestCase {
         s.update("hello")
         waitForExpectations(withTimeout: 0.2, handler: nil)
     }
-    
+
     func testDispatchAfterGivenTime() {
         // wait 0.2 seconds and check if action from 0.1 seconds already happened
         var value: String? = nil

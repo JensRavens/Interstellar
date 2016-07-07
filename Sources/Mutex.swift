@@ -15,15 +15,15 @@ import Foundation
 
 internal class Mutex {
     private var mutex = pthread_mutex_t()
-    
+
     init() {
         pthread_mutex_init(&mutex, nil)
     }
-    
+
     deinit {
         pthread_mutex_destroy(&mutex)
     }
-    
+
     func lock() -> Int32 {
         return pthread_mutex_lock(&mutex)
     }
@@ -32,7 +32,7 @@ internal class Mutex {
     func unlock() -> Int32 {
         return pthread_mutex_unlock(&mutex)
     }
-    
+
     func lock(closure: @noescape () -> Void) {
         let status = lock()
         assert(status == 0, "pthread_mutex_lock: \(strerror(status))")

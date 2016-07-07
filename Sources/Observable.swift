@@ -11,26 +11,26 @@ import Foundation
 public struct ObservingOptions: OptionSet {
     public let rawValue: Int
     public init(rawValue: Int) { self.rawValue = rawValue }
-    
+
     public static let NoInitialValue = ObservingOptions(rawValue: 1)
     public static let Once = ObservingOptions(rawValue: 2)
 }
 
 public final class Observable<T> {
-    private typealias Observer = (T)->Void
+    private typealias Observer = (T) -> Void
     private typealias ObserverTokenType = ObserverToken<T>
     private var observers = [ObserverTokenType: Observer]()
     private var lastValue: T?
     public let options: ObservingOptions
     private let mutex = Mutex()
-    
+
     public init(options: ObservingOptions = []) {
         self.options = options
     }
-    
+
     public init(_ value: T, options: ObservingOptions = []) {
         self.options = options
-        if !options.contains(.NoInitialValue){
+        if !options.contains(.NoInitialValue) {
             lastValue = value
         }
     }
@@ -50,7 +50,7 @@ public final class Observable<T> {
         }
         return token
     }
-    
+
     public func update(_ value: T) {
         mutex.lock {
             if !options.contains(.NoInitialValue) {
@@ -64,11 +64,11 @@ public final class Observable<T> {
             }
         }
     }
-    
+
     public func peek() -> T? {
         return lastValue
     }
-    
+
     private func nextTokenHash() -> Int {
         return (observers.keys.map({$0.hashValue}).max() ?? -1) + 1
     }
@@ -95,7 +95,7 @@ public final class ObserverToken<T>: Hashable {
     }
 }
 
-public func ==<T>(lhs: ObserverToken<T>, rhs: ObserverToken<T>) -> Bool {
+public func == <T>(lhs: ObserverToken<T>, rhs: ObserverToken<T>) -> Bool {
     return lhs.hashValue == rhs.hashValue
 }
 
@@ -105,7 +105,7 @@ extension Observable {
         subscribe { observable.update(transform($0)) }
         return observable
     }
-    
+
     public func map<U>(_ transform: (T) throws -> U) -> Observable<Result<U>> {
         let observable = Observable<Result<U>>(options: options)
         subscribe { value in
@@ -113,7 +113,7 @@ extension Observable {
         }
         return observable
     }
-    
+
     public func flatMap<U>(_ transform: (T) -> Observable<U>) -> Observable<U> {
         let observable = Observable<U>(options: options)
         subscribe { transform($0).subscribe(observable.update) }
