@@ -1,9 +1,6 @@
 language: objective-c
 osx_image: xcode8
 
-install:
-  - ./Support/install_swiftlint.sh
-
 env:
   global:
     - LANG=en_US.UTF-8
@@ -31,6 +28,7 @@ env:
 
 script:
   - set -o pipefail
+  - swiftlint
   - xcodebuild -version
   - xcodebuild -showsdks
 
