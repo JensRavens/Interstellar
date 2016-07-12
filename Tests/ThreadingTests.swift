@@ -8,7 +8,7 @@
 
 import Foundation
 import XCTest
-@testable import Interstellar
+import Interstellar
 
 
 func mainTest(_ expectation: XCTestExpectation?) -> (Result<String>, (Result<String>) -> Void) -> Void {

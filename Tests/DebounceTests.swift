@@ -8,7 +8,7 @@
 
 import Foundation
 import XCTest
-@testable import Interstellar
+import Interstellar
 
 class DebounceTests: XCTestCase {
 
