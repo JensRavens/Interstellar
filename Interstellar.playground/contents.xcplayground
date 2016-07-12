@@ -2,11 +2,7 @@
 <playground version='6.0' target-platform='osx' display-mode='rendered'>
     <pages>
         <page name='0 Preface'/>
-        <page name='1 Creating and updating a signal'/>
-        <page name='2 Mapping and transforming signals'/>
-        <page name='3 Use functions as transforms'/>
-        <page name='4 Handle errors in sequences of functions'/>
-        <page name='5 This also works for asynchronous functions'/>
-        <page name='6 Using flatMap on signals of signals'/>
+        <page name='1 Asynchronous Transforms'/>
+        <page name='2 Error Handling'/>
     </pages>
 </playground>
