@@ -27,7 +27,6 @@ env:
     - DESTINATION="OS=3.0,name=Apple Watch - 38mm"  SIMULATOR="Apple Watch - 38mm" SCHEME="$WATCHOS_FRAMEWORK_SCHEME" SDK="$WATCHOS_SDK" RUN_TESTS="NO"
 
 before_script:
-  - instruments -s devices
   - export IOS_SIMULATOR_UDID=`xcrun simctl list devices | grep "$SIMULATOR (" | awk -F '[ ]' '{ print $7 $8 $9 }' | awk -F '[\(]' '{print $2}' | sed 's/.$//'`
   - echo $IOS_SIMULATOR_UDID
   - open -a "simulator" --args -CurrentDeviceUDID $IOS_SIMULATOR_UDID
