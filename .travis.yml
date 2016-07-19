@@ -15,20 +15,20 @@ env:
     - TVOS_SDK=appletvsimulator10.0
     - WATCHOS_SDK=watchsimulator3.0
   matrix:
-    - DESTINATION="OS=10.0,name=iPhone 5"           SIMULATOR="iPhone 5 (10.0)"                             SCHEME="$IOS_FRAMEWORK_SCHEME"     SDK="$IOS_SDK"     RUN_TESTS="YES"
-    - DESTINATION="OS=10.0,name=iPhone 5S"          SIMULATOR="iPhone 5s (10.0)"                            SCHEME="$IOS_FRAMEWORK_SCHEME"     SDK="$IOS_SDK"     RUN_TESTS="YES"
-    - DESTINATION="OS=10.0,name=iPhone SE"          SIMULATOR="iPhone SE (10.0)"                            SCHEME="$IOS_FRAMEWORK_SCHEME"     SDK="$IOS_SDK"     RUN_TESTS="YES"
-    - DESTINATION="OS=10.0,name=iPhone 6"           SIMULATOR="iPhone 6 (10.0)"                             SCHEME="$IOS_FRAMEWORK_SCHEME"     SDK="$IOS_SDK"     RUN_TESTS="YES"
-    - DESTINATION="OS=10.0,name=iPhone 6 Plus"      SIMULATOR="iPhone 6 Plus (10.0)"                        SCHEME="$IOS_FRAMEWORK_SCHEME"     SDK="$IOS_SDK"     RUN_TESTS="YES"
-    - DESTINATION="OS=10.0,name=iPhone 6S"          SIMULATOR="iPhone 6s (10.0)"                            SCHEME="$IOS_FRAMEWORK_SCHEME"     SDK="$IOS_SDK"     RUN_TESTS="YES"
-    - DESTINATION="OS=10.0,name=iPhone 6S Plus"     SIMULATOR="iPhone 6s Plus (10.0)"                       SCHEME="$IOS_FRAMEWORK_SCHEME"     SDK="$IOS_SDK"     RUN_TESTS="YES"
+    - DESTINATION="OS=10.0,name=iPhone 5"           SIMULATOR="iPhone 5"                             SCHEME="$IOS_FRAMEWORK_SCHEME"     SDK="$IOS_SDK"     RUN_TESTS="YES"
+    - DESTINATION="OS=10.0,name=iPhone 5S"          SIMULATOR="iPhone 5s"                            SCHEME="$IOS_FRAMEWORK_SCHEME"     SDK="$IOS_SDK"     RUN_TESTS="YES"
+    - DESTINATION="OS=10.0,name=iPhone SE"          SIMULATOR="iPhone SE"                            SCHEME="$IOS_FRAMEWORK_SCHEME"     SDK="$IOS_SDK"     RUN_TESTS="YES"
+    - DESTINATION="OS=10.0,name=iPhone 6"           SIMULATOR="iPhone 6"                             SCHEME="$IOS_FRAMEWORK_SCHEME"     SDK="$IOS_SDK"     RUN_TESTS="YES"
+    - DESTINATION="OS=10.0,name=iPhone 6 Plus"      SIMULATOR="iPhone 6 Plus"                        SCHEME="$IOS_FRAMEWORK_SCHEME"     SDK="$IOS_SDK"     RUN_TESTS="YES"
+    - DESTINATION="OS=10.0,name=iPhone 6S"          SIMULATOR="iPhone 6s"                            SCHEME="$IOS_FRAMEWORK_SCHEME"     SDK="$IOS_SDK"     RUN_TESTS="YES"
+    - DESTINATION="OS=10.0,name=iPhone 6S Plus"     SIMULATOR="iPhone 6s Plus"                       SCHEME="$IOS_FRAMEWORK_SCHEME"     SDK="$IOS_SDK"     RUN_TESTS="YES"
     - DESTINATION="arch=x86_64"                     SIMULATOR=""                                            SCHEME="$MACOS_FRAMEWORK_SCHEME"   SDK="$MACOS_SDK"   RUN_TESTS="YES"
-    - DESTINATION="OS=10.0,name=Apple TV 1080p"     SIMULATOR="Apple TV 1080p (10.0)"                       SCHEME="$TVOS_FRAMEWORK_SCHEME"    SDK="$TVOS_SDK"    RUN_TESTS="YES"
-    - DESTINATION="OS=3.0,name=Apple Watch - 38mm"  SIMULATOR="iPhone 6s (10.0) + Apple Watch - 38mm (3.0)" SCHEME="$WATCHOS_FRAMEWORK_SCHEME" SDK="$WATCHOS_SDK" RUN_TESTS="NO"
+    - DESTINATION="OS=10.0,name=Apple TV 1080p"     SIMULATOR="Apple TV 1080p"                       SCHEME="$TVOS_FRAMEWORK_SCHEME"    SDK="$TVOS_SDK"    RUN_TESTS="YES"
+    - DESTINATION="OS=3.0,name=Apple Watch - 38mm"  SIMULATOR="Apple Watch - 38mm" SCHEME="$WATCHOS_FRAMEWORK_SCHEME" SDK="$WATCHOS_SDK" RUN_TESTS="NO"
 
 before_script:
   - instruments -s devices
-  - export IOS_SIMULATOR_UDID=`instruments -s devices | grep "$SIMULATOR" | awk -F '[ ]' '{print $4}' | awk -F '[\[]' '{print $2}' | sed 's/.$//'`
+  - export IOS_SIMULATOR_UDID=`xcrun simctl list devices | grep "$SIMULATOR (" | awk -F '[ ]' '{ print $7 $8 $9 }' | awk -F '[\(]' '{print $2}' | sed 's/.$//'`
   - echo $IOS_SIMULATOR_UDID
   - open -a "simulator" --args -CurrentDeviceUDID $IOS_SIMULATOR_UDID
 
