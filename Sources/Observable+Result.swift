@@ -19,7 +19,7 @@ public extension Observable where T : ResultType {
         return map { $0.result.flatMap(transform) }
     }
 
-    public func next(block: (T.Value) -> Void) -> Observable<T> {
+    public func next(_ block: (T.Value) -> Void) -> Observable<T> {
         subscribe { result in
             if let value = result.value {
                 block(value)
@@ -28,7 +28,7 @@ public extension Observable where T : ResultType {
         return self
     }
 
-    public func error(block: (ErrorProtocol) -> Void) -> Observable<T> {
+    public func error(_ block: (ErrorProtocol) -> Void) -> Observable<T> {
         subscribe { result in
             if let error = result.error {
                 block(error)

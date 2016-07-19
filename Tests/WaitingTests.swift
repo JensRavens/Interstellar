@@ -18,7 +18,7 @@ class WaitingTests: XCTestCase {
         }
     }
 
-    func fail<T>(t: T) throws -> T {
+    func fail<T>(_ t: T) throws -> T {
         throw NSError(domain: "Error", code: 400, userInfo: nil)
     }
 

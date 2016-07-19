@@ -15,7 +15,7 @@ class ObservableTests: XCTestCase {
         return "Hello \(subject)"
     }
 
-    func greetLater(subject: String) -> Observable<String> {
+    func greetLater(_ subject: String) -> Observable<String> {
         return Observable("Hello \(subject)")
     }
 
@@ -31,12 +31,12 @@ class ObservableTests: XCTestCase {
 
     func testSubscription() {
         let observable = Observable<String>()
-        let promise = expectation(withDescription: "subscription not completed")
+        let promise = expectation(description: "subscription not completed")
         observable.subscribe { a in
             promise.fulfill()
         }
         observable.update("Hello")
-        waitForExpectations(withTimeout: 0.2, handler: nil)
+        waitForExpectations(timeout: 0.2, handler: nil)
     }
 
     func testOnceSubscription() {

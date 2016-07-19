@@ -20,7 +20,7 @@ class ResultTests: XCTestCase {
         }
     }
 
-    func throwingGreeter(subject: String) throws -> String {
+    func throwingGreeter(_ subject: String) throws -> String {
         return try greeter(subject).get()
     }
 

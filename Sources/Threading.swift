@@ -31,7 +31,7 @@ public final class Thread {
     #if os(Linux)
     #else
     /// Transform a signal to the main queue
-    public static func main<T>(a: T, completion: (T) -> Void) {
+    public static func main<T>(_ a: T, completion: (T) -> Void) {
         queue(DispatchQueue.main)(a, completion)
     }
 
@@ -45,7 +45,7 @@ public final class Thread {
     }
 
     /// Transform the signal to a global background queue with priority default
-    public static func background<T>(a: T, completion: (T) -> Void) {
+    public static func background<T>(_ a: T, completion: (T) -> Void) {
         let q = DispatchQueue.global()
         q.async {
           completion(a)
@@ -58,7 +58,7 @@ public final class Queue {
     #if os(Linux)
     #else
     /// Transform an observable to the main queue
-    public static func main<T>(a: T) -> Observable<T> {
+    public static func main<T>(_ a: T) -> Observable<T> {
         //return queue(dispatch_get_main_queue())(a)
       return queue(DispatchQueue.main)(a)
     }
@@ -75,7 +75,7 @@ public final class Queue {
     }
 
     /// Transform the observable to a global background queue with priority default
-    public static func background<T>(a: T) -> Observable<T> {
+    public static func background<T>(_ a: T) -> Observable<T> {
         let q = DispatchQueue.global()
         return queue(q)(a)
     }

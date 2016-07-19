@@ -44,7 +44,7 @@ public final class Observable<T> {
             if !(options.contains(.Once) && lastValue != nil) {
                 observers[token] = observer
             }
-            if let value = lastValue where !options.contains(.NoInitialValue) {
+            if let value = lastValue, !options.contains(.NoInitialValue) {
                 observer(value)
             }
         }
@@ -73,7 +73,7 @@ public final class Observable<T> {
         return (observers.keys.map({$0.hashValue}).max() ?? -1) + 1
     }
 
-    private func unsubscribe(token: ObserverToken<T>) {
+    private func unsubscribe(_ token: ObserverToken<T>) {
         mutex.lock {
             observers[token] = nil
         }
@@ -91,7 +91,7 @@ public final class ObserverToken<T>: Hashable {
     }
 
     public func unsubscribe() {
-        observable?.unsubscribe(token: self)
+        observable?.unsubscribe(self)
     }
 }
 

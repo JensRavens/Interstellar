@@ -12,17 +12,17 @@ import Interstellar
 
 class DelayTests: XCTestCase {
     func testShouldDispatchToMainQueue() {
-      let promise = expectation(withDescription: "delay called")
+      let promise = expectation(description: "delay called")
         Signal("test").delay(0.1).subscribe { _ in
             XCTAssertTrue(Thread.isMainThread)
             promise.fulfill()
         }
-        waitForExpectations(withTimeout: 0.2, handler: nil)
+        waitForExpectations(timeout: 0.2, handler: nil)
     }
 
     func testDispatchToSelectedQueue() {
         let queue = DispatchQueue.global()
-        let promise = expectation(withDescription: "delay called")
+        let promise = expectation(description: "delay called")
         let s = Signal<String>()
         s.delay(0.1, queue: queue)
             .subscribe { _ in
@@ -30,13 +30,13 @@ class DelayTests: XCTestCase {
             promise.fulfill()
         }
         s.update("hello")
-        waitForExpectations(withTimeout: 0.2, handler: nil)
+        waitForExpectations(timeout: 0.2, handler: nil)
     }
 
     func testDispatchAfterGivenTime() {
         // wait 0.2 seconds and check if action from 0.1 seconds already happened
         var value: String? = nil
-        let promise = expectation(withDescription: "delay called")
+        let promise = expectation(description: "delay called")
         Signal("test").delay(0.2).subscribe { _ in
             XCTAssertEqual(value, "value")
             promise.fulfill()
@@ -46,6 +46,6 @@ class DelayTests: XCTestCase {
         queue.after(when: delayTime) {
             value = "value"
         }
-        waitForExpectations(withTimeout: 0.2, handler: nil)
+        waitForExpectations(timeout: 0.2, handler: nil)
     }
 }

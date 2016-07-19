@@ -461,11 +461,22 @@
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "nerdgeschoss GmbH";
 				TargetAttributes = {
+					244984DD1BFBE0A200C8FEE0 = {
+						LastSwiftMigration = 0800;
+					};
+					28B791661D2EA01300E92194 = {
+						LastSwiftMigration = 0800;
+					};
+					28BFC2051D2EA0EE00D6709D = {
+						LastSwiftMigration = 0800;
+					};
 					45DE51E71BF83F67009BC378 = {
 						CreatedOnToolsVersion = 7.1.1;
+						LastSwiftMigration = 0800;
 					};
 					4EE634691CD0C18E007A602B = {
 						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0800;
 					};
 					8F2B8D631B07A92C0063EB9C = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -763,6 +774,7 @@
 				SDKROOT = appletvos10.0;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
@@ -785,6 +797,7 @@
 				SDKROOT = appletvos10.0;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
@@ -880,6 +893,7 @@
 				SDKROOT = macosx10.12;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -902,6 +916,7 @@
 				SDKROOT = macosx10.12;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -922,6 +937,7 @@
 				PRODUCT_NAME = Interstellar;
 				SDKROOT = watchos3.0;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
@@ -944,6 +960,7 @@
 				SDKROOT = watchos3.0;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};

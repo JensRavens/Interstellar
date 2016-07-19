@@ -20,7 +20,7 @@ func mainTest(_ expectation: XCTestExpectation?) -> (Result<String>, (Result<Str
 
 class ThreadingTests: XCTestCase {
     func testShouldDispatchToMainQueue() {
-      let promise = expectation(withDescription:"thread called")
+      let promise = expectation(description: "thread called")
         let queue = DispatchQueue.global()
         queue.async {
             let s = Signal<String>()
@@ -28,11 +28,11 @@ class ThreadingTests: XCTestCase {
                      .ensure(mainTest(promise))
             s.update("hello")
         }
-        waitForExpectations(withTimeout:0.1, handler: nil)
+        waitForExpectations(timeout: 0.1, handler: nil)
     }
 
     func testDispatchToSelectedQueue() {
-        let promise = expectation(withDescription:"thread called")
+        let promise = expectation(description: "thread called")
         let s = Signal<String>()
         s.ensure(Thread.background)
         .subscribe { _ in
@@ -40,7 +40,7 @@ class ThreadingTests: XCTestCase {
             promise.fulfill()
         }
         s.update("hello")
-        waitForExpectations(withTimeout: 0.1, handler: nil)
+        waitForExpectations(timeout: 0.1, handler: nil)
     }
 
     func testObservable() {
