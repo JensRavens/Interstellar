@@ -27,6 +27,7 @@ env:
     - DESTINATION="OS=3.0,name=Apple Watch - 38mm"  SIMULATOR="iPhone 6s (10.0) + Apple Watch - 38mm (3.0)" SCHEME="$WATCHOS_FRAMEWORK_SCHEME" SDK="$WATCHOS_SDK" RUN_TESTS="NO"
 
 before_script:
+  - instruments -s devices
   - export IOS_SIMULATOR_UDID=`instruments -s devices | grep "$SIMULATOR" | awk -F '[ ]' '{print $4}' | awk -F '[\[]' '{print $2}' | sed 's/.$//'`
   - echo $IOS_SIMULATOR_UDID
   - open -a "simulator" --args -CurrentDeviceUDID $IOS_SIMULATOR_UDID
