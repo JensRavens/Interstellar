@@ -28,11 +28,7 @@ public extension Signal {
     #else
     internal var lastCalled: NSDate? {
         get {
-            if let handle = objc_getAssociatedObject(self, &SignalUpdateCalledHandle) as? NSDate {
-                return handle
-            } else {
-                return nil
-            }
+            return objc_getAssociatedObject(self, &SignalUpdateCalledHandle) as? NSDate
         }
         set {
             objc_setAssociatedObject(self, &SignalUpdateCalledHandle, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
