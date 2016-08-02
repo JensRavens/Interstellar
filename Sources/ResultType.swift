@@ -9,14 +9,14 @@
 public protocol ResultType {
     associatedtype Value
 
-    var error: ErrorProtocol? { get }
+    var error: Error? { get }
     var value: Value? { get }
 
     var result: Result<Value> { get }
 }
 
 extension Result {
-    public init(value: T?, error err: ErrorProtocol?) {
+    public init(value: T?, error err: Error?) {
         if let err = err {
             self = .error(err)
         } else {

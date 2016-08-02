@@ -28,7 +28,7 @@ public extension Observable where T : ResultType {
         return self
     }
 
-    public func error(_ block: (ErrorProtocol) -> Void) -> Observable<T> {
+    public func error(_ block: (Error) -> Void) -> Observable<T> {
         subscribe { result in
             if let error = result.error {
                 block(error)
