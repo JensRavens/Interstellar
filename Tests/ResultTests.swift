@@ -28,7 +28,7 @@ class ResultTests: XCTestCase {
         return a
     }
 
-    struct NastyError: ErrorProtocol {}
+    struct NastyError: Error {}
 
     func testAccessingAValue() {
         let result = Result(success: "hello")
