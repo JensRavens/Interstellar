@@ -43,7 +43,7 @@ class DelayTests: XCTestCase {
         }
         let delayTime = DispatchTime.now() + 0.1
         let queue = DispatchQueue.main
-        queue.after(when: delayTime) {
+        queue.asyncAfter(deadline: delayTime) {
             value = "value"
         }
         waitForExpectations(timeout: 0.2, handler: nil)

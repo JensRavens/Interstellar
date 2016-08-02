@@ -143,8 +143,8 @@ public enum Result<T>: ResultType {
     */
     public var error: Error? {
         switch self {
-        case success: return nil
-        case error(let x): return x
+        case .success: return nil
+        case .error(let x): return x
         }
     }
 
@@ -153,8 +153,8 @@ public enum Result<T>: ResultType {
     */
     public func get() throws -> T {
         switch self {
-        case let success(value): return value
-        case error(let error): throw error
+        case let .success(value): return value
+        case .error(let error): throw error
         }
     }
 }
