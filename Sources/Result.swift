@@ -29,7 +29,7 @@
 */
 public enum Result<T>: ResultType {
     case success(T)
-    case error(ErrorProtocol)
+    case error(Error)
 
     /**
      Initialize a result containing a successful value.
@@ -41,7 +41,7 @@ public enum Result<T>: ResultType {
     /**
      Initialize a result containing an error
      */
-    public init(error: ErrorProtocol) {
+    public init(error: Error) {
         self = .error(error)
     }
 
@@ -141,7 +141,7 @@ public enum Result<T>: ResultType {
         Direct access to the error of the result as an optional. If the result was an error,
         the optional will contain the error of the result.
     */
-    public var error: ErrorProtocol? {
+    public var error: Error? {
         switch self {
         case success: return nil
         case error(let x): return x

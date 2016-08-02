@@ -181,7 +181,7 @@ public final class Signal<T> {
         This method is chainable.
     */
     @discardableResult
-    public func error(_ g: (ErrorProtocol) -> Void) -> Signal<T> {
+    public func error(_ g: (Error) -> Void) -> Signal<T> {
         subscribe { result in
             switch result {
             case .success(_): return
@@ -212,7 +212,7 @@ public final class Signal<T> {
                 signal.update(.success((a, b)))
             }
         }
-        let errorHandler = { (error: ErrorProtocol) in
+        let errorHandler = { (error: Error) in
             signal.update(.error(error))
         }
         let _ = self.error(errorHandler)
@@ -243,7 +243,7 @@ public final class Signal<T> {
         Update the content of the signal. This will notify all subscribers of this signal
         about the new value.
      */
-    public func update(_ error: ErrorProtocol) {
+    public func update(_ error: Error) {
         update(.error(error))
     }
 

@@ -33,7 +33,7 @@ public extension Signal {
     public func delay(_ seconds: TimeInterval, queue: DispatchQueue = DispatchQueue.main) -> Signal<T> {
         let signal = Signal<T>()
       subscribe { result in
-            queue.after(when: DispatchTime.now() + seconds) {
+            queue.asyncAfter(deadline: DispatchTime.now() + seconds) {
                 signal.update(result)
             }
         }
@@ -53,7 +53,7 @@ public extension Observable {
     public func delay(_ seconds: TimeInterval, queue: DispatchQueue = DispatchQueue.main) -> Observable<T> {
         let observable = Observable<T>()
         subscribe { result in
-            queue.after(when: DispatchTime.now() + seconds) {
+            queue.asyncAfter(deadline: DispatchTime.now() + seconds) {
                 observable.update(result)
             }
         }
