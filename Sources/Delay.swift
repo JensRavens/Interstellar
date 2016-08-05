@@ -35,7 +35,7 @@ public extension Signal {
                 signal.update(result)
             }
         }
-        return signal;
+        return signal
     }
     #endif
 }
