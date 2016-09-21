@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F1EA20D1D92795B00E4B09C /* Interstellar.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F1EA2091D92793A00E4B09C /* Interstellar.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3F1EA20E1D92795C00E4B09C /* Interstellar.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F1EA2091D92793A00E4B09C /* Interstellar.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3FE4E99A1D927AA600C2CA4A /* Interstellar.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F5775E21C118F93002E134D /* Interstellar.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8F2B8D701B07A92C0063EB9C /* Interstellar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F2B8D641B07A92C0063EB9C /* Interstellar.framework */; };
 		8F5775CB1C118F6B002E134D /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775C91C118F6B002E134D /* Result.swift */; };
 		8F5775CC1C118F6B002E134D /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775C91C118F6B002E134D /* Result.swift */; };
@@ -46,6 +49,7 @@
 
 /* Begin PBXFileReference section */
 		244984ED1BFBE0A200C8FEE0 /* Interstellar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Interstellar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F1EA2091D92793A00E4B09C /* Interstellar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Interstellar.h; path = Support/Interstellar.h; sourceTree = SOURCE_ROOT; };
 		4583FA021BF99EE60093BFFE /* Interstellar.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Interstellar.playground; sourceTree = "<group>"; };
 		45DE51E81BF83F67009BC378 /* Interstellar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Interstellar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F2B8D641B07A92C0063EB9C /* Interstellar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Interstellar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -154,6 +158,7 @@
 		8F2B8D741B07A92C0063EB9C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3F1EA2091D92793A00E4B09C /* Interstellar.h */,
 				8F5775E31C118FAC002E134D /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -197,6 +202,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F1EA20E1D92795C00E4B09C /* Interstellar.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,6 +210,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F1EA20D1D92795B00E4B09C /* Interstellar.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,6 +218,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FE4E99A1D927AA600C2CA4A /* Interstellar.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,7 +304,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0710;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "nerdgeschoss GmbH";
 				TargetAttributes = {
 					45DE51E71BF83F67009BC378 = {
@@ -304,9 +312,11 @@
 					};
 					8F2B8D631B07A92C0063EB9C = {
 						CreatedOnToolsVersion = 6.3.1;
+						LastSwiftMigration = 0800;
 					};
 					8F2B8D6E1B07A92C0063EB9C = {
 						CreatedOnToolsVersion = 6.3.1;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -429,6 +439,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -451,6 +462,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -525,8 +537,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -574,8 +588,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -595,6 +611,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -606,6 +623,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -618,6 +636,7 @@
 				PRODUCT_NAME = Interstellar;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -625,6 +644,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -636,6 +656,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "de.nerdgeschoss.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Interstellar;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};
@@ -656,6 +677,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "de.nerdgeschoss.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -671,6 +693,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "de.nerdgeschoss.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};
