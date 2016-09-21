@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F1EA20D1D92795B00E4B09C /* Interstellar.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F1EA2091D92793A00E4B09C /* Interstellar.h */; };
+		3F1EA20E1D92795C00E4B09C /* Interstellar.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F1EA2091D92793A00E4B09C /* Interstellar.h */; };
+		3F1EA20F1D92797F00E4B09C /* Interstellar.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F1EA2091D92793A00E4B09C /* Interstellar.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8F2B8D701B07A92C0063EB9C /* Interstellar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F2B8D641B07A92C0063EB9C /* Interstellar.framework */; };
 		8F5775CB1C118F6B002E134D /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775C91C118F6B002E134D /* Result.swift */; };
 		8F5775CC1C118F6B002E134D /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775C91C118F6B002E134D /* Result.swift */; };
@@ -46,6 +49,7 @@
 
 /* Begin PBXFileReference section */
 		244984ED1BFBE0A200C8FEE0 /* Interstellar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Interstellar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F1EA2091D92793A00E4B09C /* Interstellar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Interstellar.h; path = Support/Interstellar.h; sourceTree = SOURCE_ROOT; };
 		4583FA021BF99EE60093BFFE /* Interstellar.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Interstellar.playground; sourceTree = "<group>"; };
 		45DE51E81BF83F67009BC378 /* Interstellar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Interstellar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F2B8D641B07A92C0063EB9C /* Interstellar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Interstellar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -154,6 +158,7 @@
 		8F2B8D741B07A92C0063EB9C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3F1EA2091D92793A00E4B09C /* Interstellar.h */,
 				8F5775E31C118FAC002E134D /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -197,6 +202,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F1EA20E1D92795C00E4B09C /* Interstellar.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,6 +210,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F1EA20D1D92795B00E4B09C /* Interstellar.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,6 +218,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F1EA20F1D92797F00E4B09C /* Interstellar.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
