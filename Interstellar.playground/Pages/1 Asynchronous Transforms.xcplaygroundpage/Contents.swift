@@ -1,22 +1,4 @@
 import Interstellar
-
-extension Observable: CustomPlaygroundQuickLookable, CustomDebugStringConvertible {
-    public func customPlaygroundQuickLook() -> PlaygroundQuickLook {
-        return .Text(self.debugDescription)
-    }
-    
-    public var debugDescription: String {
-        if let content = self.peek() {
-            if let content = content as? CustomDebugStringConvertible {
-                return "\(content.debugDescription) (Observable)"
-            } else {
-                return "Observable content not representable in playground"
-            }
-        }
-        return "Empty Observable"
-
-    }
-}
 //: [Previous](@previous)
 
 /*: 
@@ -36,13 +18,11 @@ func greet(name: String) -> Observable<String> {
 }
 
 //: If you'd map an observable through this function, you'd get an Observable of an Observable:
-
 let name = Observable("World")
 
 let nestedGreeting: Observable<Observable<String>> = name.map(greet)
 
 //: This is most probably not what your want. Use `flatMap` instead:
-
 let greeting: Observable<String> = name.flatMap(greet)
 
 greeting.subscribe { print($0) }

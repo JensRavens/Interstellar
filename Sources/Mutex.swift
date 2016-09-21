@@ -14,7 +14,7 @@ import Foundation
 #endif
 
 internal class Mutex {
-    private var mutex = pthread_mutex_t()
+    fileprivate var mutex = pthread_mutex_t()
     
     init() {
         pthread_mutex_init(&mutex, nil)
@@ -28,11 +28,11 @@ internal class Mutex {
         return pthread_mutex_lock(&mutex)
     }
     
-    func unlock() -> Int32 {
+    @discardableResult func unlock() -> Int32 {
         return pthread_mutex_unlock(&mutex)
     }
     
-    func lock(@noescape closure: () -> Void) {
+    func lock(_ closure: () -> Void) {
         let status = lock()
         assert(status == 0, "pthread_mutex_lock: \(strerror(status))")
         defer { unlock() }

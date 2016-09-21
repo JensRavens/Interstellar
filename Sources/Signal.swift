@@ -34,20 +34,20 @@
             println("Hello \(string)")
         }
 
-        text.update(.Success("World"))
+        text.update(.success("World"))
 
 */
 
 public final class Signal<T> {
     
-    private var value: Result<T>?
-    private var callbacks: [Result<T> -> Void] = []
-    private let mutex = Mutex()
+    fileprivate var value: Result<T>?
+    fileprivate var callbacks: [(Result<T>) -> Void] = []
+    fileprivate let mutex = Mutex()
     
     /// Automatically infer the type of the signal from the argument.
     public convenience init(_ value: T){
         self.init()
-        self.value = .Success(value)
+        self.value = .success(value)
     }
     
     public init() {
@@ -57,7 +57,7 @@ public final class Signal<T> {
     /**
         Transform the signal into another signal using a function.
     */
-    public func map<U>(f: T -> U) -> Signal<U> {
+    public func map<U>(_ f: @escaping (T) -> U) -> Signal<U> {
         let signal = Signal<U>()
         subscribe { result in
             signal.update(result.map(f))
@@ -68,7 +68,7 @@ public final class Signal<T> {
     /**
         Transform the signal into another signal using a function.
     */
-    public func flatMap<U>(f: T -> Result<U>) -> Signal<U> {
+    public func flatMap<U>(_ f: @escaping (T) -> Result<U>) -> Signal<U> {
         let signal = Signal<U>()
         subscribe { result in
             signal.update(result.flatMap(f))
@@ -79,7 +79,7 @@ public final class Signal<T> {
     /**
         Transform the signal into another signal using a function.
     */
-    public func flatMap<U>(f: T throws -> U) -> Signal<U> {
+    public func flatMap<U>(_ f: @escaping (T) throws -> U) -> Signal<U> {
         let signal = Signal<U>()
         subscribe { result in
             signal.update(result.flatMap(f))
@@ -90,7 +90,7 @@ public final class Signal<T> {
     /**
         Transform the signal into another signal using a function.
     */
-    public func flatMap<U>(f: (T, (Result<U>->Void))->Void) -> Signal<U> {
+    public func flatMap<U>(_ f: @escaping (T, (@escaping(Result<U>)->Void))->Void) -> Signal<U> {
         let signal = Signal<U>()
         subscribe { result in
             result.flatMap(f)(signal.update)
@@ -102,17 +102,17 @@ public final class Signal<T> {
         Transform the signal into another signal using a function, return the
         value of the inner signal
     */
-    public func flatMap<U>(f: (T -> Signal<U>)) -> Signal<U> {
+    public func flatMap<U>(_ f: @escaping ((T) -> Signal<U>)) -> Signal<U> {
         let signal = Signal<U>()
         subscribe { result in
             switch(result) {
-            case let .Success(value):
+            case let .success(value):
                 let innerSignal = f(value)
                 innerSignal.subscribe { innerResult in
                     signal.update(innerResult)
                 }
-            case let .Error(error):
-                signal.update(.Error(error))
+            case let .error(error):
+                signal.update(.error(error))
             }
         }
         return signal
@@ -124,7 +124,7 @@ public final class Signal<T> {
         This method can also be used to convert an .Error into a .Success which might be handy
         for retry logic.
     */
-    public func ensure<U>(f: (Result<T>, (Result<U>->Void))->Void) -> Signal<U> {
+    public func ensure<U>(_ f: @escaping (Result<T>, ((Result<U>)->Void))->Void) -> Signal<U> {
         let signal = Signal<U>()
         subscribe { result in
             f(result) { signal.update($0) }
@@ -136,7 +136,7 @@ public final class Signal<T> {
         Subscribe to the changes of this signal (.Error and .Success).
         This method is chainable.
     */
-    public func subscribe(f: Result<T> -> Void) -> Signal<T> {
+    @discardableResult public func subscribe(_ f: @escaping (Result<T>) -> Void) -> Signal<T> {
         if let value = value {
             f(value)
         }
@@ -146,15 +146,15 @@ public final class Signal<T> {
         return self
     }
     
-    public func filter(f: T -> Bool) -> Signal<T>{
+    public func filter(_ f: @escaping (T) -> Bool) -> Signal<T>{
         let signal = Signal<T>()
         subscribe { result in
             switch(result) {
-            case let .Success(value):
+            case let .success(value):
                 if f(value) {
                     signal.update(result)
                 }
-            case let .Error(error): signal.update(.Error(error))
+            case let .error(error): signal.update(.error(error))
             }
         }
         return signal
@@ -164,11 +164,11 @@ public final class Signal<T> {
         Subscribe to the changes of this signal (.Success only).
         This method is chainable.
     */
-    public func next(g: T -> Void) -> Signal<T> {
+    @discardableResult public func next(_ g: @escaping (T) -> Void) -> Signal<T> {
         subscribe { result in
             switch(result) {
-            case let .Success(value): g(value)
-            case .Error(_): return
+            case let .success(value): g(value)
+            case .error(_): return
             }
         }
         return self
@@ -178,11 +178,11 @@ public final class Signal<T> {
         Subscribe to the changes of this signal (.Error only).
         This method is chainable.
     */
-    public func error(g: ErrorType -> Void) -> Signal<T> {
+    @discardableResult public func error(_ g: @escaping (Error) -> Void) -> Signal<T> {
         subscribe { result in
             switch(result) {
-            case .Success(_): return
-            case let .Error(error): g(error)
+            case .success(_): return
+            case let .error(error): g(error)
             }
         }
         return self
@@ -197,20 +197,20 @@ public final class Signal<T> {
             signal.value! == ("Hello", "World")
     
     */
-    public func merge<U>(merge: Signal<U>) -> Signal<(T,U)> {
+    public func merge<U>(_ merge: Signal<U>) -> Signal<(T,U)> {
         let signal = Signal<(T,U)>()
         self.next { a in
             if let b = merge.peek() {
-                signal.update(.Success((a,b)))
+                signal.update(.success((a,b)))
             }
         }
         merge.next { b in
             if let a = self.peek() {
-                signal.update(.Success((a,b)))
+                signal.update(.success((a,b)))
             }
         }
-        let errorHandler = { (error: ErrorType) in
-            signal.update(.Error(error))
+        let errorHandler = { (error: Error) in
+            signal.update(error)
         }
         self.error(errorHandler)
         merge.error(errorHandler)
@@ -221,7 +221,7 @@ public final class Signal<T> {
         Update the content of the signal. This will notify all subscribers of this signal
         about the new value.
     */
-    public func update(result: Result<T>) {
+    public func update(_ result: Result<T>) {
         mutex.lock {
             value = result
             callbacks.forEach{$0(result)}
@@ -232,16 +232,16 @@ public final class Signal<T> {
         Update the content of the signal. This will notify all subscribers of this signal
         about the new value.
      */
-    public func update(value: T) {
-        update(.Success(value))
+    public func update(_ value: T) {
+        update(.success(value))
     }
     
     /**
         Update the content of the signal. This will notify all subscribers of this signal
         about the new value.
      */
-    public func update(error: ErrorType) {
-        update(.Error(error))
+    public func update(_ error: Error) {
+        update(.error(error))
     }
     
     /**

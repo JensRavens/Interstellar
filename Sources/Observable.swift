@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct ObservingOptions: OptionSetType {
+public struct ObservingOptions: OptionSet {
     public let rawValue: Int
     public init(rawValue: Int) { self.rawValue = rawValue }
     
@@ -17,12 +17,11 @@ public struct ObservingOptions: OptionSetType {
 }
 
 public final class Observable<T> {
-    private typealias Observer = T->Void
-    private typealias ObserverTokenType = ObserverToken<T>
-    private var observers = [ObserverTokenType: Observer]()
-    private var lastValue: T?
+    fileprivate typealias Observer = (T)->Void
+    fileprivate var observers = [ObserverToken: Observer]()
+    fileprivate var lastValue: T?
     public let options: ObservingOptions
-    private let mutex = Mutex()
+    fileprivate let mutex = Mutex()
     
     public init(options: ObservingOptions = []) {
         self.options = options
@@ -35,22 +34,22 @@ public final class Observable<T> {
         }
     }
     
-    public func subscribe(observer: T -> Void) -> ObserverToken<T> {
-        var token: ObserverToken<T>!
+    @discardableResult public func subscribe(_ observer: @escaping (T) -> Void) -> ObserverToken {
+        var token: ObserverToken!
         mutex.lock {
-            let newHashValue = nextTokenHash()
-            token = ObserverToken(hashValue: newHashValue, observable: self)
+            let newHashValue = (observers.keys.map({$0.hashValue}).max() ?? -1) + 1
+            token = ObserverToken(hashValue: newHashValue)
             if !(options.contains(.Once) && lastValue != nil) {
                 observers[token] = observer
             }
-            if let value = lastValue where !options.contains(.NoInitialValue) {
+            if let value = lastValue , !options.contains(.NoInitialValue) {
                 observer(value)
             }
         }
         return token
     }
     
-    public func update(value: T) {
+    public func update(_ value: T) {
         mutex.lock {
             if !options.contains(.NoInitialValue) {
                 lastValue = value
@@ -67,45 +66,23 @@ public final class Observable<T> {
     public func peek() -> T? {
         return lastValue
     }
-    
-    private func nextTokenHash() -> Int {
-        return (observers.keys.map({$0.hashValue}).maxElement() ?? -1) + 1
-    }
 
-    private func unsubscribe(token: ObserverToken<T>) {
+    public func unsubscribe(_ token: ObserverToken) {
         mutex.lock {
             observers[token] = nil
         }
     }
 }
 
-public final class ObserverToken<T>: Hashable {
-    public let hashValue: Int
-    private weak var observable: Observable<T>?
-
-    // Private to avoid instantiation outside this file.
-    private init (hashValue: Int, observable: Observable<T>?) {
-        self.hashValue = hashValue
-        self.observable = observable
-    }
-
-    public func unsubscribe() {
-        observable?.unsubscribe(self)
-    }
-}
-
-public func ==<T>(lhs: ObserverToken<T>, rhs: ObserverToken<T>) -> Bool {
-    return lhs.hashValue == rhs.hashValue
-}
 
 extension Observable {
-    public func map<U>(transform: T -> U) -> Observable<U> {
+    public func map<U>(_ transform: @escaping (T) -> U) -> Observable<U> {
         let observable = Observable<U>(options: options)
         subscribe { observable.update(transform($0)) }
         return observable
     }
     
-    public func map<U>(transform: T throws -> U) -> Observable<Result<U>> {
+    public func map<U>(_ transform: @escaping (T) throws -> U) -> Observable<Result<U>> {
         let observable = Observable<Result<U>>(options: options)
         subscribe { value in
             observable.update(Result(block: { return try transform(value) }))
@@ -113,7 +90,7 @@ extension Observable {
         return observable
     }
     
-    public func flatMap<U>(transform: T->Observable<U>) -> Observable<U> {
+    public func flatMap<U>(_ transform: @escaping (T)->Observable<U>) -> Observable<U> {
         let observable = Observable<U>(options: options)
         subscribe { transform($0).subscribe(observable.update) }
         return observable

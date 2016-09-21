@@ -11,11 +11,11 @@ import Interstellar
 
 class ObservableTests: XCTestCase {
     
-    func greeter(subject: String) -> String {
+    func greeter(_ subject: String) -> String {
         return "Hello \(subject)"
     }
     
-    func greetLater(subject: String) -> Observable<String> {
+    func greetLater(_ subject: String) -> Observable<String> {
         return Observable("Hello \(subject)")
     }
     
@@ -31,12 +31,12 @@ class ObservableTests: XCTestCase {
     
     func testSubscription() {
         let observable = Observable<String>()
-        let expectation = expectationWithDescription("subscription not completed")
+        let expectation = self.expectation(description: "subscription not completed")
         observable.subscribe { a in
             expectation.fulfill()
         }
         observable.update("Hello")
-        waitForExpectationsWithTimeout(0.2, handler: nil)
+        waitForExpectations(timeout: 0.2, handler: nil)
     }
     
     func testOnceSubscription() {
@@ -74,7 +74,7 @@ class ObservableTests: XCTestCase {
             count += 1
         }
         observable.update("Hello")
-        token.unsubscribe()
+        observable.unsubscribe(token)
         observable.update("Hello")
         XCTAssertEqual(count, 1)
     }

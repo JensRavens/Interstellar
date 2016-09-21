@@ -1,22 +1,4 @@
 import Interstellar
-
-extension Observable: CustomPlaygroundQuickLookable, CustomDebugStringConvertible {
-    public func customPlaygroundQuickLook() -> PlaygroundQuickLook {
-        return .Text(self.debugDescription)
-    }
-    
-    public var debugDescription: String {
-        if let content = self.peek() {
-            if let content = content as? CustomDebugStringConvertible {
-                return "\(content.debugDescription) (Observable)"
-            } else {
-                return "Observable content not representable in playground"
-            }
-        }
-        return "Empty Observable"
-        
-    }
-}
 /*:
  
  - note: If this Playground errors, please build the "Interstallar_OSX" target.

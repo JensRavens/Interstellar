@@ -11,20 +11,20 @@ import Interstellar
 
 class SignalTests: XCTestCase {
     
-    func greeter(subject: String) -> Result<String> {
+    func greeter(_ subject: String) -> Result<String> {
         if subject.characters.count > 0 {
-            return .Success("Hello \(subject)")
+            return .success("Hello \(subject)")
         } else {
             let error: NSError = NSError(domain: "No one to greet!", code: 404, userInfo: nil)
-            return .Error(error)
+            return .error(error)
         }
     }
     
-    func identity(a: String) -> Result<String> {
-        return .Success(a)
+    func identity(_ a: String) -> Result<String> {
+        return .success(a)
     }
     
-    func asyncIdentity(a: String, completion: Result<String>->Void) {
+    func asyncIdentity(_ a: String, completion: (Result<String>)->Void) {
         completion(identity(a))
     }
     
@@ -54,16 +54,16 @@ class SignalTests: XCTestCase {
     
     func testSubscription() {
         let signal = Signal<String>()
-        let expectation = expectationWithDescription("subscription not completed")
+        let expectation = self.expectation(description: "subscription not completed")
         signal.next { a in
             expectation.fulfill()
         }
         signal.update(Result(success:"Hello"))
-        waitForExpectationsWithTimeout(0.2, handler: nil)
+        waitForExpectations(timeout: 0.2, handler: nil)
     }
     
     func testThrowingFunction() {
-        func throwing(i: Int) throws -> Int {
+        func throwing(_ i: Int) throws -> Int {
             throw NSError(domain: "Error", code: 404, userInfo: nil)
         }
         
@@ -73,16 +73,16 @@ class SignalTests: XCTestCase {
     }
     
     func testThrowingSignal() {
-        func throwing(i: Int) throws -> Int {
+        func throwing(_ i: Int) throws -> Int {
             throw NSError(domain: "Error", code: 404, userInfo: nil)
         }
         
         let signal = Signal<Int>()
-        let expectation = expectationWithDescription("subscription not completed")
+        let expectation = self.expectation(description: "subscription not completed")
         
         signal.flatMap(throwing).error { _ in expectation.fulfill() }
-        signal.update(.Success(1))
+        signal.update(.success(1))
         
-        waitForExpectationsWithTimeout(0.2, handler: nil)
+        waitForExpectations(timeout: 0.2, handler: nil)
     }
 }

@@ -11,11 +11,11 @@ import Interstellar
 
 class ResultObservableTests: XCTestCase {
     
-    func greeter(subject: String) -> String {
+    func greeter(_ subject: String) -> String {
         return "Hello \(subject)"
     }
     
-    func throwingGreeter(subject: String) throws -> String {
+    func throwingGreeter(_ subject: String) throws -> String {
         if subject.characters.count > 0 {
             return "Hello \(subject)"
         } else {

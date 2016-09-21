@@ -23,37 +23,31 @@
 import Foundation
 
 public extension Signal {
-    #if os(Linux)
-    #else
     /**
         Creates a new signal that mirrors the original signal but is delayed by x seconds. If no queue is specified, the new signal will call it's observers and transforms on the main queue.
     */
-    public func delay(seconds: NSTimeInterval, queue: dispatch_queue_t = dispatch_get_main_queue()) -> Signal<T> {
+    public func delay(_ seconds: TimeInterval, queue: DispatchQueue = DispatchQueue.main) -> Signal<T> {
         let signal = Signal<T>()
         subscribe { result in
-            dispatch_after(seconds.dispatchTime, queue) {
+            queue.asyncAfter(deadline: seconds.dispatchTime) {
                 signal.update(result)
             }
         }
         return signal
     }
-    #endif
 }
 
 public extension Observable {
-    #if os(Linux)
-    #else
     /**
-     Creates a new signal that mirrors the original observable but is delayed by x seconds. If no queue is specified, the new observable will call it's observers and transforms on the main queue.
+     Creates a new observable that mirrors the original observable but is delayed by x seconds. If no queue is specified, the new observable will call it's observers and transforms on the main queue.
      */
-    public func delay(seconds: NSTimeInterval, queue: dispatch_queue_t = dispatch_get_main_queue()) -> Observable<T> {
+    public func delay(_ seconds: TimeInterval, queue: DispatchQueue = DispatchQueue.main) -> Observable<T> {
         let observable = Observable<T>()
         subscribe { result in
-            dispatch_after(seconds.dispatchTime, queue) {
+            queue.asyncAfter(deadline: seconds.dispatchTime) {
                 observable.update(result)
             }
         }
         return observable
     }
-    #endif
 }

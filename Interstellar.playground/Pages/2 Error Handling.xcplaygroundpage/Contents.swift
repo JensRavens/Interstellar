@@ -11,11 +11,9 @@ let successfullValue = Result(success: "Hello World")
 let ohThereWasAnError = Result<String>(error: NSError(domain: "Something went wrong", code: 500, userInfo: nil))
 
 //: An `Observable` can contain results just as normal values:
-
 let resultOfExpensiveCalculation: Observable<Result<String>> = Observable(successfullValue)
 
 //: You can subscribe to it just like to a normal `Observable`:
-
 resultOfExpensiveCalculation.subscribe { result in
     switch result {
     case let .Error(error): print(error)
