@@ -60,21 +60,6 @@ public enum Result<T>: ResultType {
         Transform a result into another result using a function. If the result was an error,
         the function will not be executed and the error returned instead.
     */
-    public func map<U>(_ f: @escaping (T, ((U)->Void))->Void) -> ((Result<U>)->Void)->Void {
-        return { g in
-            switch self {
-            case let .success(v): f(v){ transformed in
-                    g(.success(transformed))
-                }
-            case let .error(error): g(.error(error))
-            }
-        }
-    }
-    
-    /**
-        Transform a result into another result using a function. If the result was an error,
-        the function will not be executed and the error returned instead.
-    */
     public func flatMap<U>(_ f: (T) -> Result<U>) -> Result<U> {
         switch self {
         case let .success(v): return f(v)
