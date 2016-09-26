@@ -33,11 +33,11 @@ class ResultObservableTests: XCTestCase {
     
     func testContinuingTheChain() {
         let greeting = world.then(greeter).then(throwingGreeter)
-        XCTAssertEqual(greeting.peekValue(), "Hello Hello World")
+        XCTAssertEqual(greeting.peek(), "Hello Hello World")
     }
     
     func testError() {
-        let greeting = nothing.then(throwingGreeter).peekValue()
+        let greeting = nothing.then(throwingGreeter).peek()
         XCTAssertNil(greeting)
     }
 }

@@ -19,7 +19,7 @@ public struct ObservingOptions: OptionSet {
 public final class Observable<T> {
     fileprivate typealias Observer = (T)->Void
     fileprivate var observers = [ObserverToken: Observer]()
-    fileprivate var lastValue: T?
+    public private(set) var value: T?
     public let options: ObservingOptions
     fileprivate let mutex = Mutex()
     
@@ -30,7 +30,7 @@ public final class Observable<T> {
     public init(_ value: T, options: ObservingOptions = []) {
         self.options = options
         if !options.contains(.NoInitialValue){
-            lastValue = value
+            self.value = value
         }
     }
     
@@ -39,10 +39,10 @@ public final class Observable<T> {
         mutex.lock {
             let newHashValue = (observers.keys.map({$0.hashValue}).max() ?? -1) + 1
             token = ObserverToken(hashValue: newHashValue)
-            if !(options.contains(.Once) && lastValue != nil) {
+            if !(options.contains(.Once) && value != nil) {
                 observers[token] = observer
             }
-            if let value = lastValue , !options.contains(.NoInitialValue) {
+            if let value = value , !options.contains(.NoInitialValue) {
                 observer(value)
             }
         }
@@ -52,7 +52,7 @@ public final class Observable<T> {
     public func update(_ value: T) {
         mutex.lock {
             if !options.contains(.NoInitialValue) {
-                lastValue = value
+                self.value = value
             }
             for observe in observers.values {
                 observe(value)
@@ -61,10 +61,6 @@ public final class Observable<T> {
                 observers.removeAll()
             }
         }
-    }
-    
-    public func peek() -> T? {
-        return lastValue
     }
 
     public func unsubscribe(_ token: ObserverToken) {

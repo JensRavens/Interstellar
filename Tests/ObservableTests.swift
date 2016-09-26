@@ -21,12 +21,12 @@ class ObservableTests: XCTestCase {
     
     func testMappingAnObservable() {
         let greeting = Observable("World").map(greeter)
-        XCTAssertEqual(greeting.peek(), "Hello World")
+        XCTAssertEqual(greeting.value, "Hello World")
     }
     
     func testFlatMappingObservable() {
         let greeting = Observable("World").flatMap(greetLater)
-        XCTAssertEqual(greeting.peek(), "Hello World")
+        XCTAssertEqual(greeting.value, "Hello World")
     }
     
     func testSubscription() {
@@ -62,9 +62,9 @@ class ObservableTests: XCTestCase {
     
     func testLiveSubscriptions() {
         let observable = Observable<String>("Hello", options:[.NoInitialValue])
-        XCTAssertNil(observable.peek())
+        XCTAssertNil(observable.value)
         observable.update("Hello")
-        XCTAssertNil(observable.peek())
+        XCTAssertNil(observable.value)
     }
     
     func testUnsubscribe() {
