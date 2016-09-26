@@ -16,15 +16,15 @@ let resultOfExpensiveCalculation: Observable<Result<String>> = Observable(succes
 //: You can subscribe to it just like to a normal `Observable`:
 resultOfExpensiveCalculation.subscribe { result in
     switch result {
-    case let .Error(error): print(error)
-    case let .Success(value): print(value)
+    case let .error(error): print(error)
+    case let .success(value): print(value)
     }
 }
 
 //: In case you want to chain multiple transforms but only want to continue on the successful path, there's the `then` method:
 
 func uppercase(input: String) -> String {
-    return input.uppercaseString
+    return input.uppercased()
 }
 
 let transformed: Observable<Result<String>> = resultOfExpensiveCalculation.then(uppercase)
@@ -32,7 +32,7 @@ let transformed: Observable<Result<String>> = resultOfExpensiveCalculation.then(
 //: This even works for throwing functions. In case of an error the error is returned:
 
 func throwingUppercase(input: String) throws -> String {
-    return input.uppercaseString
+    return input.uppercased()
 }
 
 let transformedAgain = transformed.then(throwingUppercase)
@@ -42,12 +42,11 @@ let transformedAgain = transformed.then(throwingUppercase)
 //: If you're only interested in a successful chain you can directly subscribe to succesful values:
 
 transformedAgain.next { myMessage in
-    myMessage
+    print(myMessage)
 }
 
 //: Or just subscribe to the failing case:
 
 transformedAgain.error { error in
     error
-    print("There was an error: \(error)")
 }

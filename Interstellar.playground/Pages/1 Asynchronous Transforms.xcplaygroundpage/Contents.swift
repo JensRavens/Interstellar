@@ -7,7 +7,7 @@ import Interstellar
  Imagine you have a function that returns with a callback later:
 */
 
-func greetAsync(name: String, completion: String->Void) {
+func greetAsync(name: String, completion: (String)->Void) {
     completion("Hello \(name)")
 }
 
