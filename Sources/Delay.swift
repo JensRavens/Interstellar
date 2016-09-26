@@ -22,6 +22,7 @@
 
 import Foundation
 
+@available(*, deprecated: 2.0)
 public extension Signal {
     /**
         Creates a new signal that mirrors the original signal but is delayed by x seconds. If no queue is specified, the new signal will call it's observers and transforms on the main queue.

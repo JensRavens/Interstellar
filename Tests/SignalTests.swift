@@ -9,6 +9,7 @@
 import XCTest
 import Interstellar
 
+@available(*, deprecated: 2.0)
 class SignalTests: XCTestCase {
     
     func greeter(_ subject: String) -> Result<String> {

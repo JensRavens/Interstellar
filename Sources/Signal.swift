@@ -38,6 +38,7 @@
 
 */
 
+@available(*, deprecated: 2.0, message:"Use Observable<Result<T>> instead.")
 public final class Signal<T> {
     
     fileprivate var value: Result<T>?
@@ -253,6 +254,7 @@ public final class Signal<T> {
     }
 }
 
+@available(*, deprecated: 2.0)
 extension Signal {
     func observable() -> Observable<Result<T>> {
         let observable = Observable<Result<T>>()

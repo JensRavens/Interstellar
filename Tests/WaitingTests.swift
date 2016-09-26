@@ -30,6 +30,7 @@ internal extension TimeInterval {
     }
 }
 
+@available(*, deprecated: 2.0)
 class WaitingTests: XCTestCase {
     func testWaitingForSuccess() {
         let greeting = try! Signal("hello")

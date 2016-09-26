@@ -10,6 +10,7 @@ import Foundation
 import XCTest
 @testable import Interstellar
 
+@available(*, deprecated: 2.0)
 class DebounceTests: XCTestCase {
 
     func testDebounceImmediateley() {

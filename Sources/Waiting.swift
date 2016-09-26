@@ -35,6 +35,7 @@ internal extension TimeInterval {
     }
 }
 
+@available(*, deprecated: 2.0)
 public extension Signal {
     /**
         Wait until the signal updates the next time. This will block the current thread until there 

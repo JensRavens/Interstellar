@@ -10,6 +10,7 @@ import Foundation
 import XCTest
 import Interstellar
 
+@available(*, deprecated: 2.0)
 class DelayTests: XCTestCase {
     func testShouldDispatchToMainQueue() {
         let expectation = self.expectation(description: "delay called")

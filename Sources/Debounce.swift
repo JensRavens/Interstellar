@@ -22,6 +22,7 @@
 
 import Foundation
 
+@available(*, deprecated: 2.0)
 public extension Signal {
     /**
         Creates a new signal that is only firing once per specified time interval. The last 
