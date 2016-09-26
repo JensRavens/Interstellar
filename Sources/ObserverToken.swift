@@ -18,6 +18,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+/// Observer tokens are created by observables to hande unsubscription. You are not supposed to create them directly.
 public final class ObserverToken: Hashable {
     public let hashValue: Int
     
