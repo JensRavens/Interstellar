@@ -105,4 +105,17 @@ class ObservableTests: XCTestCase {
         XCTAssertEqual(first, "first")
         XCTAssertEqual(second, "second")
     }
+    
+    func testMergingObservables() {
+        let hello = Observable("Hello")
+        let world = Observable<String>()
+        var updateCalled = 0
+        let greeting = Observable<[String]>.merge([hello, world])
+        greeting.subscribe { _ in updateCalled += 1 }
+        XCTAssertNil(greeting.value)
+        XCTAssertEqual(updateCalled, 0)
+        world.update("World")
+        XCTAssertEqual(updateCalled, 1)
+        XCTAssertEqual(greeting.value ?? [""], ["Hello", "World"])
+    }
 }

@@ -34,6 +34,22 @@ public final class Observable<T> {
         }
     }
     
+    public static func merge<U>(_ observables: [Observable<U>], options: ObservingOptions = []) -> Observable<[U]> {
+        let merged = Observable<[U]>(options: options)
+        let copies = observables.map { $0.map { return $0 } } // copy all observables via subscription to not retain the originals
+        for observable in copies {
+            precondition(!observable.options.contains(.NoInitialValue), "Event style observables do not support merging")
+            observable.subscribe { value in
+                let values = copies.flatMap { $0.value }
+                if values.count == copies.count {
+                    merged.update(values)
+                }
+            }
+            
+        }
+        return merged
+    }
+    
     @discardableResult public func subscribe(_ observer: @escaping (T) -> Void) -> ObserverToken {
         var token: ObserverToken!
         mutex.lock {
