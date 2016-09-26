@@ -164,15 +164,15 @@ extension Observable {
         return observable
     }
 
-    public func merge<U>(merge: Observable<U>) -> Observable<(T,U)> {
+    public func merge<U>(_ merge: Observable<U>) -> Observable<(T,U)> {
         let signal = Observable<(T,U)>()
         self.subscribe { a in
-            if let b = merge.peek() {
+            if let b = merge.value {
                 signal.update((a,b))
             }
         }
         merge.subscribe { b in
-            if let a = self.peek() {
+            if let a = self.value {
                 signal.update((a,b))
             }
         }
