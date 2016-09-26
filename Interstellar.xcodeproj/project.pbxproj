@@ -46,16 +46,16 @@
 		8F5775DE1C118F78002E134D /* Waiting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775D41C118F78002E134D /* Waiting.swift */; };
 		8F5775DF1C118F78002E134D /* Waiting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775D41C118F78002E134D /* Waiting.swift */; };
 		8F5775E01C118F78002E134D /* Waiting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775D41C118F78002E134D /* Waiting.swift */; };
-		8F5775E71C118FBF002E134D /* ResultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775E51C118FBF002E134D /* ResultTests.swift */; };
-		8F5775E81C118FBF002E134D /* SignalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775E61C118FBF002E134D /* SignalTests.swift */; };
-		8F5775ED1C118FC9002E134D /* DebounceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775E91C118FC9002E134D /* DebounceTests.swift */; };
-		8F5775EE1C118FC9002E134D /* DelayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775EA1C118FC9002E134D /* DelayTests.swift */; };
-		8F5775EF1C118FC9002E134D /* ThreadingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775EB1C118FC9002E134D /* ThreadingTests.swift */; };
-		8F5775F01C118FC9002E134D /* WaitingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775EC1C118FC9002E134D /* WaitingTests.swift */; };
 		8FC7A40E1CC12EAA00710873 /* Mutex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2DC41B1CC03E380055DC5C /* Mutex.swift */; };
 		8FC7A40F1CC12EAB00710873 /* Mutex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2DC41B1CC03E380055DC5C /* Mutex.swift */; };
-		8FFAF5081CBC11B400C60CCB /* ObservableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FFAF5071CBC11B400C60CCB /* ObservableTests.swift */; };
-		8FFAF50A1CBC150200C60CCB /* ResultObservableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FFAF5091CBC150200C60CCB /* ResultObservableTests.swift */; };
+		B4010EDC1D99919D00E6AC8E /* WaitingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4010ECC1D99916E00E6AC8E /* WaitingTests.swift */; };
+		B4010EDD1D99919D00E6AC8E /* ThreadingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4010ECD1D99916E00E6AC8E /* ThreadingTests.swift */; };
+		B4010EDE1D99919D00E6AC8E /* DelayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4010ECE1D99916E00E6AC8E /* DelayTests.swift */; };
+		B4010EDF1D99919D00E6AC8E /* DebounceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4010ECF1D99916E00E6AC8E /* DebounceTests.swift */; };
+		B4010EE01D9991A100E6AC8E /* SignalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4010ED41D99918000E6AC8E /* SignalTests.swift */; };
+		B4010EE11D9991A100E6AC8E /* ResultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4010ED51D99918000E6AC8E /* ResultTests.swift */; };
+		B4010EE21D9991A100E6AC8E /* ResultObservableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4010ED61D99918000E6AC8E /* ResultObservableTests.swift */; };
+		B4010EE31D9991A100E6AC8E /* ObservableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4010ED71D99918000E6AC8E /* ObservableTests.swift */; };
 		B44BB1941D92B0FF00CE3CB2 /* ObserverToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44BB1931D92B0FF00CE3CB2 /* ObserverToken.swift */; };
 		B44BB1951D92B0FF00CE3CB2 /* ObserverToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44BB1931D92B0FF00CE3CB2 /* ObserverToken.swift */; };
 		B44BB1961D92B0FF00CE3CB2 /* ObserverToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44BB1931D92B0FF00CE3CB2 /* ObserverToken.swift */; };
@@ -92,14 +92,14 @@
 		8F5775E11C118F93002E134D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Support/Info.plist; sourceTree = SOURCE_ROOT; };
 		8F5775E21C118F93002E134D /* Interstellar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Interstellar.h; path = Support/Interstellar.h; sourceTree = SOURCE_ROOT; };
 		8F5775E31C118FAC002E134D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Tests/Info.plist; sourceTree = SOURCE_ROOT; };
-		8F5775E51C118FBF002E134D /* ResultTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResultTests.swift; path = Tests/ResultTests.swift; sourceTree = SOURCE_ROOT; };
-		8F5775E61C118FBF002E134D /* SignalTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignalTests.swift; path = Tests/SignalTests.swift; sourceTree = SOURCE_ROOT; };
-		8F5775E91C118FC9002E134D /* DebounceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DebounceTests.swift; path = Tests/DebounceTests.swift; sourceTree = SOURCE_ROOT; };
-		8F5775EA1C118FC9002E134D /* DelayTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DelayTests.swift; path = Tests/DelayTests.swift; sourceTree = SOURCE_ROOT; };
-		8F5775EB1C118FC9002E134D /* ThreadingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ThreadingTests.swift; path = Tests/ThreadingTests.swift; sourceTree = SOURCE_ROOT; };
-		8F5775EC1C118FC9002E134D /* WaitingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WaitingTests.swift; path = Tests/WaitingTests.swift; sourceTree = SOURCE_ROOT; };
-		8FFAF5071CBC11B400C60CCB /* ObservableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ObservableTests.swift; path = Tests/ObservableTests.swift; sourceTree = SOURCE_ROOT; };
-		8FFAF5091CBC150200C60CCB /* ResultObservableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResultObservableTests.swift; path = Tests/ResultObservableTests.swift; sourceTree = SOURCE_ROOT; };
+		B4010ECC1D99916E00E6AC8E /* WaitingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WaitingTests.swift; path = Tests/InterstellarTests/WaitingTests.swift; sourceTree = SOURCE_ROOT; };
+		B4010ECD1D99916E00E6AC8E /* ThreadingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ThreadingTests.swift; path = Tests/InterstellarTests/ThreadingTests.swift; sourceTree = SOURCE_ROOT; };
+		B4010ECE1D99916E00E6AC8E /* DelayTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DelayTests.swift; path = Tests/InterstellarTests/DelayTests.swift; sourceTree = SOURCE_ROOT; };
+		B4010ECF1D99916E00E6AC8E /* DebounceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DebounceTests.swift; path = Tests/InterstellarTests/DebounceTests.swift; sourceTree = SOURCE_ROOT; };
+		B4010ED41D99918000E6AC8E /* SignalTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignalTests.swift; path = Tests/InterstellarTests/SignalTests.swift; sourceTree = SOURCE_ROOT; };
+		B4010ED51D99918000E6AC8E /* ResultTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResultTests.swift; path = Tests/InterstellarTests/ResultTests.swift; sourceTree = SOURCE_ROOT; };
+		B4010ED61D99918000E6AC8E /* ResultObservableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResultObservableTests.swift; path = Tests/InterstellarTests/ResultObservableTests.swift; sourceTree = SOURCE_ROOT; };
+		B4010ED71D99918000E6AC8E /* ObservableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ObservableTests.swift; path = Tests/InterstellarTests/ObservableTests.swift; sourceTree = SOURCE_ROOT; };
 		B44BB1931D92B0FF00CE3CB2 /* ObserverToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ObserverToken.swift; path = Sources/ObserverToken.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -222,10 +222,10 @@
 		8F4870C51BEF938E0098C305 /* Interstellar */ = {
 			isa = PBXGroup;
 			children = (
-				8F5775E51C118FBF002E134D /* ResultTests.swift */,
-				8F5775E61C118FBF002E134D /* SignalTests.swift */,
-				8FFAF5071CBC11B400C60CCB /* ObservableTests.swift */,
-				8FFAF5091CBC150200C60CCB /* ResultObservableTests.swift */,
+				B4010ED41D99918000E6AC8E /* SignalTests.swift */,
+				B4010ED51D99918000E6AC8E /* ResultTests.swift */,
+				B4010ED61D99918000E6AC8E /* ResultObservableTests.swift */,
+				B4010ED71D99918000E6AC8E /* ObservableTests.swift */,
 			);
 			name = Interstellar;
 			sourceTree = "<group>";
@@ -233,10 +233,10 @@
 		8F4870C61BEF93960098C305 /* Warpdrive */ = {
 			isa = PBXGroup;
 			children = (
-				8F5775E91C118FC9002E134D /* DebounceTests.swift */,
-				8F5775EA1C118FC9002E134D /* DelayTests.swift */,
-				8F5775EB1C118FC9002E134D /* ThreadingTests.swift */,
-				8F5775EC1C118FC9002E134D /* WaitingTests.swift */,
+				B4010ECC1D99916E00E6AC8E /* WaitingTests.swift */,
+				B4010ECD1D99916E00E6AC8E /* ThreadingTests.swift */,
+				B4010ECE1D99916E00E6AC8E /* DelayTests.swift */,
+				B4010ECF1D99916E00E6AC8E /* DebounceTests.swift */,
 			);
 			name = Warpdrive;
 			sourceTree = "<group>";
@@ -529,14 +529,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8F5775E71C118FBF002E134D /* ResultTests.swift in Sources */,
-				8FFAF5081CBC11B400C60CCB /* ObservableTests.swift in Sources */,
-				8F5775EF1C118FC9002E134D /* ThreadingTests.swift in Sources */,
-				8F5775EE1C118FC9002E134D /* DelayTests.swift in Sources */,
-				8F5775ED1C118FC9002E134D /* DebounceTests.swift in Sources */,
-				8FFAF50A1CBC150200C60CCB /* ResultObservableTests.swift in Sources */,
-				8F5775E81C118FBF002E134D /* SignalTests.swift in Sources */,
-				8F5775F01C118FC9002E134D /* WaitingTests.swift in Sources */,
+				B4010EE31D9991A100E6AC8E /* ObservableTests.swift in Sources */,
+				B4010EE21D9991A100E6AC8E /* ResultObservableTests.swift in Sources */,
+				B4010EE11D9991A100E6AC8E /* ResultTests.swift in Sources */,
+				B4010EDD1D99919D00E6AC8E /* ThreadingTests.swift in Sources */,
+				B4010EDC1D99919D00E6AC8E /* WaitingTests.swift in Sources */,
+				B4010EDF1D99919D00E6AC8E /* DebounceTests.swift in Sources */,
+				B4010EE01D9991A100E6AC8E /* SignalTests.swift in Sources */,
+				B4010EDE1D99919D00E6AC8E /* DelayTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

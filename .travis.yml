@@ -6,3 +6,4 @@ script:
   - xcodebuild build -project Interstellar.xcodeproj -scheme Interstellar_OSX -sdk macosx ONLY_ACTIVE_ARCH=NO -configuration Release | xcpretty -c;
   - xcodebuild build -project Interstellar.xcodeproj -scheme Interstellar_tvOS -sdk appletvsimulator ONLY_ACTIVE_ARCH=NO -configuration Release | xcpretty -c;
   - xcodebuild build -project Interstellar.xcodeproj -scheme Interstellar_watchOS -sdk watchsimulator ONLY_ACTIVE_ARCH=NO -configuration Release | xcpretty -c;
+  - swift test
