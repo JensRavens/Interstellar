@@ -20,6 +20,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+import Dispatch
 import Foundation
 
 @available(*, deprecated: 2.0)
@@ -30,7 +31,7 @@ public extension Signal {
     public func delay(_ seconds: TimeInterval, queue: DispatchQueue = DispatchQueue.main) -> Signal<T> {
         let signal = Signal<T>()
         subscribe { result in
-            queue.asyncAfter(deadline: seconds.dispatchTime) {
+            queue.asyncAfter(deadline: DispatchTime.now() + seconds) {
                 signal.update(result)
             }
         }
@@ -45,7 +46,7 @@ public extension Observable {
     public func delay(_ seconds: TimeInterval, queue: DispatchQueue = DispatchQueue.main) -> Observable<T> {
         let observable = Observable<T>()
         subscribe { result in
-            queue.asyncAfter(deadline: seconds.dispatchTime) {
+            queue.asyncAfter(deadline: DispatchTime.now() + seconds) {
                 observable.update(result)
             }
         }

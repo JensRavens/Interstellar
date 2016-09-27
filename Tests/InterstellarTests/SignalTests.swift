@@ -9,6 +9,18 @@
 import XCTest
 import Interstellar
 
+internal class Fail: Error, Equatable {
+    public static func ==(lhs: Fail, rhs: Fail) -> Bool {
+        return lhs.error == rhs.error
+    }
+
+    let error: String
+    
+    internal init(_ error: String) {
+        self.error = error
+    }
+}
+
 @available(*, deprecated: 2.0)
 class SignalTests: XCTestCase {
     
@@ -16,8 +28,7 @@ class SignalTests: XCTestCase {
         if subject.characters.count > 0 {
             return .success("Hello \(subject)")
         } else {
-            let error: NSError = NSError(domain: "No one to greet!", code: 404, userInfo: nil)
-            return .error(error)
+            return .error(Fail("No one to greet!"))
         }
     }
     
@@ -65,7 +76,7 @@ class SignalTests: XCTestCase {
     
     func testThrowingFunction() {
         func throwing(_ i: Int) throws -> Int {
-            throw NSError(domain: "Error", code: 404, userInfo: nil)
+            throw Fail("Error")
         }
         
         let transformed = Result(success: 1).flatMap(throwing)
@@ -75,7 +86,7 @@ class SignalTests: XCTestCase {
     
     func testThrowingSignal() {
         func throwing(_ i: Int) throws -> Int {
-            throw NSError(domain: "Error", code: 404, userInfo: nil)
+            throw Fail("Error")
         }
         
         let signal = Signal<Int>()

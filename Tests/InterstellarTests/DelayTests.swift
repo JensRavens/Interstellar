@@ -9,6 +9,7 @@
 import Foundation
 import XCTest
 import Interstellar
+import Dispatch
 
 @available(*, deprecated: 2.0)
 class DelayTests: XCTestCase {
@@ -42,8 +43,7 @@ class DelayTests: XCTestCase {
             XCTAssertEqual(value, "value")
             expectation.fulfill()
         }
-        let delayTime = DispatchTime.now() + Double(Int64(0.1 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
-        DispatchQueue.main.asyncAfter(deadline: delayTime) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
             value = "value"
         }
         waitForExpectations(timeout: 0.2, handler: nil)

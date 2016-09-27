@@ -15,8 +15,7 @@ class ResultTests: XCTestCase {
         if subject.characters.count > 0 {
             return .success("Hello \(subject)")
         } else {
-            let error: NSError = NSError(domain: "No one to greet!", code: 404, userInfo: nil)
-            return .error(error)
+            return .error(Fail("No one to greet!"))
         }
     }
     
@@ -37,10 +36,10 @@ class ResultTests: XCTestCase {
     }
     
     func testAccessingAnError() {
-        let error = NSError(domain: "", code: 0, userInfo: nil)
+        let error = Fail("")
         let result = Result<String>(error: error)
         XCTAssertNil(result.value)
-        XCTAssertEqual(result.error as? NSError, error)
+        XCTAssertEqual(result.error as? Fail, error)
     }
     
     func testThrowingAccessorReturns() {
@@ -49,13 +48,13 @@ class ResultTests: XCTestCase {
     }
     
     func testThrowingAccessorThrows() {
-        let error = NSError(domain: "", code: 0, userInfo: nil)
+        let error = Fail("")
         let result = Result<String>(error: error)
         do {
             let _ = try result.get()
             XCTFail()
         } catch let e {
-            XCTAssertEqual(e as NSError, error)
+            XCTAssertEqual(e as! Fail, error)
         }
     }
     

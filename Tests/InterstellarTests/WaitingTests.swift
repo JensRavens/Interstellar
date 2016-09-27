@@ -9,25 +9,20 @@
 import Foundation
 import XCTest
 import Interstellar
+import Dispatch
 
 fileprivate func asyncOperation(value: String, completion: (Result<String>)->Void) {
     completion(Result<String>.success(value))
 }
 
 fileprivate func longOperation(value: String, completion: @escaping (Result<String>)->Void) {
-    DispatchQueue.main.asyncAfter(deadline: TimeInterval(10).dispatchTime){
+    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 10){
         completion(Result<String>.success(value))
     }
 }
 
 fileprivate func fail<T>(_ t: T) throws -> T {
     throw NSError(domain: "Error", code: 400, userInfo: nil)
-}
-
-internal extension TimeInterval {
-    var dispatchTime: DispatchTime {
-        return DispatchTime.now() + Double(Int64(self * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
-    }
 }
 
 @available(*, deprecated: 2.0)

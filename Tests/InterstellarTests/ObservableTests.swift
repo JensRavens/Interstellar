@@ -10,7 +10,6 @@ import XCTest
 import Interstellar
 
 class ObservableTests: XCTestCase {
-    
     func greeter(_ subject: String) -> String {
         return "Hello \(subject)"
     }
@@ -119,3 +118,21 @@ class ObservableTests: XCTestCase {
         XCTAssertEqual(greeting.value ?? [""], ["Hello", "World"])
     }
 }
+
+#if os(Linux)
+    extension ObservableTests {
+        static var allTests : [(String, (ObservableTests) -> () throws -> Void)] {
+            return [
+                ("testMappingAnObservable", testMappingAnObservable),
+                ("testFlatMappingObservable", testFlatMappingObservable),
+                ("testSubscription", testSubscription),
+                ("testLiveSubscriptions", testLiveSubscriptions),
+                ("testOnceSubscription", testOnceSubscription),
+                ("testOnceSubscriptionAfterCompletion", testOnceSubscriptionAfterCompletion),
+                ("testMergeInvocations", testMergeInvocations),
+                ("testMergeValues", testMergeValues),
+                ("testMergingObservables", testMergingObservables),
+            ]
+        }
+    }
+#endif

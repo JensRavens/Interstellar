@@ -19,7 +19,7 @@ class ResultObservableTests: XCTestCase {
         if subject.characters.count > 0 {
             return "Hello \(subject)"
         } else {
-            throw NSError(domain: "No one to greet!", code: 404, userInfo: nil)
+            throw Fail("No one to greet!")
         }
     }
     
@@ -28,7 +28,7 @@ class ResultObservableTests: XCTestCase {
     }
     
     func asyncFail(_ subject: String) -> Observable<Result<String>> {
-        return Observable(.error(NSError(domain: "Fail", code: 500, userInfo: nil)))
+        return Observable(.error(Fail("Fail")))
     }
     
     func neverCallMe(_ subject: String) -> Observable<Result<String>> {

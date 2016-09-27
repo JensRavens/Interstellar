@@ -22,17 +22,16 @@
 
 import Foundation
 
+#if os(Linux)
+    public typealias TimeInterval = Double
+    import Dispatch
+#endif
+
 /**
     This error is thrown if the signal doesn't complete within the specified timeout in a wait function.
  */
 public struct TimeoutError: Error {
     internal init() {}
-}
-
-internal extension TimeInterval {
-    var dispatchTime: DispatchTime {
-        return DispatchTime.now() + Double(Int64(self * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
-    }
 }
 
 @available(*, deprecated: 2.0)
@@ -49,7 +48,7 @@ public extension Signal {
             result = r
             group.leave()
         }
-        let timestamp = timeout.map{ $0.dispatchTime } ?? DispatchTime.distantFuture
+        let timestamp = timeout.map{ DispatchTime.now() + $0 } ?? DispatchTime.distantFuture
         if group.wait(timeout: timestamp) != .success {
             throw TimeoutError()
         }
@@ -73,7 +72,7 @@ public extension Observable {
             value = $0
             group.leave()
         }
-        let timestamp = timeout.map{ $0.dispatchTime } ?? DispatchTime.distantFuture
+        let timestamp = timeout.map{ DispatchTime.now() + $0 } ?? DispatchTime.distantFuture
         if group.wait(timeout: timestamp) != .success {
             throw TimeoutError()
         }
