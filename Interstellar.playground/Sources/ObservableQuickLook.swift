@@ -1,5 +1,4 @@
 import Foundation
-import Interstellar
 
 extension Observable: CustomPlaygroundQuickLookable, CustomDebugStringConvertible {
     /// A custom playground Quick Look for this instance.
