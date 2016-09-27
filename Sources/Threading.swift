@@ -44,8 +44,7 @@ public final class Thread {
 
     /// Transform the signal to a global background queue with priority default
     public static func background<T>(_ a: T, completion: @escaping (T)->Void) {
-        let q = DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default)
-        q.async {
+        DispatchQueue.global(qos: .background).async {
             completion(a)
         }
     }
@@ -70,7 +69,7 @@ public final class Queue {
     
     /// Transform the observable to a global background queue with priority default
     public static func background<T>(_ a: T) -> Observable<T> {
-        let q = DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default)
+        let q = DispatchQueue.global(qos: .background)
         return queue(q)(a)
     }
 }
