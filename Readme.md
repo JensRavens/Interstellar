@@ -22,7 +22,7 @@ The simplest `Observable<T>` implementation for Functional Reactive Programming 
 
 ## Requirements
 
-- iOS 7.0+ / Mac OS X 10.9+ / Ubuntu 14.10
+- iOS 7.0+ / Mac OS X 10.10+ / Ubuntu 14.10
 - Xcode 8
 
 ---
