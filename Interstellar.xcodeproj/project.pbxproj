@@ -7,7 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2873E1191D0FF50B00CB521F /* Mutex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2DC41B1CC03E380055DC5C /* Mutex.swift */; };
+		4EE634721CD0C23B007A602B /* Debounce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775D11C118F78002E134D /* Debounce.swift */; };
+		4EE634731CD0C23B007A602B /* Delay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775D21C118F78002E134D /* Delay.swift */; };
+		4EE634741CD0C23B007A602B /* Threading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775D31C118F78002E134D /* Threading.swift */; };
+		4EE634751CD0C23B007A602B /* Waiting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775D41C118F78002E134D /* Waiting.swift */; };
+		4EE634761CD0C23B007A602B /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775C91C118F6B002E134D /* Result.swift */; };
+		4EE634771CD0C23B007A602B /* Signal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775CA1C118F6B002E134D /* Signal.swift */; };
+		4EE634781CD0C23B007A602B /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F50D38E1C1A300A002F998A /* Observable.swift */; };
+		4EE634791CD0C23B007A602B /* Observable+Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F50D39A1C1A5126002F998A /* Observable+Result.swift */; };
+		4EE6347A1CD0C23B007A602B /* ResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F50D3921C1A3870002F998A /* ResultType.swift */; };
 		8F2B8D701B07A92C0063EB9C /* Interstellar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F2B8D641B07A92C0063EB9C /* Interstellar.framework */; };
+		8F2DC41C1CC03E380055DC5C /* Mutex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2DC41B1CC03E380055DC5C /* Mutex.swift */; };
+		8F4D98571C1B1E68009A91E5 /* Observable+Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F50D39A1C1A5126002F998A /* Observable+Result.swift */; };
+		8F4D98581C1B1E68009A91E5 /* Observable+Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F50D39A1C1A5126002F998A /* Observable+Result.swift */; };
+		8F50D38F1C1A300A002F998A /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F50D38E1C1A300A002F998A /* Observable.swift */; };
+		8F50D3931C1A3870002F998A /* ResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F50D3921C1A3870002F998A /* ResultType.swift */; };
+		8F50D3941C1A3DA7002F998A /* ResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F50D3921C1A3870002F998A /* ResultType.swift */; };
+		8F50D3951C1A3DA8002F998A /* ResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F50D3921C1A3870002F998A /* ResultType.swift */; };
+		8F50D3981C1A3DAF002F998A /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F50D38E1C1A300A002F998A /* Observable.swift */; };
+		8F50D3991C1A3DB0002F998A /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F50D38E1C1A300A002F998A /* Observable.swift */; };
+		8F50D39B1C1A5126002F998A /* Observable+Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F50D39A1C1A5126002F998A /* Observable+Result.swift */; };
 		8F5775CB1C118F6B002E134D /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775C91C118F6B002E134D /* Result.swift */; };
 		8F5775CC1C118F6B002E134D /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775C91C118F6B002E134D /* Result.swift */; };
 		8F5775CD1C118F6B002E134D /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775C91C118F6B002E134D /* Result.swift */; };
@@ -26,12 +46,20 @@
 		8F5775DE1C118F78002E134D /* Waiting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775D41C118F78002E134D /* Waiting.swift */; };
 		8F5775DF1C118F78002E134D /* Waiting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775D41C118F78002E134D /* Waiting.swift */; };
 		8F5775E01C118F78002E134D /* Waiting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775D41C118F78002E134D /* Waiting.swift */; };
-		8F5775E71C118FBF002E134D /* ResultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775E51C118FBF002E134D /* ResultTests.swift */; };
-		8F5775E81C118FBF002E134D /* SignalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775E61C118FBF002E134D /* SignalTests.swift */; };
-		8F5775ED1C118FC9002E134D /* DebounceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775E91C118FC9002E134D /* DebounceTests.swift */; };
-		8F5775EE1C118FC9002E134D /* DelayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775EA1C118FC9002E134D /* DelayTests.swift */; };
-		8F5775EF1C118FC9002E134D /* ThreadingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775EB1C118FC9002E134D /* ThreadingTests.swift */; };
-		8F5775F01C118FC9002E134D /* WaitingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775EC1C118FC9002E134D /* WaitingTests.swift */; };
+		8FC7A40E1CC12EAA00710873 /* Mutex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2DC41B1CC03E380055DC5C /* Mutex.swift */; };
+		8FC7A40F1CC12EAB00710873 /* Mutex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2DC41B1CC03E380055DC5C /* Mutex.swift */; };
+		B4010EDC1D99919D00E6AC8E /* WaitingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4010ECC1D99916E00E6AC8E /* WaitingTests.swift */; };
+		B4010EDD1D99919D00E6AC8E /* ThreadingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4010ECD1D99916E00E6AC8E /* ThreadingTests.swift */; };
+		B4010EDE1D99919D00E6AC8E /* DelayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4010ECE1D99916E00E6AC8E /* DelayTests.swift */; };
+		B4010EDF1D99919D00E6AC8E /* DebounceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4010ECF1D99916E00E6AC8E /* DebounceTests.swift */; };
+		B4010EE01D9991A100E6AC8E /* SignalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4010ED41D99918000E6AC8E /* SignalTests.swift */; };
+		B4010EE11D9991A100E6AC8E /* ResultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4010ED51D99918000E6AC8E /* ResultTests.swift */; };
+		B4010EE21D9991A100E6AC8E /* ResultObservableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4010ED61D99918000E6AC8E /* ResultObservableTests.swift */; };
+		B4010EE31D9991A100E6AC8E /* ObservableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4010ED71D99918000E6AC8E /* ObservableTests.swift */; };
+		B44BB1941D92B0FF00CE3CB2 /* ObserverToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44BB1931D92B0FF00CE3CB2 /* ObserverToken.swift */; };
+		B44BB1951D92B0FF00CE3CB2 /* ObserverToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44BB1931D92B0FF00CE3CB2 /* ObserverToken.swift */; };
+		B44BB1961D92B0FF00CE3CB2 /* ObserverToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44BB1931D92B0FF00CE3CB2 /* ObserverToken.swift */; };
+		B44BB1971D92B0FF00CE3CB2 /* ObserverToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44BB1931D92B0FF00CE3CB2 /* ObserverToken.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,8 +76,13 @@
 		244984ED1BFBE0A200C8FEE0 /* Interstellar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Interstellar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4583FA021BF99EE60093BFFE /* Interstellar.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Interstellar.playground; sourceTree = "<group>"; };
 		45DE51E81BF83F67009BC378 /* Interstellar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Interstellar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4EE6346A1CD0C18E007A602B /* Interstellar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Interstellar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F2B8D641B07A92C0063EB9C /* Interstellar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Interstellar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F2B8D6F1B07A92C0063EB9C /* InterstellarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InterstellarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F2DC41B1CC03E380055DC5C /* Mutex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Mutex.swift; path = Sources/Mutex.swift; sourceTree = SOURCE_ROOT; };
+		8F50D38E1C1A300A002F998A /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Observable.swift; path = Sources/Observable.swift; sourceTree = SOURCE_ROOT; };
+		8F50D3921C1A3870002F998A /* ResultType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResultType.swift; path = Sources/ResultType.swift; sourceTree = SOURCE_ROOT; };
+		8F50D39A1C1A5126002F998A /* Observable+Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Observable+Result.swift"; path = "Sources/Observable+Result.swift"; sourceTree = SOURCE_ROOT; };
 		8F5775C91C118F6B002E134D /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Result.swift; path = Sources/Result.swift; sourceTree = SOURCE_ROOT; };
 		8F5775CA1C118F6B002E134D /* Signal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Signal.swift; path = Sources/Signal.swift; sourceTree = SOURCE_ROOT; };
 		8F5775D11C118F78002E134D /* Debounce.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Debounce.swift; path = Sources/Debounce.swift; sourceTree = SOURCE_ROOT; };
@@ -59,12 +92,15 @@
 		8F5775E11C118F93002E134D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Support/Info.plist; sourceTree = SOURCE_ROOT; };
 		8F5775E21C118F93002E134D /* Interstellar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Interstellar.h; path = Support/Interstellar.h; sourceTree = SOURCE_ROOT; };
 		8F5775E31C118FAC002E134D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Tests/Info.plist; sourceTree = SOURCE_ROOT; };
-		8F5775E51C118FBF002E134D /* ResultTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResultTests.swift; path = Tests/ResultTests.swift; sourceTree = SOURCE_ROOT; };
-		8F5775E61C118FBF002E134D /* SignalTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignalTests.swift; path = Tests/SignalTests.swift; sourceTree = SOURCE_ROOT; };
-		8F5775E91C118FC9002E134D /* DebounceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DebounceTests.swift; path = Tests/DebounceTests.swift; sourceTree = SOURCE_ROOT; };
-		8F5775EA1C118FC9002E134D /* DelayTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DelayTests.swift; path = Tests/DelayTests.swift; sourceTree = SOURCE_ROOT; };
-		8F5775EB1C118FC9002E134D /* ThreadingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ThreadingTests.swift; path = Tests/ThreadingTests.swift; sourceTree = SOURCE_ROOT; };
-		8F5775EC1C118FC9002E134D /* WaitingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WaitingTests.swift; path = Tests/WaitingTests.swift; sourceTree = SOURCE_ROOT; };
+		B4010ECC1D99916E00E6AC8E /* WaitingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WaitingTests.swift; path = Tests/InterstellarTests/WaitingTests.swift; sourceTree = SOURCE_ROOT; };
+		B4010ECD1D99916E00E6AC8E /* ThreadingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ThreadingTests.swift; path = Tests/InterstellarTests/ThreadingTests.swift; sourceTree = SOURCE_ROOT; };
+		B4010ECE1D99916E00E6AC8E /* DelayTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DelayTests.swift; path = Tests/InterstellarTests/DelayTests.swift; sourceTree = SOURCE_ROOT; };
+		B4010ECF1D99916E00E6AC8E /* DebounceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DebounceTests.swift; path = Tests/InterstellarTests/DebounceTests.swift; sourceTree = SOURCE_ROOT; };
+		B4010ED41D99918000E6AC8E /* SignalTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignalTests.swift; path = Tests/InterstellarTests/SignalTests.swift; sourceTree = SOURCE_ROOT; };
+		B4010ED51D99918000E6AC8E /* ResultTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResultTests.swift; path = Tests/InterstellarTests/ResultTests.swift; sourceTree = SOURCE_ROOT; };
+		B4010ED61D99918000E6AC8E /* ResultObservableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResultObservableTests.swift; path = Tests/InterstellarTests/ResultObservableTests.swift; sourceTree = SOURCE_ROOT; };
+		B4010ED71D99918000E6AC8E /* ObservableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ObservableTests.swift; path = Tests/InterstellarTests/ObservableTests.swift; sourceTree = SOURCE_ROOT; };
+		B44BB1931D92B0FF00CE3CB2 /* ObserverToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ObserverToken.swift; path = Sources/ObserverToken.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +112,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		45DE51E41BF83F67009BC378 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4EE634661CD0C18E007A602B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -118,6 +161,7 @@
 				8F2B8D6F1B07A92C0063EB9C /* InterstellarTests.xctest */,
 				45DE51E81BF83F67009BC378 /* Interstellar.framework */,
 				244984ED1BFBE0A200C8FEE0 /* Interstellar.framework */,
+				4EE6346A1CD0C18E007A602B /* Interstellar.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -128,6 +172,11 @@
 				8F5775C91C118F6B002E134D /* Result.swift */,
 				8F5775CA1C118F6B002E134D /* Signal.swift */,
 				8F2B8D671B07A92C0063EB9C /* Supporting Files */,
+				8F50D38E1C1A300A002F998A /* Observable.swift */,
+				B44BB1931D92B0FF00CE3CB2 /* ObserverToken.swift */,
+				8F50D39A1C1A5126002F998A /* Observable+Result.swift */,
+				8F50D3921C1A3870002F998A /* ResultType.swift */,
+				8F2DC41B1CC03E380055DC5C /* Mutex.swift */,
 			);
 			path = Interstellar;
 			sourceTree = "<group>";
@@ -173,8 +222,10 @@
 		8F4870C51BEF938E0098C305 /* Interstellar */ = {
 			isa = PBXGroup;
 			children = (
-				8F5775E51C118FBF002E134D /* ResultTests.swift */,
-				8F5775E61C118FBF002E134D /* SignalTests.swift */,
+				B4010ED41D99918000E6AC8E /* SignalTests.swift */,
+				B4010ED51D99918000E6AC8E /* ResultTests.swift */,
+				B4010ED61D99918000E6AC8E /* ResultObservableTests.swift */,
+				B4010ED71D99918000E6AC8E /* ObservableTests.swift */,
 			);
 			name = Interstellar;
 			sourceTree = "<group>";
@@ -182,10 +233,10 @@
 		8F4870C61BEF93960098C305 /* Warpdrive */ = {
 			isa = PBXGroup;
 			children = (
-				8F5775E91C118FC9002E134D /* DebounceTests.swift */,
-				8F5775EA1C118FC9002E134D /* DelayTests.swift */,
-				8F5775EB1C118FC9002E134D /* ThreadingTests.swift */,
-				8F5775EC1C118FC9002E134D /* WaitingTests.swift */,
+				B4010ECC1D99916E00E6AC8E /* WaitingTests.swift */,
+				B4010ECD1D99916E00E6AC8E /* ThreadingTests.swift */,
+				B4010ECE1D99916E00E6AC8E /* DelayTests.swift */,
+				B4010ECF1D99916E00E6AC8E /* DebounceTests.swift */,
 			);
 			name = Warpdrive;
 			sourceTree = "<group>";
@@ -201,6 +252,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		45DE51E51BF83F67009BC378 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4EE634671CD0C18E007A602B /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -253,6 +311,24 @@
 			productReference = 45DE51E81BF83F67009BC378 /* Interstellar.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		4EE634691CD0C18E007A602B /* Interstellar_watchOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4EE6346F1CD0C18E007A602B /* Build configuration list for PBXNativeTarget "Interstellar_watchOS" */;
+			buildPhases = (
+				4EE634651CD0C18E007A602B /* Sources */,
+				4EE634661CD0C18E007A602B /* Frameworks */,
+				4EE634671CD0C18E007A602B /* Headers */,
+				4EE634681CD0C18E007A602B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Interstellar_watchOS;
+			productName = Interstellar;
+			productReference = 4EE6346A1CD0C18E007A602B /* Interstellar.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		8F2B8D631B07A92C0063EB9C /* Interstellar_iOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8F2B8D7A1B07A92C0063EB9C /* Build configuration list for PBXNativeTarget "Interstellar_iOS" */;
@@ -296,17 +372,28 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0710;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "nerdgeschoss GmbH";
 				TargetAttributes = {
+					244984DD1BFBE0A200C8FEE0 = {
+						LastSwiftMigration = 0800;
+					};
 					45DE51E71BF83F67009BC378 = {
 						CreatedOnToolsVersion = 7.1.1;
+						LastSwiftMigration = 0800;
+					};
+					4EE634691CD0C18E007A602B = {
+						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0800;
 					};
 					8F2B8D631B07A92C0063EB9C = {
 						CreatedOnToolsVersion = 6.3.1;
+						LastSwiftMigration = 0800;
+						ProvisioningStyle = Manual;
 					};
 					8F2B8D6E1B07A92C0063EB9C = {
 						CreatedOnToolsVersion = 6.3.1;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -325,6 +412,7 @@
 				8F2B8D631B07A92C0063EB9C /* Interstellar_iOS */,
 				45DE51E71BF83F67009BC378 /* Interstellar_OSX */,
 				244984DD1BFBE0A200C8FEE0 /* Interstellar_tvOS */,
+				4EE634691CD0C18E007A602B /* Interstellar_watchOS */,
 				8F2B8D6E1B07A92C0063EB9C /* InterstellarTests */,
 			);
 		};
@@ -339,6 +427,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		45DE51E61BF83F67009BC378 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4EE634681CD0C18E007A602B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -366,10 +461,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F50D3951C1A3DA8002F998A /* ResultType.swift in Sources */,
+				B44BB1961D92B0FF00CE3CB2 /* ObserverToken.swift in Sources */,
 				8F5775DD1C118F78002E134D /* Threading.swift in Sources */,
 				8F5775E01C118F78002E134D /* Waiting.swift in Sources */,
+				8F50D3991C1A3DB0002F998A /* Observable.swift in Sources */,
 				8F5775CD1C118F6B002E134D /* Result.swift in Sources */,
+				8FC7A40E1CC12EAA00710873 /* Mutex.swift in Sources */,
 				8F5775DA1C118F78002E134D /* Delay.swift in Sources */,
+				8F4D98581C1B1E68009A91E5 /* Observable+Result.swift in Sources */,
 				8F5775D71C118F78002E134D /* Debounce.swift in Sources */,
 				8F5775D01C118F6B002E134D /* Signal.swift in Sources */,
 			);
@@ -379,12 +479,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F50D3941C1A3DA7002F998A /* ResultType.swift in Sources */,
+				B44BB1951D92B0FF00CE3CB2 /* ObserverToken.swift in Sources */,
 				8F5775DC1C118F78002E134D /* Threading.swift in Sources */,
 				8F5775DF1C118F78002E134D /* Waiting.swift in Sources */,
+				8F50D3981C1A3DAF002F998A /* Observable.swift in Sources */,
 				8F5775CC1C118F6B002E134D /* Result.swift in Sources */,
+				8FC7A40F1CC12EAB00710873 /* Mutex.swift in Sources */,
 				8F5775D91C118F78002E134D /* Delay.swift in Sources */,
+				8F4D98571C1B1E68009A91E5 /* Observable+Result.swift in Sources */,
 				8F5775D61C118F78002E134D /* Debounce.swift in Sources */,
 				8F5775CF1C118F6B002E134D /* Signal.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4EE634651CD0C18E007A602B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4EE6347A1CD0C23B007A602B /* ResultType.swift in Sources */,
+				B44BB1971D92B0FF00CE3CB2 /* ObserverToken.swift in Sources */,
+				4EE634741CD0C23B007A602B /* Threading.swift in Sources */,
+				4EE634751CD0C23B007A602B /* Waiting.swift in Sources */,
+				4EE634781CD0C23B007A602B /* Observable.swift in Sources */,
+				4EE634761CD0C23B007A602B /* Result.swift in Sources */,
+				2873E1191D0FF50B00CB521F /* Mutex.swift in Sources */,
+				4EE634731CD0C23B007A602B /* Delay.swift in Sources */,
+				4EE634791CD0C23B007A602B /* Observable+Result.swift in Sources */,
+				4EE634721CD0C23B007A602B /* Debounce.swift in Sources */,
+				4EE634771CD0C23B007A602B /* Signal.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,9 +516,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				8F5775DB1C118F78002E134D /* Threading.swift in Sources */,
+				B44BB1941D92B0FF00CE3CB2 /* ObserverToken.swift in Sources */,
 				8F5775DE1C118F78002E134D /* Waiting.swift in Sources */,
 				8F5775CB1C118F6B002E134D /* Result.swift in Sources */,
+				8F50D3931C1A3870002F998A /* ResultType.swift in Sources */,
+				8F50D38F1C1A300A002F998A /* Observable.swift in Sources */,
+				8F2DC41C1CC03E380055DC5C /* Mutex.swift in Sources */,
 				8F5775D81C118F78002E134D /* Delay.swift in Sources */,
+				8F50D39B1C1A5126002F998A /* Observable+Result.swift in Sources */,
 				8F5775D51C118F78002E134D /* Debounce.swift in Sources */,
 				8F5775CE1C118F6B002E134D /* Signal.swift in Sources */,
 			);
@@ -405,12 +533,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8F5775E71C118FBF002E134D /* ResultTests.swift in Sources */,
-				8F5775EF1C118FC9002E134D /* ThreadingTests.swift in Sources */,
-				8F5775EE1C118FC9002E134D /* DelayTests.swift in Sources */,
-				8F5775ED1C118FC9002E134D /* DebounceTests.swift in Sources */,
-				8F5775E81C118FBF002E134D /* SignalTests.swift in Sources */,
-				8F5775F01C118FC9002E134D /* WaitingTests.swift in Sources */,
+				B4010EE31D9991A100E6AC8E /* ObservableTests.swift in Sources */,
+				B4010EE21D9991A100E6AC8E /* ResultObservableTests.swift in Sources */,
+				B4010EE11D9991A100E6AC8E /* ResultTests.swift in Sources */,
+				B4010EDD1D99919D00E6AC8E /* ThreadingTests.swift in Sources */,
+				B4010EDC1D99919D00E6AC8E /* WaitingTests.swift in Sources */,
+				B4010EDF1D99919D00E6AC8E /* DebounceTests.swift in Sources */,
+				B4010EE01D9991A100E6AC8E /* SignalTests.swift in Sources */,
+				B4010EDE1D99919D00E6AC8E /* DelayTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -429,6 +559,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -442,6 +573,7 @@
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
@@ -451,6 +583,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -463,6 +596,7 @@
 				PRODUCT_NAME = Interstellar;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
@@ -482,12 +616,13 @@
 				INFOPLIST_FILE = Support/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.nerdgeschoss.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Interstellar;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -504,11 +639,59 @@
 				INFOPLIST_FILE = Support/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.nerdgeschoss.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Interstellar;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		4EE634701CD0C18E007A602B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Support/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = de.nerdgeschoss.Interstellar;
+				PRODUCT_NAME = Interstellar;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		4EE634711CD0C18E007A602B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Support/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = de.nerdgeschoss.Interstellar;
+				PRODUCT_NAME = Interstellar;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Release;
 		};
@@ -525,8 +708,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -574,8 +759,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -595,6 +782,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -606,7 +794,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -618,6 +808,7 @@
 				PRODUCT_NAME = Interstellar;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -625,7 +816,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -636,6 +829,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "de.nerdgeschoss.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Interstellar;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -656,6 +850,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "de.nerdgeschoss.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -671,6 +866,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "de.nerdgeschoss.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -691,6 +887,15 @@
 			buildConfigurations = (
 				45DE51EE1BF83F67009BC378 /* Debug */,
 				45DE51EF1BF83F67009BC378 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4EE6346F1CD0C18E007A602B /* Build configuration list for PBXNativeTarget "Interstellar_watchOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4EE634701CD0C18E007A602B /* Debug */,
+				4EE634711CD0C18E007A602B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

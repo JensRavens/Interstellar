@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8F2B8D631B07A92C0063EB9C"
+               BlueprintIdentifier = "4EE634691CD0C18E007A602B"
                BuildableName = "Interstellar.framework"
-               BlueprintName = "Interstellar_iOS"
+               BlueprintName = "Interstellar_watchOS"
                ReferencedContainer = "container:Interstellar.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,26 +28,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8F2B8D6E1B07A92C0063EB9C"
-               BuildableName = "InterstellarTests.xctest"
-               BlueprintName = "InterstellarTests"
-               ReferencedContainer = "container:Interstellar.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8F2B8D631B07A92C0063EB9C"
-            BuildableName = "Interstellar.framework"
-            BlueprintName = "Interstellar_iOS"
-            ReferencedContainer = "container:Interstellar.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -64,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8F2B8D631B07A92C0063EB9C"
+            BlueprintIdentifier = "4EE634691CD0C18E007A602B"
             BuildableName = "Interstellar.framework"
-            BlueprintName = "Interstellar_iOS"
+            BlueprintName = "Interstellar_watchOS"
             ReferencedContainer = "container:Interstellar.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -82,9 +63,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8F2B8D631B07A92C0063EB9C"
+            BlueprintIdentifier = "4EE634691CD0C18E007A602B"
             BuildableName = "Interstellar.framework"
-            BlueprintName = "Interstellar_iOS"
+            BlueprintName = "Interstellar_watchOS"
             ReferencedContainer = "container:Interstellar.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

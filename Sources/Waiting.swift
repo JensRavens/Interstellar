@@ -22,45 +22,60 @@
 
 import Foundation
 
+#if os(Linux)
+    public typealias TimeInterval = Double
+    import Dispatch
+#endif
+
 /**
     This error is thrown if the signal doesn't complete within the specified timeout in a wait function.
  */
-public struct TimeoutError: ErrorType {
+public struct TimeoutError: Error {
     internal init() {}
 }
 
-#if os(Linux)
-#else
-internal extension NSTimeInterval {
-    var dispatchTime: dispatch_time_t {
-        return dispatch_time(DISPATCH_TIME_NOW, Int64(self * Double(NSEC_PER_SEC)))
-    }
-}
-#endif
-
+@available(*, deprecated: 2.0)
 public extension Signal {
-    #if os(Linux)
-    #else
     /**
         Wait until the signal updates the next time. This will block the current thread until there 
         is an error or a successfull value. In case of an error, the error will be thrown.
     */
-    public func wait(timeout: NSTimeInterval? = nil) throws -> T {
-        let group = dispatch_group_create()
+    public func wait(_ timeout: TimeInterval? = nil) throws -> T {
+        let group = DispatchGroup()
         var result: Result<T>?
-        dispatch_group_enter(group)
+        group.enter()
         subscribe { r in
             result = r
-            dispatch_group_leave(group)
+            group.leave()
         }
-        let timestamp = timeout.map{ $0.dispatchTime } ?? DISPATCH_TIME_FOREVER
-        if dispatch_group_wait(group, timestamp) != 0 {
+        let timestamp = timeout.map{ DispatchTime.now() + $0 } ?? DispatchTime.distantFuture
+        if group.wait(timeout: timestamp) != .success {
             throw TimeoutError()
         }
         switch result! {
-        case let .Success(t): return t
-        case let .Error(e): throw e
+        case let .success(t): return t
+        case let .error(e): throw e
         }
     }
-    #endif
+}
+
+public extension Observable {
+    /**
+     Wait until the observable updates the next time. This will block the current thread until 
+     there is a new value.
+     */
+    public func wait(_ timeout: TimeInterval? = nil) throws -> T {
+        let group = DispatchGroup()
+        var value: T! = nil
+        group.enter()
+        subscribe {
+            value = $0
+            group.leave()
+        }
+        let timestamp = timeout.map{ DispatchTime.now() + $0 } ?? DispatchTime.distantFuture
+        if group.wait(timeout: timestamp) != .success {
+            throw TimeoutError()
+        }
+        return value
+    }
 }

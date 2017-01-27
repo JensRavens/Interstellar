@@ -27,32 +27,32 @@
     ErrorType). You can read more about the implementation in
     [this blog post](http://jensravens.de/a-swifter-way-of-handling-errors/).
 */
-public enum Result<T> {
-    case Success(T)
-    case Error(ErrorType)
+public enum Result<T>: ResultType {
+    case success(T)
+    case error(Error)
     
     /**
         Initialize a result containing a successful value.
     */
     public init(success value: T) {
-        self = Success(value)
+        self = Result.success(value)
     }
     
     /**
         Initialize a result containing an error
     */
-    public init(error: ErrorType) {
-        self = Error(error)
+    public init(error: Error) {
+        self = .error(error)
     }
     
     /**
         Transform a result into another result using a function. If the result was an error,
         the function will not be executed and the error returned instead.
     */
-    public func map<U>(@noescape f: T -> U) -> Result<U> {
+    public func map<U>(_ f: @escaping (T) -> U) -> Result<U> {
         switch self {
-        case let .Success(v): return .Success(f(v))
-        case let .Error(error): return .Error(error)
+        case let .success(v): return .success(f(v))
+        case let .error(error): return .error(error)
         }
     }
     
@@ -60,25 +60,10 @@ public enum Result<T> {
         Transform a result into another result using a function. If the result was an error,
         the function will not be executed and the error returned instead.
     */
-    public func map<U>(f:(T, (U->Void))->Void) -> (Result<U>->Void)->Void {
-        return { g in
-            switch self {
-            case let .Success(v): f(v){ transformed in
-                    g(.Success(transformed))
-                }
-            case let .Error(error): g(.Error(error))
-            }
-        }
-    }
-    
-    /**
-        Transform a result into another result using a function. If the result was an error,
-        the function will not be executed and the error returned instead.
-    */
-    public func flatMap<U>(@noescape f: T -> Result<U>) -> Result<U> {
+    public func flatMap<U>(_ f: (T) -> Result<U>) -> Result<U> {
         switch self {
-        case let .Success(v): return f(v)
-        case let .Error(error): return .Error(error)
+        case let .success(v): return f(v)
+        case let .error(error): return .error(error)
         }
     }
     
@@ -86,12 +71,12 @@ public enum Result<T> {
         Transform a result into another result using a function. If the result was an error,
         the function will not be executed and the error returned instead.
     */
-    public func flatMap<U>(@noescape f: T throws -> U) -> Result<U> {
+    public func flatMap<U>(_ f: (T) throws -> U) -> Result<U> {
         return flatMap { t in
             do {
-                return .Success(try f(t))
+                return .success(try f(t))
             } catch let error {
-                return .Error(error)
+                return .error(error)
             }
         }
     }
@@ -99,11 +84,11 @@ public enum Result<T> {
         Transform a result into another result using a function. If the result was an error,
         the function will not be executed and the error returned instead.
     */
-    public func flatMap<U>(f:(T, (Result<U>->Void))->Void) -> (Result<U>->Void)->Void {
+    public func flatMap<U>(_ f:@escaping (T, (@escaping(Result<U>)->Void))->Void) -> (@escaping(Result<U>)->Void)->Void {
         return { g in
             switch self {
-            case let .Success(v): f(v, g)
-            case let .Error(error): g(.Error(error))
+            case let .success(v): f(v, g)
+            case let .error(error): g(.error(error))
             }
         }
     }
@@ -112,7 +97,7 @@ public enum Result<T> {
         Call a function with the result as an argument. Use this if the function should be
         executed no matter if the result was a success or not.
     */
-    public func ensure<U>(@noescape f: Result<T> -> Result<U>) -> Result<U> {
+    public func ensure<U>(_ f: (Result<T>) -> Result<U>) -> Result<U> {
         return f(self)
     }
     
@@ -120,7 +105,7 @@ public enum Result<T> {
         Call a function with the result as an argument. Use this if the function should be
         executed no matter if the result was a success or not.
     */
-    public func ensure<U>(f:(Result<T>, (Result<U>->Void))->Void) -> (Result<U>->Void)->Void {
+    public func ensure<U>(_ f:@escaping (Result<T>, ((Result<U>)->Void))->Void) -> ((Result<U>)->Void)->Void {
         return { g in
             f(self, g)
         }
@@ -132,8 +117,8 @@ public enum Result<T> {
     */
     public var value: T? {
         switch self {
-        case let .Success(v): return v
-        case .Error(_): return nil
+        case let .success(v): return v
+        case .error(_): return nil
         }
     }
     
@@ -141,10 +126,10 @@ public enum Result<T> {
         Direct access to the error of the result as an optional. If the result was an error,
         the optional will contain the error of the result.
     */
-    public var error: ErrorType? {
+    public var error: Error? {
         switch self {
-        case Success: return nil
-        case Error(let x): return x
+        case .success: return nil
+        case .error(let x): return x
         }
     }
     
@@ -153,8 +138,8 @@ public enum Result<T> {
     */
     public func get() throws -> T {
         switch self {
-        case let Success(value): return value
-        case Error(let error): throw error
+        case let .success(value): return value
+        case .error(let error): throw error
         }
     }
 }
@@ -163,9 +148,9 @@ public enum Result<T> {
 /**
     Provide a default value for failed results.
 */
-public func ?? <T> (result: Result<T>, @autoclosure defaultValue: () -> T) -> T {
+public func ?? <T> (result: Result<T>, defaultValue: @autoclosure () -> T) -> T {
     switch result {
-    case .Success(let x): return x
-    case .Error: return defaultValue()
+    case .success(let x): return x
+    case .error: return defaultValue()
     }
 }
