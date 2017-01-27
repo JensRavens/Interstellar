@@ -1,7 +1,7 @@
 language: objective-c
-osx_image: xcode8.0
+osx_image: xcode8.1
 script:
-  - xcodebuild test -project Interstellar.xcodeproj -scheme Interstellar_iOS -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO -configuration Debug | xcpretty -c;
+  - xcodebuild test -project Interstellar.xcodeproj -scheme Interstellar_iOS -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO -configuration Debug -destination 'platform=iOS Simulator,name=iPhone 6 Plus,OS=10.2' | xcpretty -c;
   - xcodebuild build -project Interstellar.xcodeproj -scheme Interstellar_iOS -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO -configuration Release | xcpretty -c;
   - xcodebuild build -project Interstellar.xcodeproj -scheme Interstellar_OSX -sdk macosx ONLY_ACTIVE_ARCH=NO -configuration Release | xcpretty -c;
   - xcodebuild build -project Interstellar.xcodeproj -scheme Interstellar_tvOS -sdk appletvsimulator ONLY_ACTIVE_ARCH=NO -configuration Release | xcpretty -c;
