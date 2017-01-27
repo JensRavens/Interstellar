@@ -78,6 +78,18 @@ class ObservableTests: XCTestCase {
         XCTAssertEqual(count, 1)
     }
 
+    func testObservableTokenUnsubscribe() {
+        let observable = Observable<String>()
+        var count = 0
+        let token = observable.subscribe { a in
+            count += 1
+        }
+        observable.update("Hello")
+        token.unsubscribe()
+        observable.update("Hello")
+        XCTAssertEqual(count, 1)
+    }
+
     func testMergeInvocations() {
         let lhs = Observable<String>()
         let rhs = Observable<String>()

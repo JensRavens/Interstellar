@@ -37,7 +37,7 @@ public struct ObservingOptions: OptionSet {
  */
 public final class Observable<T> {
     fileprivate typealias Observer = (T)->Void
-    fileprivate var observers = [ObserverToken: Observer]()
+    fileprivate var observers = Dictionary<ObserverToken<T>, Observer>() // Normal syntax doesn't work: [ObserverToken<T>: Observer]()
     public private(set) var value: T?
     public let options: ObservingOptions
     fileprivate let mutex = Mutex()
@@ -68,11 +68,11 @@ public final class Observable<T> {
     - Note: This block will be retained by the observable until it is deallocated or the corresponding `unsubscribe`
      function is called.
     */
-    @discardableResult public func subscribe(_ observer: @escaping (T) -> Void) -> ObserverToken {
-        var token: ObserverToken!
+    @discardableResult public func subscribe(_ observer: @escaping (T) -> Void) -> ObserverToken<T> {
+        var token: ObserverToken<T>!
         mutex.lock {
             let newHashValue = (observers.keys.map({$0.hashValue}).max() ?? -1) + 1
-            token = ObserverToken(hashValue: newHashValue)
+            token = ObserverToken(hashValue: newHashValue, observable: self)
             if !(options.contains(.Once) && value != nil) {
                 observers[token] = observer
             }
@@ -99,7 +99,7 @@ public final class Observable<T> {
     }
 
     /// Unsubscribe from future updates with the token obtained from `subscribe`. This will also release the observer block.
-    public func unsubscribe(_ token: ObserverToken) {
+    public func unsubscribe(_ token: ObserverToken<T>) {
         mutex.lock {
             observers[token] = nil
         }
