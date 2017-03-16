@@ -224,7 +224,7 @@ github "JensRavens/Interstellar"
 
 ### Why use Interstellar instead of [insert your favorite FRP framework here]?
 
-Interstellar is meant to be lightweight. There are no UIKit bindings, no heavy constructs - just a simple `Obersable<T>`. Therefore it's easy to understand and portable (there is no dependency except Foundation).
+Interstellar is meant to be lightweight. There are no UIKit bindings, no heavy constructs - just a simple `Observable<T>`. Therefore it's easy to understand and portable (there is no dependency except Foundation).
 
 Also Interstellar is supporting BYOR (bring your own `Result<T>`). Due to its protocol based implementation you can use result types from other frameworks directly with Interstellar methods.
 
