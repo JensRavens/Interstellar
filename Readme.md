@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/JensRavens/Interstellar.svg)](https://travis-ci.org/JensRavens/Interstellar)
 [![CocoaPods Version](https://img.shields.io/cocoapods/v/Interstellar.svg)](https://cocoapods.org/pods/Interstellar)
 [![CocoaPods Plattforms](https://img.shields.io/cocoapods/p/Interstellar.svg)](https://cocoapods.org/pods/Interstellar)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 The simplest `Observable<T>` implementation for Functional Reactive Programming you will ever find.
 
