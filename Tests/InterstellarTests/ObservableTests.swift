@@ -82,7 +82,7 @@ class ObservableTests: XCTestCase {
         let lhs = Observable<String>()
         let rhs = Observable<String>()
         var count = 0
-        lhs.merge(rhs).subscribe { _, _ in
+        lhs.merge(rhs).subscribe { _ in
             count += 1
         }
         lhs.update("")
@@ -95,7 +95,8 @@ class ObservableTests: XCTestCase {
         let lhs = Observable<String>()
         let rhs = Observable<String>()
         var first = "", second = ""
-        lhs.merge(rhs).subscribe { lhs, rhs in
+        lhs.merge(rhs).subscribe { arg in
+            let (lhs, rhs) = arg
             first = lhs
             second = rhs
         }
