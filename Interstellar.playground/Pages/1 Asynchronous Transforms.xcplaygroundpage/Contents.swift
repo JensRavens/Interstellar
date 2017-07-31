@@ -1,9 +1,7 @@
 //: [Previous](@previous)
 /*: 
  ## Asynchronous Transforms
-*/
-import Interstellar
-/*:
+
  Imagine you have a function that returns with a callback later:
 */
 func greetAsync(name: String, completion: (String)->Void) {

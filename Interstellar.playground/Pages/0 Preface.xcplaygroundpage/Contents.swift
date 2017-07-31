@@ -2,9 +2,7 @@
  # Interstellar 2
  
  ## Observables
- */
-import Interstellar
-/*:
+
  An observable is the basic type of Interstellar. To create an observable simply initialize it with a value:
 */
 let observable = Observable("User")

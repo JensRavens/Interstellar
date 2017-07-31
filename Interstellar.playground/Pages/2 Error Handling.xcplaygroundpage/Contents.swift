@@ -2,7 +2,6 @@
 //: ## Error Handling
 //: Sometimes a function might return later with either a successfull value or some error. This is generally encoded in the `Result` type.
 import Foundation
-import Interstellar
 
 let successfullValue = Result(success: "Hello World")
 let ohThereWasAnError = Result<String>(error: NSError(domain: "Something went wrong", code: 500, userInfo: nil))
