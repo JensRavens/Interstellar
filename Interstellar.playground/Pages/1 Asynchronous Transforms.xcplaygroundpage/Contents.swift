@@ -1,7 +1,7 @@
 //: [Previous](@previous)
 /*: 
  ## Asynchronous Transforms
- 
+
  Imagine you have a function that returns with a callback later:
 */
 func greetAsync(name: String, completion: (String)->Void) {

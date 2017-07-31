@@ -1,3 +1,5 @@
+#!/usr/bin/ruby
+
 Pod::Spec.new do |s|
   s.name = "Interstellar"
   s.version = "2.0.0"
@@ -14,12 +16,24 @@ Pod::Spec.new do |s|
   s.tvos.deployment_target = "9.0"
 
   s.subspec "Core" do |cs|
-    cs.source_files = ["Sources/Result.swift", "Sources/Signal.swift", "Sources/Observable.swift", "Sources/ObserverToken.swift", "Sources/Mutex.swift", "Sources/ResultType.swift", "Sources/Observable+Result.swift"]
+    cs.source_files = [
+      "Sources/Interstellar/Result.swift", 
+      "Sources/Interstellar/Signal.swift", 
+      "Sources/Interstellar/Observable.swift", 
+      "Sources/Interstellar/ObserverToken.swift", 
+      "Sources/Interstellar/Mutex.swift", 
+      "Sources/Interstellar/ResultType.swift", 
+      "Sources/Interstellar/Observable+Result.swift"]
   end
 
   s.subspec "Warpdrive" do |cs|
     cs.dependency "Interstellar/Core"
-    cs.source_files = ["Sources/Debounce.swift", "Sources/Delay.swift", "Sources/Threading.swift", "Sources/Waiting.swift"]
+    cs.source_files = [
+      "Sources/Interstellar/Warpdrive/Debounce.swift", 
+      "Sources/Interstellar/Warpdrive/Delay.swift", 
+      "Sources/Interstellar/Warpdrive/Threading.swift", 
+      "Sources/Interstellar/Warpdrive/Waiting.swift"
+    ]
   end
 
   s.requires_arc = true
