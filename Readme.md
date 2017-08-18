@@ -16,7 +16,7 @@ The simplest `Observable<T>` implementation for Functional Reactive Programming 
 - [x] Lightweight, simple, cross plattform FRP
 - [x] Multithreading with GCD becomes a breeze
 - [x] Most of your methods will conform to the needed syntax anyway.
-- [x] Swift 3 compatibility
+- [x] Swift 3 and 4 compatibility
 - [x] Multithreading with GCD becomes a breeze via WarpDrive
 - [x] Supports Linux and `swift build`
 - [x] BYOR™-technology (Bring Your Own `Result<T>`)
@@ -242,6 +242,7 @@ Interstellar is owned and maintained by [Jens Ravens](http://jensravens.de).
 - *1.3* WarpDrive has been merged into Interstellar. Also Interstellar is now divided into subspecs via cocoapods to make it easy to just select the needed components. The basic signal library is now "Interstellar/Core".
 - *1.4* Support `swift build` and the new Swift package manager, including support for Linux. Also removed deprecated bind methods.
 - *2* Introducing `Observable<T>`, the successor of Signal. Use the `observable` property on signals to migrate your code from `Signal<T>`. Also adding Linux support for Warpdrive and introduce BYOR™-technology (Bring Your Own `Result<T>`).
+- *2.1* Update to Swift 3.2 to make it compatible with Swift 4.
 
 ## License
 

@@ -2,7 +2,7 @@
 
 Pod::Spec.new do |s|
   s.name = "Interstellar"
-  s.version = "2.0.0"
+  s.version = "2.1.0"
   s.license = "MIT"
   s.summary = "The simplest Observable<T> implementation for Functional Reactive Programming you will ever find."
   s.homepage = "https://github.com/JensRavens/Interstellar"
