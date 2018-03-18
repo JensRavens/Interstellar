@@ -123,6 +123,7 @@ class ObservableTests: XCTestCase {
         let underTest = Observable<Int>()
         var results = [Int]()
 
+        // Filter even numbers
         underTest.filter { $0 % 2 == 0 }.subscribe { results.append($0) }
         [1, 2, 3, 4, 5, 6].forEach { underTest.update($0) }
 
