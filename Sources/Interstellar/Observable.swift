@@ -179,4 +179,18 @@ extension Observable {
 
         return signal
     }
+
+    /**
+     Creates a new observable which is updated with values returning true for the
+     given filter function.
+     */
+    public func filter(_ filterFunc: @escaping (T) -> Bool) -> Observable<T> {
+        let observable = Observable<T>()
+        subscribe { value in
+            if filterFunc(value) {
+                observable.update(value)
+            }
+        }
+        return observable
+    }
 }

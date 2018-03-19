@@ -118,6 +118,17 @@ class ObservableTests: XCTestCase {
         XCTAssertEqual(updateCalled, 1)
         XCTAssertEqual(greeting.value ?? [""], ["Hello", "World"])
     }
+
+    func testFilterObservable() {
+        let underTest = Observable<Int>()
+        var results = [Int]()
+
+        // Filter even numbers
+        underTest.filter { $0 % 2 == 0 }.subscribe { results.append($0) }
+        [1, 2, 3, 4, 5, 6].forEach { underTest.update($0) }
+
+        XCTAssert(results == [2, 4, 6])
+    }
 }
 
 #if os(Linux)
@@ -133,6 +144,7 @@ class ObservableTests: XCTestCase {
                 ("testMergeInvocations", testMergeInvocations),
                 ("testMergeValues", testMergeValues),
                 ("testMergingObservables", testMergingObservables),
+                ("testFilterObservable", testFilterObservable)
             ]
         }
     }
