@@ -2,7 +2,7 @@
 
 Pod::Spec.new do |s|
   s.name = "Interstellar"
-  s.version = "2.1.0"
+  s.version = "2.2.0"
   s.license = "MIT"
   s.summary = "The simplest Observable<T> implementation for Functional Reactive Programming you will ever find."
   s.homepage = "https://github.com/JensRavens/Interstellar"
@@ -17,21 +17,21 @@ Pod::Spec.new do |s|
 
   s.subspec "Core" do |cs|
     cs.source_files = [
-      "Sources/Interstellar/Result.swift", 
-      "Sources/Interstellar/Signal.swift", 
-      "Sources/Interstellar/Observable.swift", 
-      "Sources/Interstellar/ObserverToken.swift", 
-      "Sources/Interstellar/Mutex.swift", 
-      "Sources/Interstellar/ResultType.swift", 
+      "Sources/Interstellar/Result.swift",
+      "Sources/Interstellar/Signal.swift",
+      "Sources/Interstellar/Observable.swift",
+      "Sources/Interstellar/ObserverToken.swift",
+      "Sources/Interstellar/Mutex.swift",
+      "Sources/Interstellar/ResultType.swift",
       "Sources/Interstellar/Observable+Result.swift"]
   end
 
   s.subspec "Warpdrive" do |cs|
     cs.dependency "Interstellar/Core"
     cs.source_files = [
-      "Sources/Interstellar/Warpdrive/Debounce.swift", 
-      "Sources/Interstellar/Warpdrive/Delay.swift", 
-      "Sources/Interstellar/Warpdrive/Threading.swift", 
+      "Sources/Interstellar/Warpdrive/Debounce.swift",
+      "Sources/Interstellar/Warpdrive/Delay.swift",
+      "Sources/Interstellar/Warpdrive/Threading.swift",
       "Sources/Interstellar/Warpdrive/Waiting.swift"
     ]
   end
