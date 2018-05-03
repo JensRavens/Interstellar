@@ -118,7 +118,7 @@ public final class Observable<T> {
         for observable in copies {
             precondition(!observable.options.contains(.NoInitialValue), "Event style observables do not support merging")
             observable.subscribe { value in
-                let values = copies.flatMap { $0.value }
+                let values = copies.compactMap { $0.value }
                 if values.count == copies.count {
                     merged.update(values)
                 }

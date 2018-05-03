@@ -1,3 +1,4 @@
+// swift-tools-version:4.0
 // Package.swift
 //
 // Copyright (c) 2015 Jens Ravens (http://jensravens.de)
@@ -23,5 +24,18 @@
 import PackageDescription
 
 let package = Package(
-  name: "Interstellar"
+  name: "Interstellar",
+  products: [
+    .library(
+      name: "Interstellar",
+      targets: ["Interstellar"])
+  ],
+  targets: [
+    .target(name: "Interstellar"),
+    .testTarget(
+      name: "InterstellarTests",
+      dependencies: [
+        "Interstellar"
+      ])
+  ]
 )

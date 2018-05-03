@@ -16,7 +16,7 @@ class ResultObservableTests: XCTestCase {
     }
     
     func throwingGreeter(_ subject: String) throws -> String {
-        if subject.characters.count > 0 {
+        if subject.count > 0 {
             return "Hello \(subject)"
         } else {
             throw Fail("No one to greet!")

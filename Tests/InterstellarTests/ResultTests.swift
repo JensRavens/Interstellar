@@ -12,7 +12,7 @@ import Interstellar
 class ResultTests: XCTestCase {
     
     func greeter(_ subject: String) -> Result<String> {
-        if subject.characters.count > 0 {
+        if subject.count > 0 {
             return .success("Hello \(subject)")
         } else {
             return .error(Fail("No one to greet!"))

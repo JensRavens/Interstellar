@@ -243,6 +243,7 @@ Interstellar is owned and maintained by [Jens Ravens](http://jensravens.de).
 - *1.4* Support `swift build` and the new Swift package manager, including support for Linux. Also removed deprecated bind methods.
 - *2* Introducing `Observable<T>`, the successor of Signal. Use the `observable` property on signals to migrate your code from `Signal<T>`. Also adding Linux support for Warpdrive and introduce BYOR™-technology (Bring Your Own `Result<T>`).
 - *2.1* Update to Swift 3.2 to make it compatible with Swift 4.
+- 2.2 Update to Swift 4.1, fixing build warnings on Xcode 9.3 (Maintains backwards compatibility with Swift 3.3 projects).
 
 ## License
 
