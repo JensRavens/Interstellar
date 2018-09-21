@@ -34,7 +34,7 @@ internal class Mutex {
     
     func lock(_ closure: () -> Void) {
         let status = lock()
-        assert(status == 0, "pthread_mutex_lock: \(strerror(status))")
+        assert(status == 0, "pthread_mutex_lock: \(String(describing: strerror(status)))")
         defer { unlock() }
         closure()
     }
