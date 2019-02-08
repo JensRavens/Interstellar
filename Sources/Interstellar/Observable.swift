@@ -21,6 +21,13 @@ public struct ObservingOptions: OptionSet {
 }
 
 /**
+ A type-erased Observable in order to avoid generic specification when unnecessary.
+ */
+public protocol AnyObservable: class {
+    func unsubscribe(_ token: ObserverToken)
+}
+
+/**
  An Observable<T> is value that will change over time.
  
  ```
@@ -35,7 +42,7 @@ public struct ObservingOptions: OptionSet {
  
  Observables are thread safe.
  */
-public final class Observable<T> {
+public final class Observable<T>: AnyObservable {
     fileprivate typealias Observer = (T)->Void
     fileprivate var observers = [ObserverToken: Observer]()
     public private(set) var value: T?
@@ -72,7 +79,7 @@ public final class Observable<T> {
         var token: ObserverToken!
         mutex.lock {
             let newHashValue = (observers.keys.map({$0.hashValue}).max() ?? -1) + 1
-            token = ObserverToken(hashValue: newHashValue)
+            token = ObserverToken(observable: self, hashValue: newHashValue)
             if !(options.contains(.Once) && value != nil) {
                 observers[token] = observer
             }
