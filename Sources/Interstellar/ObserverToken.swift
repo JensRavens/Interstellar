@@ -20,10 +20,10 @@
 
 /// Observer tokens are created by observables to hande unsubscription. You are not supposed to create them directly.
 public final class ObserverToken: Hashable {
-    public private(set) weak var observable: AnyObservable?
+    private weak var observable: Unsubscribable?
     public let hashValue: Int
     
-    internal init (observable: AnyObservable, hashValue: Int) {
+    internal init (observable: Unsubscribable, hashValue: Int) {
         self.observable = observable
         self.hashValue = hashValue
     }

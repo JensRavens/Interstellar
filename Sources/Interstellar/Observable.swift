@@ -23,7 +23,7 @@ public struct ObservingOptions: OptionSet {
 /**
  A type-erased Observable in order to avoid generic specification when unnecessary.
  */
-public protocol AnyObservable: class {
+public protocol Unsubscribable: class {
     func unsubscribe(_ token: ObserverToken)
 }
 
@@ -42,7 +42,7 @@ public protocol AnyObservable: class {
  
  Observables are thread safe.
  */
-public final class Observable<T>: AnyObservable {
+public final class Observable<T>: Unsubscribable {
     fileprivate typealias Observer = (T)->Void
     fileprivate var observers = [ObserverToken: Observer]()
     public private(set) var value: T?
