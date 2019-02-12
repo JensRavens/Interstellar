@@ -42,9 +42,9 @@ public protocol Unsubscribable: class {
  
  Observables are thread safe.
  */
+
 public final class Observable<T>: Unsubscribable {
-    fileprivate typealias Observer = (T)->Void
-    fileprivate var observers = [ObserverToken: Observer]()
+    fileprivate var observers = [ObserverToken: EventSubscription<T>]()
     public private(set) var value: T?
     public let options: ObservingOptions
     fileprivate let mutex = Mutex()
@@ -75,8 +75,10 @@ public final class Observable<T>: Unsubscribable {
     - Note: This block will be retained by the observable until it is deallocated or the corresponding `unsubscribe`
      function is called.
     */
-    @discardableResult public func subscribe(_ observer: @escaping (T) -> Void) -> ObserverToken {
+    @discardableResult public func subscribe(owner: AnyObject? = nil, _ handler: @escaping (T) -> Void) -> ObserverToken {
         var token: ObserverToken!
+        let observer = EventSubscription<T>(owner: owner, handler: handler)
+        
         mutex.lock {
             let newHashValue = (observers.keys.map({$0.hashValue}).max() ?? -1) + 1
             token = ObserverToken(observable: self, hashValue: newHashValue)
@@ -84,7 +86,7 @@ public final class Observable<T>: Unsubscribable {
                 observers[token] = observer
             }
             if let value = value , !options.contains(.NoInitialValue) {
-                observer(value)
+                handler(value)
             }
         }
         return token
@@ -96,10 +98,18 @@ public final class Observable<T>: Unsubscribable {
             if !options.contains(.NoInitialValue) {
                 self.value = value
             }
-            for observe in observers.values {
-                observe(value)
+            
+            for (token, observer) in observers {
+                if observer.valid() {
+                    observer.handler(value)
+                }
+                else {
+                    observers[token] = nil
+                }
             }
+            
             if options.contains(.Once) {
+                observers.values.forEach { $0.invalidate() }
                 observers.removeAll()
             }
         }
@@ -108,6 +118,7 @@ public final class Observable<T>: Unsubscribable {
     /// Unsubscribe from future updates with the token obtained from `subscribe`. This will also release the observer block.
     public func unsubscribe(_ token: ObserverToken) {
         mutex.lock {
+            observers[token]?.invalidate()
             observers[token] = nil
         }
     }

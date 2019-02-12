@@ -23,7 +23,9 @@ Pod::Spec.new do |s|
       "Sources/Interstellar/ObserverToken.swift",
       "Sources/Interstellar/Mutex.swift",
       "Sources/Interstellar/ResultType.swift",
-      "Sources/Interstellar/Observable+Result.swift"]
+      "Sources/Interstellar/Observable+Result.swift",
+      "Sources/Interstellar/EventSubscription.swift"
+      ]
   end
 
   s.subspec "Warpdrive" do |cs|
