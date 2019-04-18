@@ -23,27 +23,11 @@
 import Dispatch
 import Foundation
 
-@available(*, deprecated: 2.0)
-public extension Signal {
-    /**
-        Creates a new signal that mirrors the original signal but is delayed by x seconds. If no queue is specified, the new signal will call it's observers and transforms on the main queue.
-    */
-    public func delay(_ seconds: TimeInterval, queue: DispatchQueue = DispatchQueue.main) -> Signal<T> {
-        let signal = Signal<T>()
-        subscribe { result in
-            queue.asyncAfter(deadline: DispatchTime.now() + seconds) {
-                signal.update(result)
-            }
-        }
-        return signal
-    }
-}
-
 public extension Observable {
     /**
      Creates a new observable that mirrors the original observable but is delayed by x seconds. If no queue is specified, the new observable will call it's observers and transforms on the main queue.
      */
-    public func delay(_ seconds: TimeInterval, queue: DispatchQueue = DispatchQueue.main) -> Observable<T> {
+    func delay(_ seconds: TimeInterval, queue: DispatchQueue = DispatchQueue.main) -> Observable<T> {
         let observable = Observable<T>()
         subscribe { result in
             queue.asyncAfter(deadline: DispatchTime.now() + seconds) {

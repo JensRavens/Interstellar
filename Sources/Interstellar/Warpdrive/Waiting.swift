@@ -34,37 +34,12 @@ public struct TimeoutError: Error {
     internal init() {}
 }
 
-@available(*, deprecated: 2.0)
-public extension Signal {
-    /**
-        Wait until the signal updates the next time. This will block the current thread until there 
-        is an error or a successfull value. In case of an error, the error will be thrown.
-    */
-    public func wait(_ timeout: TimeInterval? = nil) throws -> T {
-        let group = DispatchGroup()
-        var result: Result<T>?
-        group.enter()
-        subscribe { r in
-            result = r
-            group.leave()
-        }
-        let timestamp = timeout.map{ DispatchTime.now() + $0 } ?? DispatchTime.distantFuture
-        if group.wait(timeout: timestamp) != .success {
-            throw TimeoutError()
-        }
-        switch result! {
-        case let .success(t): return t
-        case let .error(e): throw e
-        }
-    }
-}
-
 public extension Observable {
     /**
      Wait until the observable updates the next time. This will block the current thread until 
      there is a new value.
      */
-    public func wait(_ timeout: TimeInterval? = nil) throws -> T {
+    func wait(_ timeout: TimeInterval? = nil) throws -> T {
         let group = DispatchGroup()
         var value: T! = nil
         group.enter()

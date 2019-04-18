@@ -78,8 +78,8 @@ public final class Observable<T>: Unsubscribable {
     @discardableResult public func subscribe(_ observer: @escaping (T) -> Void) -> ObserverToken {
         var token: ObserverToken!
         mutex.lock {
-            let newHashValue = (observers.keys.map({$0.hashValue}).max() ?? -1) + 1
-            token = ObserverToken(observable: self, hashValue: newHashValue)
+            let newHashValue = (observers.keys.map({$0.token}).max() ?? -1) + 1
+            token = ObserverToken(observable: self, token: newHashValue)
             if !(options.contains(.Once) && value != nil) {
                 observers[token] = observer
             }
@@ -154,10 +154,10 @@ extension Observable {
     /**
     Creates a new observable with a transform applied. The value of the observable will be wrapped in a Result<T> in case the transform throws.
     */
-    public func map<U>(_ transform: @escaping (T) throws -> U) -> Observable<Result<U>> {
-        let observable = Observable<Result<U>>(options: options)
+    public func map<U>(_ transform: @escaping (T) throws -> U) -> Observable<Result<U, Error>> {
+        let observable = Observable<Result<U, Error>>(options: options)
         subscribe { value in
-            observable.update(Result(block: { return try transform(value) }))
+            observable.update(Result(catching: { return try transform(value) }))
         }
         return observable
     }
