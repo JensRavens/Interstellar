@@ -21,18 +21,22 @@
 /// Observer tokens are created by observables to hande unsubscription. You are not supposed to create them directly.
 public final class ObserverToken: Hashable {
     private weak var observable: Unsubscribable?
-    public let hashValue: Int
+    public let token: Int
     
-    internal init (observable: Unsubscribable, hashValue: Int) {
+    internal init (observable: Unsubscribable, token: Int) {
         self.observable = observable
-        self.hashValue = hashValue
+        self.token = token
     }
     
     public func unsubscribe() {
         observable?.unsubscribe(self)
     }
+  
+    public func hash(into hasher: inout Hasher) {
+      hasher.combine(token)
+    }
 }
 
 public func ==(lhs: ObserverToken, rhs: ObserverToken) -> Bool {
-    return lhs.hashValue == rhs.hashValue
+    return lhs.token == rhs.token
 }

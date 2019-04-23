@@ -6,48 +6,59 @@
 //  Copyright © 2015 nerdgeschoss GmbH. All rights reserved.
 //
 
+public protocol ResultType {
+  associatedtype Success
+  var _result: Result<Success,Error> {get}
+}
+
+extension Result: ResultType {
+  public var _result: Result<Success, Error> {
+    return self as! Result<Success, Error>
+  }
+}
+
 public extension Observable where T : ResultType {
     /// Observables containing a Result<T> can be chained to only continue in the success case.
-    public func then<U>(_ transform: @escaping (T.Value) -> Result<U>) -> Observable<Result<U>> {
-        return map { $0.result.flatMap(transform) }
+    func then<U>(_ transform: @escaping (T.Success) -> Result<U, Error>) -> Observable<Result<U, Error>> {
+        return map { $0._result.flatMap(transform) }
     }
     
     /// Observables containing a Result<T> can be chained to only continue in the success case.
-    public func then<U>(_ transform: @escaping (T.Value) -> U) -> Observable<Result<U>> {
-        return map { $0.result.map(transform) }
+    func then<U>(_ transform: @escaping (T.Success) -> U) -> Observable<Result<U, Error>> {
+        return map { $0._result.map(transform) }
+    }
+  
+    /// Observables containing a Result<T> can be chained to only continue in the success case.
+    func then<U>(_ transform: @escaping (T.Success) throws -> U) -> Observable<Result<U,Error>> {
+      return map { $0._result.flatMap { value in Result { try transform(value) } }}
     }
     
     /// Observables containing a Result<T> can be chained to only continue in the success case.
-    public func then<U>(_ transform: @escaping (T.Value) throws -> U) -> Observable<Result<U>> {
-        return map { $0.result.flatMap(transform) }
-    }
-    
-    /// Observables containing a Result<T> can be chained to only continue in the success case.
-    public func then<U>(_ transform: @escaping (T.Value) -> Observable<U>) -> Observable<Result<U>> {
+    func then<U>(_ transform: @escaping (T.Success) -> Observable<U>) -> Observable<Result<U,Error>> {
         return flatMap { [options] in
-            let observable = Observable<Result<U>>(options: options)
-            switch $0.result {
+            let observable = Observable<Result<U,Error>>(options: options)
+            switch $0._result {
             case let .success(v): transform(v).subscribe { observable.update(.success($0)) }
-            case let .error(error): observable.update(.error(error))
+            case let .failure(error): observable.update(.failure(error))
             }
             return observable
         }
     }
     
     /// Observables containing a Result<T> can be chained to only continue in the success case.
-    public func then<U>(_ transform: @escaping (T.Value) -> Observable<Result<U>>) -> Observable<Result<U>> {
+    func then<U>(_ transform: @escaping (T.Success) -> Observable<Result<U, Error>>) -> Observable<Result<U, Error>> {
         return flatMap { [options] in
-            switch $0.result {
+            switch $0._result {
             case let .success(v): return transform(v)
-            case let .error(error): return Observable<Result<U>>(Result.error(error), options: options)
+            case let .failure(error): return Observable<Result<U, Error>>(Result.failure(error), options: options)
             }
         }
     }
     
     /// Only subscribe to successful events.
-    @discardableResult public func next(_ block: @escaping (T.Value) -> Void) -> Observable<T> {
+    @discardableResult func next(_ block: @escaping (T.Success) -> Void) -> Observable<T> {
         subscribe { result in
-            if let value = result.value {
+            if let value = try? result._result.get() {
                 block(value)
             }
         }
@@ -55,9 +66,9 @@ public extension Observable where T : ResultType {
     }
     
     /// Only subscribe to errors.
-    @discardableResult public func error(_ block: @escaping (Error) -> Void) -> Observable<T> {
+    @discardableResult func error(_ block: @escaping (Error) -> Void) -> Observable<T> {
         subscribe { result in
-            if let error = result.error {
+            if case let Result.failure(error) = result._result {
                 block(error)
             }
         }
@@ -65,7 +76,7 @@ public extension Observable where T : ResultType {
     }
     
     /// Peek at the value of the observable.
-    public func peek() -> T.Value? {
-        return self.value?.value
+    func peek() -> T.Success? {
+        return try? self.value?._result.get()
     }
 }

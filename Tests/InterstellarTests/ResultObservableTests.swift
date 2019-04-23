@@ -9,6 +9,19 @@
 import XCTest
 import Interstellar
 
+internal class Fail: Error, Equatable {
+  public static func ==(lhs: Fail, rhs: Fail) -> Bool {
+    return lhs.error == rhs.error
+  }
+  
+  let error: String
+  
+  internal init(_ error: String) {
+    self.error = error
+  }
+}
+
+
 class ResultObservableTests: XCTestCase {
     
     func greeter(_ subject: String) -> String {
@@ -27,21 +40,21 @@ class ResultObservableTests: XCTestCase {
         return Observable("Hello \(subject)")
     }
     
-    func asyncFail(_ subject: String) -> Observable<Result<String>> {
-        return Observable(.error(Fail("Fail")))
+    func asyncFail(_ subject: String) -> Observable<Result<String, Error>> {
+        return Observable(.failure(Fail("Fail")))
     }
     
-    func neverCallMe(_ subject: String) -> Observable<Result<String>> {
+    func neverCallMe(_ subject: String) -> Observable<Result<String, Error>> {
         XCTFail()
         return Observable()
     }
     
-    var world: Observable<Result<String>> {
-        return Observable(Result(success: "World"))
+    var world: Observable<Result<String, Error>> {
+        return Observable(Result.success("World"))
     }
     
-    var nothing: Observable<Result<String>> {
-        return Observable(Result(success: ""))
+    var nothing: Observable<Result<String, Error>> {
+        return Observable(Result.success(""))
     }
     
     func testContinuingTheChain() {
@@ -53,12 +66,12 @@ class ResultObservableTests: XCTestCase {
         let greeting = nothing.then(throwingGreeter).peek()
         XCTAssertNil(greeting)
     }
-    
+
     func testAsyncChain() {
         let greeting = world.then(asyncGreeter)
         XCTAssertEqual(greeting.peek()!, "Hello World")
     }
-    
+
     func testAsyncFail() {
         let greeting = world.then(asyncFail).then(neverCallMe)
         var error: Error?
